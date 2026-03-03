@@ -21,17 +21,53 @@ function setupTestimonialsCarousel(){
 }
 
 const scrollButton = document.querySelector('.scroll-button');
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 800) {
-        scrollButton.style.display = 'flex';
-    } else {
-        scrollButton.style.display = 'none';
-    }
-});
-scrollButton.addEventListener('click', () => {
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
+if (scrollButton) {
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 800) {
+            scrollButton.style.display = 'flex';
+        } else {
+            scrollButton.style.display = 'none';
+        }
     });
-});
+    scrollButton.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+}
 
+function typeWriterFancy() {
+    const heading = document.getElementById('typing-heading');
+    if (!heading) return;
+
+    // Create cursor dynamically
+    const cursor = document.createElement('span');
+    cursor.className = 'cursor';
+    heading.appendChild(cursor);
+
+    // Get clean text (no cursor character)
+    const text = heading.textContent.trim();
+
+    heading.textContent = '';           // clear
+    heading.appendChild(cursor);        // cursor at end
+
+    let i = 0;
+    const speed = 45;
+
+    function type() {
+        if (i < text.length) {
+            const char = document.createTextNode(text[i]);
+            heading.insertBefore(char, cursor);
+            i++;
+            setTimeout(type, speed);
+        } else {
+            cursor.classList.add('hidden');
+            // or: cursor.remove();   ← if you never want cursor after finish
+        }
+    }
+
+    setTimeout(type, 600);
+}
+
+window.addEventListener('load', typeWriterFancy);

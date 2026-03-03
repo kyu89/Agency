@@ -33,15 +33,36 @@ fetch("/section-html/header.html")
 });
 
 function navigationColor(){
+    const cName = document.getElementById('company-name');
     const navigation = document.querySelector('.nav-bar');
+    const navLinks = navigation ? navigation.querySelectorAll('a') : [];
+
     if (!navigation) return;
-    window.addEventListener('scroll', function() {
-        if (window.scrollY > 80) {
+
+    function updateNav() {
+        const isAbout = window.location.pathname.includes('/pages-html/about-page.html');
+        const scrolled = window.scrollY > 80;
+
+        if (scrolled) {
             navigation.style.background = '#0c0c0caa';
-        }else{
+            if (isAbout) {
+                cName.style.color = '#e5e7eb';
+                navLinks.forEach(link => {
+                    link.style.color = '#e5e7eb';
+                });
+            }
+        } else {
             navigation.style.background = 'transparent';
+            if (isAbout) {
+                cName.style.color = '#ff4b2b';
+                navLinks.forEach(link => {
+                    link.style.color = '#ff4b2b';
+                });
+            }
         }
-    });
+    }
+    updateNav();
+    window.addEventListener('scroll', updateNav);
 }
 
 function setupHeaderNav(){
@@ -103,11 +124,11 @@ function setupHeaderNav(){
                 link.style.color = '#ff4b2b';
             });
         } else {
-            cName.style.color = ''; // reset to stylesheet default
+            cName.style.color = '';
         }
     })();
     navigationColor();
 }
-    
+
 
 
