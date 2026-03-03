@@ -1,47 +1,3 @@
-fetch("section-html/about.html")
-    .then(response => response.text())
-    .then(data => {
-        document.getElementById("about").innerHTML = data;
-    });
-
-fetch("section-html/services.html")
-    .then(response => response.text())
-    .then(data => {
-        document.getElementById("services").innerHTML = data;
-    });
-fetch("section-html/testimonials.html")
-.then(response => response.text())
-.then(data => {
-    document.getElementById("testimonials").innerHTML = data;
-    setupTestimonialsCarousel();
-});
-fetch("section-html/cta.html")
-.then(response => response.text())
-.then(data => {
-    document.getElementById("cta").innerHTML = data;
-});
-fetch("section-html/footer.html")
-.then(response => response.text())
-.then(data => {
-    document.getElementById("footer").innerHTML = data;
-});
-
-const hamburger = document.getElementById('hamburger');
-const navigation = document.getElementById('navigation');
-
-hamburger.addEventListener('click', function() {
-    hamburger.classList.toggle('active');
-    navigation.classList.toggle('active');
-});
-
-const navLinks = navigation.querySelectorAll('a');
-navLinks.forEach(link => {
-    link.addEventListener('click', function() {
-        hamburger.classList.remove('active');
-        navigation.classList.remove('active');
-    });
-});
-
 function setupTestimonialsCarousel(){
     const carousel = document.getElementById('testimonialCarousel');
     if(!carousel) return;
@@ -78,3 +34,4 @@ scrollButton.addEventListener('click', () => {
         behavior: 'smooth'
     });
 });
+
