@@ -173,3 +173,78 @@ body{
     align-items: center;
     font-size: 3rem;
 }
+
+.page-title.two{
+    padding: 20px 0;
+    border-top: 3px dashed #ff4b2b;
+    width: 100%;
+}
+
+.mission img{
+    width: 30%;
+    padding: 20px 0;
+}
+.vision img{
+    width: 30%;
+    padding: 20px 0;
+}
+
+.third-section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    width: 100%;
+    box-sizing: border-box;
+    column-gap: 50px;
+    height: auto;
+    padding: 30px 0;
+}
+
+.mission{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 45%;
+    padding: 20px 40px;
+    box-sizing: inherit;
+    text-align: justify;
+    background-color: #fff;
+    border-radius: 10px;
+    min-height: 20vh;
+    box-shadow: 0px 12px 20px #15141413;
+    border: 2px dashed #ff4b2b;
+}
+
+.vision{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 45%;
+    padding: 20px 40px;
+    box-sizing: inherit;
+    text-align: justify;
+    background-color: #fff;
+    border-radius: 10px;
+    min-height: 20vh;
+    box-shadow: 0px 12px 20px #15141413;
+    border: 2px dashed #ff4b2b;
+}
+
+.mission h3, .vision h3{
+    font-family: inherit;
+    font-size: 3rem;
+    text-shadow: 2px 8px 25px #13131351;
+    color: #ff4b2b;
+}
+
+.mission p, .vision p{
+    font-family: inherit;
+    font-size: 1.2rem;
+    color: #383535;
+    width: 90%;
+    padding: 20px 0;
+    line-height: 1.75rem;
+}
