@@ -19,7 +19,6 @@ body{
     width: 100%;
     height: auto;
     box-sizing: border-box;
-    padding: 0px 50px;
 }
 
 .first-section{
@@ -30,7 +29,7 @@ body{
     width: 100%;
     height: 100vh;
     box-sizing: border-box;
-
+    padding: 0 50px;
 }
 
 .header-container{
@@ -127,7 +126,8 @@ body{
     width: 100%;
     height: auto;
     box-sizing: border-box;
-    padding: 30px 0;
+    padding: 30px 50px;
+    
 }
 
 .who-we-are{
@@ -181,24 +181,22 @@ body{
 }
 
 .mission img{
-    width: 30%;
-    padding: 20px 0;
+    width: 20%;
 }
 .vision img{
-    width: 30%;
-    padding: 20px 0;
+    width: 20%;
 }
 
 .third-section{
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: stretch;
     flex-direction: row;
     width: 100%;
     box-sizing: border-box;
     column-gap: 50px;
     height: auto;
-    padding: 30px 0;
+    padding: 30px 50px;
 }
 
 .mission{
@@ -207,14 +205,15 @@ body{
     justify-content: center;
     align-items: center;
     width: 45%;
-    padding: 20px 40px;
+    padding: 10px 20px;
     box-sizing: inherit;
     text-align: justify;
     background-color: #fff;
     border-radius: 10px;
-    min-height: 20vh;
     box-shadow: 0px 12px 20px #15141413;
     border: 2px dashed #ff4b2b;
+    box-sizing: border-box;
+    height: auto;
 }
 
 .vision{
@@ -223,14 +222,15 @@ body{
     justify-content: center;
     align-items: center;
     width: 45%;
-    padding: 20px 40px;
+    padding: 10px 20px;
     box-sizing: inherit;
     text-align: justify;
     background-color: #fff;
     border-radius: 10px;
-    min-height: 20vh;
     box-shadow: 0px 12px 20px #15141413;
     border: 2px dashed #ff4b2b;
+    box-sizing: border-box;
+    height: auto;
 }
 
 .mission h3, .vision h3{
@@ -247,4 +247,34 @@ body{
     width: 90%;
     padding: 20px 0;
     line-height: 1.75rem;
+}
+
+.space{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: flex-end;
+    height: 5vh;
+    margin-top: 2rem;
+}
+
+.fourth-section{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 30px 50px;
+    height: auto;
+    box-sizing: border-box;
+    background-color: #383535;
+}
+
+.how-we-work{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: inherit;
 }
