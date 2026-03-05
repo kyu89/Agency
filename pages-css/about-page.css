@@ -299,7 +299,7 @@ body{
 
 .list-container{
     display: flex;
-    padding: 10px 30px;
+    padding: 20px 30px;
     flex-direction: row;
     justify-content: space-evenly;
     align-items: flex-start;
@@ -328,8 +328,10 @@ body{
 }
 
 .icon-plus-number img{
-    width: 40%;
+    width: 60%;
     object-fit: contain;
+    padding: 10px;
+    object-position: center;
 }
 
 .icon-plus-number h5{
@@ -345,7 +347,7 @@ body{
     align-items: center;
     position: absolute;
     top: 0;
-    left: 30%;
+    left: 10%;
     border: 1px dashed #19212b;
     color: #007e76;
     box-shadow: 0px 15px 20px #19212b6f;
@@ -354,7 +356,7 @@ body{
 .list-content{
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center; 
     flex-direction: column;
     width: 100%;
     text-align: center;
