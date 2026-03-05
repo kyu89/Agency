@@ -42,7 +42,7 @@ body{
 
 .page-title, .page-title.one h2{
     font-family: "Poppins", sans-serif;
-    color: #ff4b2b;
+    color: #007e76;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -76,14 +76,14 @@ body{
     width: 60%;
     position: absolute;
     z-index: -99;
-    bottom: 0;
+    bottom: 0%;
     left: -28%;
 }
 
 #typing-heading {
     font-family: inherit;
     font-size: 4rem;
-    color: #ff4b2b;
+    color: #007e76;
     max-width: 90%;
     text-shadow: 2px 8px 25px #13131351;
     position: relative;
@@ -96,7 +96,7 @@ body{
     display: inline-block;
     width: 1px;
     height: 1.1em;               /* ≈ font-size * line-height */
-    background: #ff4b2b;
+    background: #007e76;
     vertical-align: middle;      /* better alignment on most fonts */
     animation: blink-cursor 0.8s step-end infinite;
 }
@@ -136,6 +136,7 @@ body{
     align-items: center;
     flex-direction: row;
     box-sizing: inherit;
+    gap: 30px;
 }
 
 .left-side{
@@ -157,7 +158,9 @@ body{
 
 .right-side img{
     width: 100%;
-    object-fit: contain;
+    object-fit: cover;
+    border-radius: 5px;
+    box-shadow: 1px 15px 20px #19212b66;
 }
 
 .left-side p{
@@ -176,7 +179,7 @@ body{
 
 .page-title.two{
     padding: 20px 0;
-    border-top: 3px dashed #ff4b2b;
+    border-top: 3px dashed #007e76;
     width: 100%;
 }
 
@@ -211,7 +214,7 @@ body{
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0px 12px 20px #15141413;
-    border: 2px dashed #ff4b2b;
+    border: 2px dashed #007e76;
     box-sizing: border-box;
     height: auto;
 }
@@ -228,7 +231,7 @@ body{
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0px 12px 20px #15141413;
-    border: 2px dashed #ff4b2b;
+    border: 2px dashed #007e76;
     box-sizing: border-box;
     height: auto;
 }
@@ -237,7 +240,7 @@ body{
     font-family: inherit;
     font-size: 3rem;
     text-shadow: 2px 8px 25px #13131351;
-    color: #ff4b2b;
+    color: #007e76;
 }
 
 .mission p, .vision p{
@@ -268,7 +271,7 @@ body{
     padding: 30px 50px;
     height: auto;
     box-sizing: border-box;
-    background-color: #383535;
+    background-color: #19212b;
 }
 
 .how-we-work{
@@ -277,4 +280,68 @@ body{
     justify-content: center;
     align-items: center;
     box-sizing: inherit;
+    padding: 0px 50px;
 }
+
+.page-title.three, .page-title.three h2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Poppins", sans-serif;
+    font-size: 3rem;
+}
+
+.fourth-section .description{
+    font-family: inherit;
+    color: #e5e7eb;
+    font-size: 1.2rem;
+}
+
+.list-container{
+    display: flex;
+    padding: 0 30px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    box-sizing: inherit;
+    background-color: #007e76;
+    width: 80%;
+    border-radius: 5px;
+}
+
+.list{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon-plus-number{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.icon-plus-number img{
+    width: 40%;
+    object-fit: contain;
+}
+
+.icon-plus-number h5{
+    font-family: inherit;
+    font-size: .85rem;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    background-color: #e5e7eb;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 30%;
+    border: 1px dashed #19212b;
+}   

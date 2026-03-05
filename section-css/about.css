@@ -1,9 +1,9 @@
 
 #about{
   background-color: #e5e7eb;
-  padding: 0;
+  padding: 20px 0;
   margin: 0;
-  height: 100vh;
+  height: auto;
   max-width: 100%;
   font-family: "Poppins", sans-serif;
   display: flex;
@@ -12,10 +12,11 @@
   align-items: center;
   overflow: hidden;
   row-gap: 30px;
+  box-sizing: border-box;
 }
 
 #about h2{
-  color: #ff4b2b;
+  color: #007e76;
   font-family: "Poppins", sans-serif;
   text-align: center;
   font-size: 3rem;
@@ -33,19 +34,17 @@
 }   
 
 #desc span{
-  color: #ff4b2b;
+  color: #007e76;
   font-weight: bold;
 }
 
 #about .about-content{
   width: 100%;
-  height: 50%;
   display: flex;
   flex-direction: row;
   column-gap: 30px;
   justify-content: center;
   align-items: flex-start;
-  flex-wrap: wrap;
   position: relative;
 }
 
@@ -55,8 +54,8 @@
   top: 66%;
   left: 0;
   width: 100%;
-  height: 35vh;
-  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"><path d="M0,50 Q300,0 600,50 T1200,50 L1200,0 L0,0 Z" fill="%23ff4b2b"/></svg>'), linear-gradient(#ff4b2b, #ff4b2b);
+  height: 45vh;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"><path d="M0,50 Q300,0 600,50 T1200,50 L1200,0 L0,0 Z" fill="%2319212b"/></svg>'), linear-gradient(#19212b, #19212b);
   background-repeat: repeat-x, no-repeat;
   background-position: bottom center, left bottom;
   background-size: 600px 60px, cover;
@@ -66,7 +65,6 @@
 #card{
   max-width: 30%;
   height: 100%;
-  padding: 20px 0;
   background-color: #e6e6e6ae;
   border-radius: 5px;
   box-shadow: 0px 10px 20px 0px #17161633;
@@ -76,21 +74,41 @@
   align-items: center;
   z-index: 0;
   border: #e5e7eb 1px solid;
-  -webkit-backdrop-filter: blur(20px);
-  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
   transition: 
     backdrop-filter 0.5s ease-in-out, 
     transform 0.3s ease;
 }
 
 #card img{
-  max-width: 150px;
-  margin-bottom: 1rem;
-  min-width: 20px;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  max-height: 300px;
+}
+
+#about .img-container{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+
+}
+
+#about .card-content{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0;
 }
 
 #about #card h2{
-  color: #ff4b2b;
+  color: #007e76;
   font-family: "Poppins", sans-serif;
   text-align: center;
   font-size: 2rem;

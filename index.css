@@ -94,7 +94,7 @@ header::before{
 }   
 
 .home-content h2>span{
-    color: #ff4b2b;
+    color: #007e76;
     font-size: 4.5rem;
     text-shadow: 10px 10px 20px #131313;
 }  
@@ -104,7 +104,7 @@ header::before{
     font-size: 1.15rem;
     border: none;
     border-radius: 5px;
-    background: #ff4b2b;
+    background: #007e76;
     color: #e5e7eb;
     cursor: pointer;
     font-family: "Poppins", sans-serif;
@@ -120,7 +120,7 @@ header::before{
     background: #0f172a;
     transition: 0.3s;
     box-shadow: 0 8px 40px 0px #4a4a4a9e;
-    color:#ff4b2b;
+    color:#007e76;
     transform: scale(1.05);
 }
 
@@ -128,7 +128,7 @@ header::before{
     position: fixed;
     bottom: 5%;
     right: 3%;
-    background-color: #ff4b2b;
+    background-color: #007e76;
     color: #e5e7eb;
     border-radius: 50%;
     width: 4%;

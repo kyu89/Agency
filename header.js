@@ -54,9 +54,9 @@ function navigationColor(){
         } else {
             navigation.style.background = 'transparent';
             if (isAbout) {
-                cName.style.color = '#ff4b2b';
+                cName.style.color = '#007e76';
                 navLinks.forEach(link => {
-                    link.style.color = '#ff4b2b';
+                    link.style.color = '#007e76';
                 });
             }
         }
@@ -106,7 +106,7 @@ function setupHeaderNav(){
             const text = (this.textContent || '').trim().toLowerCase();
             if (text === 'about') {
                 e.preventDefault();
-                cName.style.color = '#ff4b2b';
+                cName.style.color = '#007e76';
                 window.location.href = '/pages-html/about-page.html';      
             } else if (text === 'home') {
                 e.preventDefault();
@@ -119,9 +119,9 @@ function setupHeaderNav(){
     });
     (function updateCompanyColour(){
         if (window.location.pathname.includes('/pages-html/about-page.html')) {
-            cName.style.color = '#ff4b2b';
+            cName.style.color = '#007e76';
             navLinks.forEach(link => {
-                link.style.color = '#ff4b2b';
+                link.style.color = '#007e76';
             });
         } else {
             cName.style.color = '';

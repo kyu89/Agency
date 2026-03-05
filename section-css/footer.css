@@ -3,9 +3,9 @@
     flex-direction: row;
     width: 100%;
     gap: 40px;
-    background-color: #ff4b2b;
+    background-color: #007e76;
     font-family: "Poppins", sans-serif;
-    color: #383535;
+    color: #19212b;
     height: auto;
     padding: 40px 90px;
     box-sizing: border-box;
@@ -36,7 +36,7 @@
 .column-1 p{
     font-size: 1rem;
     margin: 0;
-    border-left: 2.5px solid #383535;
+    border-left: 2.5px solid #19212b;
     padding-left: 10px;
     box-shadow: 0px 20px 20px 5px rgba(0, 0, 0, 0.075),
                 0px 10px 15px rgba(116, 115, 115, 0.101);
@@ -59,7 +59,7 @@
     font-size: 1rem;
     cursor: pointer;
     transition: color 0.3s ease;
-    color: #383535;
+    color: #19212b;
     margin: 0;
     padding-left: 0;
 }
@@ -85,10 +85,10 @@
 }
 
 .column-4 li:last-of-type{
-    border-left: 2.5px solid #383535;
+    border-left: 2.5px solid #19212b;
     padding-left: 10px;
      box-shadow: 0px 20px 20px 5px rgba(0, 0, 0, 0.075),
                 0px 10px 15px rgba(116, 115, 115, 0.101);
-    color: #383535;
+    color: #19212b;
     margin-top: 30px;
 }
