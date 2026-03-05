@@ -21,11 +21,10 @@
     justify-content: center;
     align-items: center;
     flex-direction: column; 
-    padding-top: 30px;
     box-sizing: border-box;
 }
 
-.img-container{
+#testimonials .img-container{
     width: 40%;
     align-items: center;
     justify-content: center;

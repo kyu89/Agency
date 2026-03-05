@@ -93,6 +93,7 @@
 
 .get-started a:hover{
     background: #007e76;
+    color: #e5e7eb;
     transition: 0.28s;
     box-shadow: 0 8px 40px #171616;
 }

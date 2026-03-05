@@ -69,6 +69,7 @@ function setupHeaderNav(){
     const hamburger = document.getElementById('hamburger');
     const navigation = document.getElementById('navigation');
     const cName = document.getElementById('company-name');
+    const getStarted = document.getElementById('get-started');
     if (!hamburger || !navigation || !cName) return;
 
     hamburger.addEventListener('click', function() {
@@ -118,13 +119,35 @@ function setupHeaderNav(){
         });
     });
     (function updateCompanyColour(){
-        if (window.location.pathname.includes('/pages-html/about-page.html')) {
+        const isAboutPage = window.location.pathname.includes('/pages-html/about-page.html');
+        if (isAboutPage) {
             cName.style.color = '#007e76';
             navLinks.forEach(link => {
                 link.style.color = '#007e76';
             });
+            if (getStarted) {
+                const gsLink = getStarted.querySelector('a');
+                if (gsLink) {
+                    // clear any inline color so CSS hover styles apply normally
+                    gsLink.style.color = '';
+                    gsLink.addEventListener('mouseover', () => {
+                        gsLink.style.color = '#e5e7eb';
+                    });
+                    gsLink.addEventListener('mouseout', () => {
+                        gsLink.style.color = '';
+                    });
+                }
+            }
         } else {
             cName.style.color = '';
+            if (getStarted) {
+                const gsLink = getStarted.querySelector('a');
+                if (gsLink) {
+                    gsLink.style.color = '';
+                    gsLink.removeEventListener('mouseover', () => {});
+                    gsLink.removeEventListener('mouseout', () => {});
+                }
+            }
         }
     })();
     navigationColor();
