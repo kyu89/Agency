@@ -91,9 +91,9 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    box-shadow: 1px 1px 20px #c0bebe5c inset,
-                1px 1px 20px #13121216 inset; 
-    background-color: #f6f3f396;
+    box-shadow: 0px 1px 20px #f1eded16 inset,
+                1px 0px 20px #f1eded16 inset; 
+    background-color: #19212b;
 }
 
 .content2 h2{
@@ -101,6 +101,7 @@
     font-size: 3rem;
     color: #007e76;
     padding-bottom: 20px;
+    text-shadow: 0px 1px 10px #e5e7eb1b;
 }
 
 .feedback-row{
@@ -132,7 +133,7 @@
 
 .carousel-card {
     flex: 0 0 calc(50% - 0.75rem);         /* Default: 2 cards per view */
-    background: #007e7625;
+    background: #007e76;
     border-radius: 12px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     padding: 2rem 1.5rem;
@@ -143,7 +144,6 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    backdrop-filter: blur(20px);
 }
 
 .carousel-card .profile {
@@ -163,19 +163,18 @@
 .carousel-card .feedback p {
     font-size: 1rem;
     line-height: 1.6;
-    color: #383535;
+    color: #e5e7eb;
     margin: 0 0 1.2rem;
     font-family: "Poppins", sans-serif;
 }
 
 .carousel-card .feedback strong {
     font-size: 0.95rem;
-    color: #383535;
+    color: #e5e7eb;
     font-weight: 600;
     font-family: "Poppins", sans-serif;
 }
 
-/* ─── Navigation Buttons ─── */
 .carousel-button {
     position: absolute;
     top: 50%;
