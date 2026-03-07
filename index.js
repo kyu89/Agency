@@ -16,49 +16,6 @@ if (scrollButton) {
   toggleScrollButton();
 }
 
-// ────────────────────────────────────────────────
-// 3. Typewriter Effect
-// ────────────────────────────────────────────────
-function initTypewriter() {
-  const heading = document.getElementById('typing-heading');
-  if (!heading) return;
-
-  // Prevent running multiple times
-  if (heading.dataset.typed) return;
-  heading.dataset.typed = 'true';
-
-  const text = heading.textContent.trim();
-  heading.textContent = ''; // clear original text
-
-  // Create cursor
-  const cursor = document.createElement('span');
-  cursor.className = 'cursor';
-  cursor.textContent = '|';
-  heading.appendChild(cursor);
-
-  let i = 0;
-  const speed = 50;           // ms per character
-
-  function type() {
-    if (i < text.length) {
-      const char = document.createTextNode(text[i]);
-      heading.insertBefore(char, cursor);
-      i++;
-      setTimeout(type, speed);
-    } else {
-      // Optional: keep blinking cursor or remove it
-      // cursor.classList.add('blink-slow');
-      // or
-      setTimeout(() => cursor.remove(), 2000);
-    }
-  }
-
-  // Small delay before starting
-  setTimeout(type, 400);
-}
-
-// Start after page load (or when section becomes visible)
-window.addEventListener('load', initTypewriter);
 // Alternative: use IntersectionObserver if it's lower on page
 function setupTestimonialsCarousel() {
     const carousel = document.querySelector('#testimonialCarousel');

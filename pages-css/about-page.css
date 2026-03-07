@@ -95,9 +95,9 @@ body{
 .cursor {
     display: inline-block;
     width: 1px;
-    height: 1.1em;               /* ≈ font-size * line-height */
+    height: 1.1em;               
     background: #007e76;
-    vertical-align: middle;      /* better alignment on most fonts */
+    vertical-align: middle;      
     animation: blink-cursor 0.8s step-end infinite;
 }
 
@@ -328,7 +328,7 @@ body{
 }
 
 .icon-plus-number img{
-    width: 60%;
+    width: 40%;
     object-fit: contain;
     padding: 10px;
     object-position: center;
@@ -361,4 +361,177 @@ body{
     width: 100%;
     text-align: center;
     color: #e5e7eb;
+}
+
+.fifth-section{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 30px 50px;
+    background-color: #19212b;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    column-gap: 30px;
+    position: relative;
+}
+
+.faq-left{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+}
+
+.faq-left img{
+    width: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+    height: 700px;
+}
+
+.faq-right{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 50%;
+    padding: 20px 0;
+    gap: 50px;
+}
+
+.page-title.four, .page-title.four h2{
+    font-family: inherit;
+    font-size: 3rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin: 0;
+}
+
+.page-title.four p{
+    font-family: inherit;
+    font-size: 1.2rem;
+    width: 80%;
+    text-align: center;
+    color: #e5e7eb;
+}
+
+.faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 2.5rem;
+      width: 100%;
+    }
+
+    .faq-item {
+      background: #e5e7eb;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      overflow: hidden;
+      border: 1px solid #e5e5e5;
+      transition: all 0.18s ease;
+    }
+
+    .faq-item:hover {
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+      transform: translateY(-1px);
+    }
+
+    .faq-question {
+      width: 100%;
+      padding: 18px 24px;
+      text-align: left;
+      background: none;
+      border: none;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #222;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background-color 0.2s;
+    }
+
+    .faq-question:hover {
+      background: #f8f9fa;
+    }
+
+    .faq-question:focus {
+      outline: none;
+      background: #007e76;
+    }
+    .faq-question:not:focus{
+
+    }
+    .faq-question .icon {
+      width: 24px;
+      height: 24px;
+      transition: transform 0.35s ease;
+      flex-shrink: 0;
+      margin-left: 16px;
+    }
+
+    .faq-question[aria-expanded="true"] .icon {
+      transform: rotate(180deg);
+    }
+
+    .faq-answer {
+    z-index: 5;
+    opacity: 0;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.4s ease, opacity 0.4s ease;
+      background: #fcfcfc;
+   
+    }
+
+    .faq-answer-inner {
+      padding: 0 24px 24px;
+    }
+
+    .faq-answer p {
+      color: #444;
+      font-size: 1.02rem;
+    }
+
+    /* Active state */
+    .faq-item.active .faq-answer {
+      max-height: 600px; /* large enough for most content */
+      padding: 1px 0;    /* small hack to trigger transition */
+      pointer-events: auto;
+      opacity: 1;
+    }
+
+    .faq-item.active {
+  border-radius: 12px 12px 0 0;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+  z-index: 90;                  /* bring opened item slightly forward */
+}
+
+.scroll-button {
+    position: fixed;
+    bottom: 5%;
+    right: 3%;
+    background-color: #007e76;
+    color: #e5e7eb;
+    border-radius: 50%;
+    width: 4%;
+    height: 7%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    opacity: 0.75;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    z-index: 999;
+    font-size: 1.75rem;
+    display: none;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
 }
