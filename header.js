@@ -15,6 +15,8 @@ fetch("/section-html/testimonials.html")
     document.getElementById("testimonials").innerHTML = data;
     setupTestimonialsCarousel();
 });
+
+
 fetch("/section-html/cta.html")
 .then(response => response.text())
 .then(data => {

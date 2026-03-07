@@ -139,7 +139,7 @@ header::before{
     cursor: pointer;
     opacity: 0.75;
     transition: opacity 0.3s ease, transform 0.3s ease;
-    z-index: 100;
+    z-index: 999;
     font-size: 1.75rem;
     display: none;
     transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
