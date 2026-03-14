@@ -1,38 +1,3 @@
-fetch("/section-html/about.html")
-    .then(response => response.text())
-    .then(data => {
-        document.getElementById("about").innerHTML = data;
-    });
-
-fetch("/section-html/services.html")
-    .then(response => response.text())
-    .then(data => {
-        document.getElementById("services").innerHTML = data;
-    });
-fetch("/section-html/testimonials.html")
-.then(response => response.text())
-.then(data => {
-    document.getElementById("testimonials").innerHTML = data;
-    setupTestimonialsCarousel();
-});
-
-
-fetch("/section-html/cta.html")
-.then(response => response.text())
-.then(data => {
-    document.getElementById("cta").innerHTML = data;
-});
-fetch("/section-html/footer.html")
-.then(response => response.text())
-.then(data => {
-    document.getElementById("footer").innerHTML = data;
-});
-fetch("/section-html/header.html")
-.then(response => response.text())
-.then(data => {
-    document.getElementById("header").innerHTML = data;
-    setupHeaderNav();
-});
 
 function navigationColor(){
     const cName = document.getElementById('company-name');
@@ -99,27 +64,6 @@ function setupHeaderNav(){
             }
         }catch(e){ /* fail silently */ }
     })();
-    navLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            navLinks.forEach(l => l.classList.remove('active'));
-            this.classList.add('active');
-
-            hamburger.classList.remove('active');
-            navigation.classList.remove('active');
-            const text = (this.textContent || '').trim().toLowerCase();
-            if (text === 'about') {
-                e.preventDefault();
-                cName.style.color = '#007e76';
-                window.location.href = '/pages-html/about-page.html';      
-            } else if (text === 'home') {
-                e.preventDefault();
-                window.location.href = '/index.html';
-            } else if (text === 'services') {
-                e.preventDefault();
-                window.location.href = '/pages-html/services-page.html';
-            }
-        });
-    });
     (function updateCompanyColour(){
         const isAboutPage = window.location.pathname.includes('/pages-html/about-page.html');
         if (isAboutPage) {

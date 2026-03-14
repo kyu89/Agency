@@ -1,6 +1,3 @@
-// ────────────────────────────────────────────────
-// 1. Scroll-to-Top Button
-// ────────────────────────────────────────────────
 const scrollButton = document.querySelector('.scroll-button');
 if (scrollButton) {
   const toggleScrollButton = () => {

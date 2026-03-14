@@ -268,7 +268,7 @@ body{
     justify-content: center;
     align-items: center;
     width: 100%;
-    padding: 30px 50px;
+    padding: 30px 0;
     height: auto;
     box-sizing: border-box;
     background-color: #19212b;
@@ -347,7 +347,7 @@ body{
     align-items: center;
     position: absolute;
     top: 0;
-    left: 10%;
+    left: 20%;
     border: 1px dashed #19212b;
     color: #007e76;
     box-shadow: 0px 15px 20px #19212b6f;
