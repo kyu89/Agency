@@ -9,10 +9,11 @@ function navigationColor(){
     function updateNav() {
         const isAbout = window.location.pathname.includes('/pages-html/about-page.html');
         const scrolled = window.scrollY > 80;
+        const isServices = window.location.pathname.includes('/pages-html/services-page.html');
 
         if (scrolled) {
             navigation.style.background = '#0c0c0caa';
-            if (isAbout) {
+            if (isAbout || isServices) {
                 cName.style.color = '#e5e7eb';
                 navLinks.forEach(link => {
                     link.style.color = '#e5e7eb';
@@ -20,7 +21,7 @@ function navigationColor(){
             }
         } else {
             navigation.style.background = 'transparent';
-            if (isAbout) {
+            if (isAbout || isServices) {
                 cName.style.color = '#007e76';
                 navLinks.forEach(link => {
                     link.style.color = '#007e76';
@@ -65,8 +66,9 @@ function setupHeaderNav(){
         }catch(e){ /* fail silently */ }
     })();
     (function updateCompanyColour(){
+        const isServices = window.location.pathname.includes('/pages-html/services-page.html');
         const isAboutPage = window.location.pathname.includes('/pages-html/about-page.html');
-        if (isAboutPage) {
+        if (isAboutPage || isServices) {
             cName.style.color = '#007e76';
             navLinks.forEach(link => {
                 link.style.color = '#007e76';

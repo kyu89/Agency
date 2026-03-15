@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Changa+One:ital@0;1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+body{
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+     font-family: "Poppins", sans-serif;
+    background-color: #e5e7eb;
+}
+
+.header-container{
+    display: flex;
+    max-width: 100%;
+    justify-content: center;
+    align-items: center;
+    height: 10vh;
+}
+
+.services-container{
+    width: 100%;
+    box-sizing: inherit;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    padding: 0 50px;
+    gap: 30px;
+}
+.page-title{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 20px 50px;
+    margin-bottom: 20px;
+}
+
+.page-title h1{
+    font-family: inherit;
+    color: #007e76;
+    font-size: 3rem;
+}
+
+.page-title p{
+    color: #383535;
+    font-family: inherit;
+    font-size: 1.2rem;
+    width: 60%;
+    text-align: center;
+    height: auto;
+}
+
+.page-title button{
+    padding: 15px 30px;
+    font-size: 1.15rem;
+    border: none;
+    border-radius: 5px;
+    background: #007e76;
+    color: #e5e7eb;
+    cursor: pointer;
+    font-family: "Poppins", sans-serif;
+    transition: 0.3s ease-in-out;
+    max-width: 30%;
+}
+
+.page-title button:hover{
+    background: #0f172a;
+    transition: 0.3s;
+    box-shadow: 0 8px 40px 0px #4a4a4a9e;
+    color:#007e76;
+    transform: scale(1.05);
+}
+
+.services{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    padding: 20px 50px;
+    width: 100%;
+}
+
+.side{
+    width: 70%;
+}
+
+.services img{
+    width: 100%;
+    height: 35rem;
+    object-fit: contain;
+    border-radius: 5px;
+    box-shadow: 1px 10px 20px #38353510;
+}
+
+.one, .three, .five{
+    background-color: #0f172a;
+    color: #e5e7eb;
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.services h2{
+    font-family: inherit;
+    color: #007e76;
+    font-size: 3rem;
+}
+
+.services p, .services span{
+    font-family: inherit;
+    font-size: 1.2rem;
+}
