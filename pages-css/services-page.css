@@ -27,7 +27,6 @@ body{
     justify-content: center;
     height: auto;
     padding: 0 50px;
-    gap: 30px;
 }
 .page-title{
     width: 100%;
@@ -35,7 +34,7 @@ body{
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    padding: 20px 50px;
+    padding: 30px 50px;
     margin-bottom: 20px;
 }
 
@@ -48,10 +47,10 @@ body{
 .page-title p{
     color: #383535;
     font-family: inherit;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     width: 60%;
     text-align: center;
-    height: auto;
+    margin-bottom: 30px;
 }
 
 .page-title button{
@@ -83,10 +82,15 @@ body{
     gap: 30px;
     padding: 20px 50px;
     width: 100%;
+    height: auto;
 }
 
 .side{
     width: 70%;
+}
+
+.side-img{
+    width: 30%;
 }
 
 .services img{
