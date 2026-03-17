@@ -5,7 +5,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 10vh;
+    height: auto;
+    min-height: 10vh;
     width: 100%;
     max-width: 100%;
     box-sizing: border-box;

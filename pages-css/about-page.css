@@ -17,7 +17,7 @@ body{
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: auto;
+    height: 100%;
     box-sizing: border-box;
 }
 
@@ -37,7 +37,8 @@ body{
     max-width: 100%;
     justify-content: center;
     align-items: center;
-    height: 10vh;
+    height: auto;
+    min-height: 10vh;
 }
 
 .page-title, .page-title.one h2{
@@ -48,7 +49,8 @@ body{
     align-items: center;
     font-size: 3rem;
     width: 100%;
-    height: 10vh;
+    height: auto;
+    min-height: 10vh;
     text-align: center;
 }
 
@@ -61,7 +63,7 @@ body{
     padding: 0px 30px;
     box-sizing: border-box;
     text-align: center;
-    height: 80vh;
+    height: auto;
 }
 
 #graph{
@@ -84,7 +86,7 @@ body{
     font-family: inherit;
     font-size: 4rem;
     color: #007e76;
-    max-width: 90%;
+    max-width: 80%;
     text-shadow: 2px 8px 25px #13131351;
     position: relative;
     display: inline-block;
@@ -109,7 +111,7 @@ body{
     font-family: inherit;
     font-size: 1.2rem;
     color: #383535;
-    width: 70%;
+    width: 60%;
     margin: 0;
 }
 
@@ -124,7 +126,7 @@ body{
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: auto;
+    height: 100%;
     box-sizing: border-box;
     padding: 30px 50px;
     
@@ -198,7 +200,7 @@ body{
     width: 100%;
     box-sizing: border-box;
     column-gap: 50px;
-    height: auto;
+    height: 100%;
     padding: 30px 50px;
 }
 
@@ -269,7 +271,7 @@ body{
     align-items: center;
     width: 100%;
     padding: 30px 0;
-    height: auto;
+    height: 100%;
     box-sizing: border-box;
     background-color: #19212b;
 }
@@ -372,7 +374,7 @@ body{
     background-color: #19212b;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 100%;
     column-gap: 30px;
     position: relative;
 }
@@ -398,7 +400,7 @@ body{
     flex-direction: column;
     width: 50%;
     padding: 20px 0;
-    gap: 50px;
+    gap: 0px;
 }
 
 .page-title.four, .page-title.four h2{
@@ -522,6 +524,7 @@ body{
     background-color: #007e76;
     color: #e5e7eb;
     border-radius: 50%;
+    border: 2px dashed #131313;
     width: 4%;
     height: 7%;
     display: flex;

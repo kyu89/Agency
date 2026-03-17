@@ -1,6 +1,6 @@
 #testimonials{
     width: 100%;
-    height: auto;
+    height: 100%;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -139,6 +139,7 @@
     padding: 2rem 1.5rem;
     text-align: center;
     box-sizing: border-box;
+    height: auto;
     min-height: 320px;      /* optional: consistent height */
     display: flex;
     flex-direction: column;
