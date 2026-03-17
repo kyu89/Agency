@@ -469,9 +469,7 @@ body{
       outline: none;
       background: #007e76;
     }
-    .faq-question:not:focus{
-
-    }
+    
     .faq-question .icon {
       width: 24px;
       height: 24px;
