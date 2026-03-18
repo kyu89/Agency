@@ -245,3 +245,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Optional: if you prefer to start typewriter on load (as originally)
 window.addEventListener('load', initTypewriter);
+
+// Auto-growing textarea
+document.addEventListener('DOMContentLoaded', () => {
+    const textarea = document.getElementById('message');
+    
+    if (textarea) {
+        function autoGrow() {
+            textarea.style.height = 'auto';           // reset height
+            textarea.style.height = textarea.scrollHeight + 'px';
+        }
+
+        // Run when user types
+        textarea.addEventListener('input', autoGrow);
+
+        // Also run once on page load (in case of pre-filled text)
+        autoGrow();
+    }
+});

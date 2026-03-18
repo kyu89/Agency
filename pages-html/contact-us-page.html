@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <title>Agency | Contact Us</title>
+     <link rel="stylesheet" href="../section-css/header.css">
+    <link rel="stylesheet" href="../section-css/footer.css">
+     <link rel="stylesheet" href="../pages-css/contact-us.css">
+    <link rel="icon" href="../assets/agency_logo.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js@1.12.0/src/toastify.min.css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+     <script src="https://cdn.jsdelivr.net/npm/toastify-js@1.12.0/src/toastify.min.js"></script>
+    
+</head>
+<body>
+    <div class="header-container">
+        <section id="header" class="section"></section>
+    </div>
+    <div class="contact-us-container">
+        <div class="page-title">
+            <h1>Contact Us</h1>
+        </div>
+        <div class="row-container">
+        <div class="left-side">
+            <h2>Have a question or inquiry?</h2>
+            <p>Send us a message and our team will respond shortly.</p>
+            <img src="../assets/contact_us.png" alt="contact Us">
+        </div>
+        <div class="right-side">
+    <form action="" id="contact-form">
+        <h2>Get In Touch</h2>
+
+        <div class="name-row">
+            <div class="input-group">
+                <input type="text" id="first_name" placeholder="First Name" required>
+                <label for="first_name">First Name</label>
+            </div>
+            <div class="input-group">
+                <input type="text" id="last_name" placeholder="Last Name" required>
+                <label for="last_name">Last Name</label>
+            </div>
+        </div>
+
+        <div class="input-group">
+            <input type="email" id="email" placeholder="Email" required>
+            <label for="email">Email</label>
+        </div>
+
+        <div class="input-group">
+            <input type="text" id="subject" placeholder="Subject" required>
+            <label for="subject">Subject</label>
+        </div>
+
+        <div class="input-group">
+            <textarea id="message" placeholder="Your Message"></textarea>
+            <label for="message">Your Message</label>
+        </div>
+
+        <button type="submit">Send Message</button>
+    </form>
+</div>
+        </div>
+    </div>
+    <footer>
+      <section id="footer" class="section"></section>
+    </footer>  
+    <script src="../scripts/header.js"></script>
+    <script src="../scripts/router.js"></script>
+    <script src="../scripts/components.js"></script>
+    <script src="../scripts/email.js"></script>
+</body>
+</html>

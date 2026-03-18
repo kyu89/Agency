@@ -105,13 +105,6 @@ body{
     box-shadow: 1px 10px 20px #38353510;
 }
 
-.one, .three, .five{
-    background-color: #0f172a;
-    color: #e5e7eb;
-    display: flex;
-    flex-direction: row-reverse;
-}
-
 .services h2{
     font-family: inherit;
     color: #007e76;
@@ -121,6 +114,20 @@ body{
 .services p, .services span{
     font-family: inherit;
     font-size: 1.2rem;
+}
+
+.one, .three, .five{
+    background-color: #0f172a;
+    color: #e5e7eb;
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.two, .four, .six{
+    color: #383535;
+    display: flex;
+    flex-direction: row;
+    background-color: #e5e7eb;
 }
 
 .how-it-works{
