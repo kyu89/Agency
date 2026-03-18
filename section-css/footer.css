@@ -1,31 +1,36 @@
 .footer-container{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     width: 100%;
     gap: 40px;
     background-color: #007e76;
     font-family: "Poppins", sans-serif;
     color: #19212b;
     height: auto;
-    padding: 40px 90px;
+    padding: 20px 0px;
     box-sizing: border-box;
+    justify-content: center;
+    align-items: center;
 }
 
 .column-1, .column-2, .column-3, .column-4{
     display: flex;
     flex-direction: column;
     gap: 20px;
+    padding: 0 20px;
 }
 
 .column-1{
-    width: 45%;
+    width: 30%;
     justify-content: center;
     align-items: flex-start;
     border-right: 2px dashed #e5e7eb;
+    height: 200px;
+    margin: 0;
 }
 
 .column-1 h2{
-    font-size: 4rem;
+    font-size: 3rem;
     font-family: "Changa One", sans-serif;
     color: #e5e7eb;
     text-transform: uppercase;
@@ -42,7 +47,7 @@
 }
 
 .column-2 {
-    width: 15%;
+    width: 20%;
     justify-content: flex-start;
     align-items: flex-start;
 }
@@ -52,7 +57,7 @@
     margin: 0;
 }
 
-.column-2 ul, .column-3 ul, .column-4 ul, .column-2 a, .column-3 a{
+.column-2 ul, .column-3 ul, .column-4 ul, .column-2 a, .column-3 a, .row-two a{
     text-decoration: none;
     list-style: none;
     font-size: 1rem;
@@ -67,7 +72,7 @@
     margin-bottom: 5px;
 }
 
-.column-2 a:hover, .column-3 a:hover{
+.column-2 a:hover, .column-3 a:hover, .row-two a:hover{
     color: #e5e7eb;
 }
 
@@ -90,4 +95,58 @@
                 0px 10px 15px rgba(116, 115, 115, 0.101);
     color: #19212b;
     margin-top: 30px;
+}
+
+.row-one{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.row-two{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    border-top: 1px solid #19212b;
+    gap: 30px;
+    box-sizing: border-box;
+}
+
+.column-1 button{
+    padding: 12px 20px;
+    font-size: 1.15rem;
+    border: none;
+    border-radius: 5px;
+    background: #0f172a;
+    color: #e5e7eb;
+    cursor: pointer;
+    font-family: "Poppins", sans-serif;
+    transition: 0.3s ease-in-out;
+    max-width: 100%;
+}
+
+.column-1 button:hover{
+    background: #e5e7eb;
+    transition: 0.3s;
+    box-shadow: 0 8px 40px 0px #4a4a4a9e;
+    color:#007e76;
+    transform: scale(1.03);
+}
+
+.logo-row{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 0;
+}
+
+.logo-row img{
+    width: 100%;
+    height: 80px;
+    object-fit: cover;
 }

@@ -10,6 +10,24 @@ body{
     background-color: #e5e7eb;
 }
 
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #0f172a;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #007e76;
+    border-radius: 20px;
+    border: 2px solid #e5e7eb;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #00b4a6;
+}
+
 .header-container{
     width: 100%;
     height: 100%;
@@ -150,9 +168,27 @@ form h2{
     transition: all 0.3s ease;
     box-sizing: border-box;
     resize: none;
-    min-height: 10px;
-    max-height: 300px;      
-    overflow-y: hidden;
+    min-height: 80px;
+    max-height: 120px;      
+    overflow-y: auto;
+}
+
+.input-group textarea::-webkit-scrollbar {
+    width: 6px;
+}
+
+.input-group textarea::-webkit-scrollbar-track {
+    background: #0f172a;
+    border-radius: 10px;
+}
+
+.input-group textarea::-webkit-scrollbar-thumb {
+    background: #007e76;
+    border-radius: 10px;
+}
+
+.input-group textarea::-webkit-scrollbar-thumb:hover {
+    background: #00b4a6;
 }
 
 .input-group input::placeholder,
