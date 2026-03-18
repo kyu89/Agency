@@ -96,9 +96,10 @@ header::before{
     font-size: 4.5rem;
     text-shadow: 10px 10px 20px #131313;
     margin: 0;
-    letter-spacing: 1.2px;
-    max-width: 60%;
+    max-width: 70%;
     min-width: 10%;
+    font-family: "Poppins", sans-serif;
+    line-height: 5rem;
 }   
 
 .home-content p{

@@ -177,10 +177,8 @@ body{
 }
 
 .right-side img{
-    width: 100%;
-    object-fit: cover;
-    border-radius: 5px;
-    box-shadow: 1px 15px 20px #19212b66;
+    width: 90%;
+    object-fit: contain;
 }
 
 .left-side p{

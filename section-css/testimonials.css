@@ -32,8 +32,9 @@
 }
 
 #chooseus{
-    width: 22rem;
+    width: 100%;
     object-fit: contain;
+    height: 450px;
 }
 
 .content1{
@@ -91,8 +92,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    box-shadow: 0px 1px 20px #f1eded16 inset,
-                1px 0px 20px #f1eded16 inset; 
     background-color: #19212b;
 }
 
@@ -133,7 +132,10 @@
 
 .carousel-card {
     flex: 0 0 calc(50% - 0.75rem);         /* Default: 2 cards per view */
-    background: #007e76;
+    background: #05f3c308;
+    -webkit-backdrop-filter: blur(30px);
+    backdrop-filter: blur(30px);
+    border: 2px solid #007e76;
     border-radius: 12px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     padding: 2rem 1.5rem;
