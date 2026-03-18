@@ -82,7 +82,7 @@ function setupHeaderNav(){
                         gsLink.style.color = '#e5e7eb';
                     });
                     gsLink.addEventListener('mouseout', () => {
-                        gsLink.style.color = '';
+                        gsLink.style.color = '#007e76';
                     });
                 }
             }
