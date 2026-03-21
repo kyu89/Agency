@@ -164,13 +164,15 @@
 
     .services-row{
         flex-direction: column;
-        gap: 10px;
+        gap: 20px;
         justify-content: center;
         align-items: center;
+        flex-wrap: wrap;
     }
 
     #services{
         height: auto;
+        padding: 20px 0;
     }
 
     #services button{
@@ -184,5 +186,31 @@
 
     .services-card p{
         font-size: 0.85rem;
+    }
+
+    .services-card{
+        max-width: 80%;
+        min-width: 80%;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 991px){
+
+    .services-row{
+        gap: 20px;
+        flex-direction: row;
+    }
+
+    .services-card{
+        max-width: 30%;
+        min-width: 30%;
+    }
+
+    .goal{
+        max-width: 70%;
+    }
+
+    #services button{
+        min-width: 200px;
     }
 }

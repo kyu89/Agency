@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <title>Agency | Booking</title>
+    <link rel="stylesheet" href="../section-css/header.css">
+    <link rel="stylesheet" href="../section-css/footer.css">
+    <link rel="stylesheet" href="../pages-css/booking.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon-16x16.png">
+    <link rel="manifest" href="../assets/site.webmanifest">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js@1.12.0/src/toastify.min.css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+     <script src="https://cdn.jsdelivr.net/npm/toastify-js@1.12.0/src/toastify.min.js"></script> 
+</head>
+<body>
+    <div class="header-container">
+        <section id="header" class="section"></section>
+    </div>
+    <div class="booking-container">
+        <div class="page-title">
+            <h1>Get the Right Talent for Your Task</h1>
+            <p>Tell us what you need, and we’ll match you with a skilled professional within 24–48 hours.</p>
+        </div>
+        <div class="form-container">
+            <form id="bookingForm" novalidate>
+                <input type="text" id="website" style="display:none">
+
+                <!-- STEP INDICATOR -->
+                <div class="steps">
+                  <span class="step active">1</span>
+                  <span class="step">2</span>
+                  <span class="step">3</span>
+                </div>
+            
+                <!-- STEP 1 -->
+                <div class="form-step active">
+                  <h2>Client Information</h2>
+                <div class="input-group">
+                  <input type="text" id="name" placeholder="Full Name" required>
+                  <label for="name">Full Name</label>
+                </div>
+                <div class="input-group">
+                  <input type="email" id="email" placeholder="Email Address" required>
+                  <label for="email">Email Address</label>
+                </div> 
+                <div class="input-group">
+                  <input type="text" id="company" placeholder="Company Name">
+                  <label for="company">Company Name</label>
+                </div>
+                  <button id="next1">Next →</button>
+                </div>
+            
+                <!-- STEP 2 -->
+                <div class="form-step">
+                  <h2>Project Details</h2>
+                <div class="select-wrapper">
+                  <select id="service" required>
+                    <option value="">Select Service</option>
+                    <option>Virtual Assistant</option>
+                    <option>Graphic Design</option>
+                    <option>Web Development</option>
+                    <option >Others</option>
+                  </select>
+                 </div>
+                  
+                <div class="input-group">
+                  <textarea id="details" placeholder="Describe your project" required></textarea>
+                  <label for="details">Describe your project</label>
+                </div>
+                <div class="button-group">
+                  <button type="button" id="back1">← Back</button>
+                  <button type="button" id="next2">Next →</button>
+                </div>
+                </div>
+            
+                <!-- STEP 3 -->
+                <div class="form-step">
+                  <h2>Budget & Deadline</h2>
+                
+                <div class="select-wrapper">
+                  <select id="budget" required>
+                    <option value="">Budget Range</option>
+                    <option value="1000-5000">₱1,000–₱5,000</option>
+                    <option value="5000-20000">₱5,000–₱20,000</option>
+                    <option value="20000-999999">₱20,000+</option>
+                  </select>
+                </div>
+
+                <div class="input-group">
+                  <input type="date" id="deadline" required>
+                  <label for="deadline">Deadline</label>
+                </div>
+                  <button type="button" id="back2">← Back</button>
+                  <button type="submit">Submit</button>
+                </div>
+            
+            </form>
+        </div>
+    </div>
+    <footer>
+      <section id="footer" class="section"></section>
+    </footer>  
+    <script src="../scripts/header.js"></script>
+    <script src="../scripts/router.js"></script>
+    <script src="../scripts/components.js"></script>
+    <script type="module" src="../scripts/booking.js"></script>
+</body>
+</html>

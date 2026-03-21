@@ -1,6 +1,6 @@
 #testimonials{
     width: 100%;
-    height: 100%;
+    height: auto;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -93,6 +93,7 @@
     justify-content: center;
     align-items: center;
     background-color: #19212b;
+    max-width: 100%;
 }
 
 .content2 h2{
@@ -128,6 +129,9 @@
     transition: transform 0.5s ease-in-out;
     gap: 1.5rem;           /* space between cards */
     padding: 1rem 0;
+    touch-action: pan-y;
+    width: 100%;
+    -webkit-overflow-scrolling: touch;
 }
 
 .carousel-card {
@@ -147,6 +151,14 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+    cursor: grab;
+    touch-action: pan-y;
+      -webkit-overflow-scrolling: touch;
+      transition: transform 0.3s ease;
+}
+
+.carousel-card.active{
+      transform: scale(1.02);
 }
 
 .carousel-card .profile {
@@ -224,38 +236,47 @@
         display: none;
     }
     .choose-row, .choose-row2{
-        width: 100%;
+        width: 70%;
+        border: none;
     }
-    .testimonials-header{
-        font-size: 1.5rem;
-        margin: 0;
-        padding: 0;
+    .testimonials-carousel {
+        padding: 0 10px; /* reduce side spacing */
     }
-    .carousel{
-        width:100%;
+
+    .carousel-track {
+        gap: 1rem;
     }
+
     .carousel-card {
-        flex: 0 0 100%;   /* 1 card per view on mobile */
+        flex: 0 0 100%;
+        min-width: 100%;
+        padding: 1.5rem 1rem;
     }
-    .carousel-slide .feedback p{
-        font-size:0.95rem;
+
+    .carousel-card .profile {
+        width: 5rem;
+        height: 5rem;
     }
-    .carousel-slide{
-        width: 100%;
+
+    .carousel-card .feedback p {
+        font-size: 0.95rem;
+        line-height: 1.5;
     }
-    .content2 h2{
+
+    .content2 h2 {
         font-size: 2rem;
+        text-align: center;
     }
-    .carousel-button{
-        display: none;
+
+    .carousel-button {
+        display: none; /* swipe only */
     }
-    .feedback-row{
-        width: 90%;
+
+    .feedback-row {
+        width: 65%;
     }
-    .feedback{
-        width: 100%;
-    }
+
     .content2{
-        width: 100%;
+        max-width: 70%;
     }
 }

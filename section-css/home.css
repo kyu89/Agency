@@ -3,6 +3,7 @@
 
 html{
     scroll-behavior: smooth;
+    width: 100%;
 }
 
 ::-webkit-scrollbar {
@@ -30,6 +31,7 @@ body{
     box-sizing: border-box;
     font-family: 'Changa One', cursive;
     background-color: #e5e7eb;
+    overflow-x: hidden ;
 }
 
 #home{
@@ -49,7 +51,7 @@ body{
     z-index: 1;
     display: flex;
     flex-direction: column;
-    width: 100%;
+    max-width: 100%;
     box-sizing: border-box;
 }
 
@@ -183,6 +185,9 @@ header::before{
         font-size: 2rem;
         max-width: 100%;
         letter-spacing: 0.5px;
+        line-height: 2.5rem;
+        padding: 0 20px;
+        word-break: break-word;
     }
 
     .home-content h2 > span {
@@ -198,6 +203,54 @@ header::before{
     .home-content button {
         padding: 10px 15px;
         font-size: 0.9rem;
-        max-width: 70%;
+        width: 100%;
+        max-width: 250px;
+    }
+    .scroll-button {
+    width: 45px;
+    height: 45px;
+    font-size: 1.2rem;
+    bottom: 15px;
+    right: 15px;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 991px) {
+
+    .home-content h2 {
+        font-size: 3rem;
+        line-height: 3.5rem;
+        max-width: 85%;
+        word-break: break-word;
+    }
+
+    .home-content h2 > span {
+        font-size: 3rem;
+    }
+
+    .home-content p {
+        font-size: 1rem;
+        max-width: 75%;
+        line-height: 1.6rem;
+    }
+
+    .home-content button {
+        width: auto;
+        max-width: 250px;
+        padding: 12px 20px;
+        font-size: 1rem;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+
+    .home-content h2 {
+        font-size: 3.5rem;
+        line-height: 4rem;
+        word-break: break-word;
+    }
+
+    .home-content p {
+        max-width: 60%;
     }
 }

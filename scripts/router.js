@@ -2,7 +2,7 @@ const routes = {
     "/": "../index.html",
     "/about-us": "../pages-html/about-page.html",
    "/services": "../pages-html/services.html",
-    //"/contact-us": "../pages-html/contact-us.html"
+    "/contact-us": "../pages-html/contact-us.html"
 };
 
 function loadPage(path){

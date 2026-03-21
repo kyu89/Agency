@@ -83,16 +83,53 @@ function setupTestimonialsCarousel() {
     if (prevBtn) prevBtn.addEventListener('click', goToPrev);
     if (nextBtn) nextBtn.addEventListener('click', goToNext);
 
+    let startX = 0;
+let endX = 0;
+let isSwiping = false;
+
+track.addEventListener("touchstart", (e) => {
+    startX = e.touches[0].clientX;
+    isSwiping = true;
+});
+
+track.addEventListener("touchmove", (e) => {
+    if (!isSwiping) return;
+    endX = e.touches[0].clientX;
+});
+
+track.addEventListener("touchend", () => {
+    if (!isSwiping) return;
+
+    const threshold = 30; // minimum swipe distance
+
+    if (startX - endX > threshold) {
+        // 👉 swipe left
+        goToNext();
+    } else if (endX - startX > threshold) {
+        // 👉 swipe right
+        goToPrev();
+    }
+
+    isSwiping = false;
+
+    if (track.children.length <= 1) return;
+});
     // Handle resize → recalculate layout
     let resizeTimeout;
-    window.addEventListener('resize', () => {
-        clearTimeout(resizeTimeout);
-        resizeTimeout = setTimeout(() => {
-            currentIndex = Math.min(currentIndex, cards.length - getCardsPerView());
-            updateSlide();
-            updateButtonStates();
-        }, 150);
-    });
+ window.addEventListener('resize', () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+
+        const maxIndex = cards.length - getCardsPerView();
+
+        // 🔥 FIX: keep index within valid range
+        currentIndex = Math.max(0, Math.min(currentIndex, maxIndex));
+
+        updateSlide();
+        updateButtonStates();
+
+    }, 150);
+});
 
     // Initialize
     updateSlide();
@@ -262,4 +299,80 @@ document.addEventListener('DOMContentLoaded', () => {
         // Also run once on page load (in case of pre-filled text)
         autoGrow();
     }
+});
+
+document.addEventListener("click", (e) => {
+  if (e.target && e.target.id === "goToBooking") {
+    window.location.href = "../pages-html/booking.html";
+  }
+  else if(e.target && e.target.id === "goToServices"){
+    window.location.href = "../pages-html/services-page.html"
+  }
+});
+
+function loadPrivacyModal() {
+  const modalHTML = `
+    <div id="privacyModal" class="privacy-modal">
+      <div class="privacy-content">
+
+        <div class="privacy-header">
+          <h2>Privacy Policy</h2>
+          <span id="closePrivacy">&times;</span>
+        </div>
+
+        <div class="privacy-body">
+          <p><strong>Agency</strong> values your privacy. We collect basic information such as your name, email, and project details to match you with the right professionals.</p>
+
+          <h4>How We Use Data</h4>
+          <ul>
+            <li>Match you with freelancers</li>
+            <li>Communicate with you</li>
+            <li>Improve our services</li>
+          </ul>
+
+          <h4>Data Protection</h4>
+          <p>Your data is securely stored and never sold.</p>
+        </div>
+
+        <div class="privacy-footer">
+          <button id="acceptPrivacy">Accept</button>
+        </div>
+
+      </div>
+    </div>
+  `;
+
+  document.body.insertAdjacentHTML("beforeend", modalHTML);
+}
+
+  loadPrivacyModal();
+
+  setTimeout(() => {
+  const modal = document.getElementById("privacyModal");
+  const closeBtn = document.getElementById("closePrivacy");
+  const acceptBtn = document.getElementById("acceptPrivacy");
+
+  if (!modal) return;
+
+  // Show on first visit
+  if (!localStorage.getItem("privacyAccepted")) {
+    modal.style.display = "flex";
+  }
+
+  closeBtn.onclick = () => {
+    modal.style.display = "none";
+  };
+
+  acceptBtn.onclick = () => {
+    localStorage.setItem("privacyAccepted", "true");
+    modal.style.display = "none";
+  };
+}, 100);
+
+document.addEventListener("click", (e) => {
+  if (e.target && e.target.id === "openPrivacy") {
+    e.preventDefault();
+    const modal = document.getElementById("privacyModal");
+    if (modal) modal.style.display = "flex";
+  }
 });

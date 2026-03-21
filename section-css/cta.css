@@ -13,7 +13,7 @@
     justify-content: center;
     align-items: center;
     gap: 20px;
-    padding: 80px 50px;
+    padding: 0px 30px;
     box-sizing: border-box;
     width: 100%;
 }
@@ -46,6 +46,7 @@
     font-weight: bolder;
     color: #007e76;
     margin: 0;
+    width: 100%;
 }
 
 .cta-content.left p{
@@ -80,4 +81,30 @@
     box-shadow: 0 8px 40px 0px #4a4a4a9e;
     color:#007e76;
     transform: scale(1.05);
+}
+
+@media (max-width: 575px){
+    .cta-container{
+        flex-direction: column;
+        padding: 20px;
+    }
+    .cta-content.left{
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+    }
+    .cta-content.left h2{
+        font-size: 2rem;
+        max-width: 100%;
+        text-align: center;
+    }
+    .cta-content.right{
+        display: none;
+    }
+    .cta-content.left p{
+        font-size: .95rem;
+    }
+    .cta-content.left button{
+        max-width: 100%;
+    }
 }

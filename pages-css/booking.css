@@ -4,9 +4,9 @@
 body{
     width: 100%;
     box-sizing: border-box;
-    padding: 0;
     margin: 0;
-    font-family: "Poppins", sans-serif;
+    padding: 0;
+     font-family: "Poppins", sans-serif;
     background-color: #e5e7eb;
 }
 
@@ -29,130 +29,94 @@ body{
 }
 
 .header-container{
-    width: 100%;
-    height: 100%;
+    display: flex;
+    max-width: 100%;
+    justify-content: center;
+    align-items: center;
+    height: auto;
     min-height: 10vh;
     box-sizing: border-box;
 }
 
-.contact-us-container{
+.page-title{
     width: 100%;
     height: auto;
     display: flex;
+    align-items: center;
     justify-content: center;
     flex-direction: column;
-    align-items: center;
     box-sizing: inherit;
-    padding: 0 50px;
+    padding-bottom: 30px;
 }
 
-.page-title{
-    display: flex;
-    box-sizing: inherit;
-    text-align: center;
-    height: auto;
+.booking-container{
     width: 100%;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    box-sizing: inherit;
+    padding: 10px 50px;
 }
 
 .page-title h1{
     font-family: inherit;
     font-size: 3rem;
     color: #007e76;
-    margin: 0;
-}
-
-.left-side{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 40%;
+    width: 100%;
     text-align: center;
-    gap: 0;
-    padding: 20px 0;
-    height: auto;
-    box-sizing: border-box;
 }
 
-.left-side h2{
+.page-title p{
     font-family: inherit;
-    font-size: 1.85rem;
-    color: #0f172a;
-}
-
-.left-side p{
-    font-family: inherit;
-    font-size: 1.15rem;
-    color: #383535;;
+    color: #383535;
     margin: 0;
+    font-size: 1.25rem;
 }
 
-.left-side img{
+.form-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
     width: 100%;
-    object-fit: contain;
+    height: auto;
+    padding: 30px 50px;
 }
 
-.right-side{
+.form-container form{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    width: 60%;
+    align-items: flex-start;
+    width: 100%;
+    padding: 30px 50px;
     height: auto;
-    box-sizing: border-box;
 }
 
-.row-container {
-    width: 100%;
-    height: auto;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    box-sizing: border-box;
-    column-gap: 40px;
+.form-step {
+  display: none;
 }
 
-form h2{
-    font-family: inherit;
-    font-size: 2rem;
-    color: #e5e7eb;
+.form-step.active {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  row-gap: 20px;
+  width: 100%;
 }
 
-.right-side form{
-    display: flex;
-    flex-direction: column;;
-    background-color: #0f172a;
-    width: 80%;
-    height: 65vh;
-    border-radius: 20px;
-    padding: 40px;
-    gap: 20px;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0px 8px 20px #007e762b;
-}
-
-.name-row{
-    display: flex;
-    width: 100%;
-}
-
-.input-group {
-    position: relative;
-    width: 100%;
-}
-
-.input-group input {
-    width: 100%;
+.form-step.active input{
+    width: 50%;
+    outline: none;
     padding: 14px 16px;
     font-size: 1.05rem;
     border: 2px solid #64748b;
     border-radius: 8px;
-    background: #0f172a;
-    color: #e5e7eb;
+    background: #e5e7eb;
+    color: #007e76;
     transition: all 0.3s ease;
     box-sizing: border-box;
 }
@@ -163,14 +127,19 @@ form h2{
     font-size: 1.05rem;
     border: 2px solid #64748b;
     border-radius: 8px;
-    background: #0f172a;
-    color: #e5e7eb;
+    background: #e5e7eb;
+    color: #007e76;
     transition: all 0.3s ease;
     box-sizing: border-box;
     resize: none;
     min-height: 80px;
     max-height: 120px;      
     overflow-y: auto;
+}
+
+.input-group {
+    position: relative;
+    width: 100%;
 }
 
 .input-group textarea::-webkit-scrollbar {
@@ -194,6 +163,7 @@ form h2{
 .input-group input::placeholder,
 .input-group textarea::placeholder {
     transition: opacity 0.3s ease;
+    color: #e5e7eb;
 }
 
 .input-group input:focus::placeholder,
@@ -205,17 +175,16 @@ form h2{
 
 .input-group label {
     position: absolute;
-    left: 16px;
-    top: 14px;
+    left: 10px;
+    top: 12px;
     font-size: 1.05rem;
-    color: #94a3b8;
-    background: #0f172a;
+    color: #007e76;
+    background: #e5e7eb;
     padding: 0 8px;
     transition: all 0.3s ease;
     pointer-events: none;
 }
 
-/* Animation */
 .input-group input:focus,
 .input-group textarea:focus {
     border-color: #007e76;
@@ -233,17 +202,7 @@ form h2{
     font-weight: 600;
 }
 
-.name-row {
-    display: flex;
-    gap: 15px;
-}
-
-.name-row .input-group {
-    flex: 1;
-}
-
-
-button[type="submit"] {
+.form-step button {
     padding: 15px 30px;
     font-size: 1.15rem;
     border: none;
@@ -257,13 +216,45 @@ button[type="submit"] {
     margin-top: 20px;
 }
 
-button[type="submit"]:hover {
+.form-step button:hover {
     background: #0f172a;
     transition: 0.3s;
     box-shadow: 0 8px 40px 0px #4a4a4a9e;
     color:#007e76;
-    transform: scale(1.05);
+    transform: scale(1.0.5);
     border: 2px solid #007e76;
+}
+
+.button-group{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+    width: 60%;
+}
+
+.steps {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.step {
+  width: 40px;
+  height: 40px;
+  background: #00b4a569;
+  border-radius: 50%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.3s ease-in-out;
+}
+
+.step.active {
+  background: #007e76;
+  color: white;
+  border: 2px dashed #0f172a;
 }
 
 .toastify-premium {
@@ -280,3 +271,36 @@ button[type="submit"]:hover {
     opacity: 1;
   }
 }
+
+.form-step h2{
+    font-family: inherit;
+    color: #007e76;
+    font-size: 3rem;
+    margin: 0;
+}
+
+.select-wrapper {
+  position: relative;
+  width: 50%;
+}
+
+.select-wrapper select {
+  width: 100%;
+  padding: 12px 40px 12px 14px;
+  border-radius: 10px;
+  border: 1px solid #0f172a;
+  background: #007e76;
+  cursor: pointer;
+  transition: 0.2s ease;
+  color: #e5e7eb;
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+/* Hover / focus */
+.select-wrapper select:focus {
+  border-color: #00b4a6;
+  outline: none;
+  background-color: #0f172a;
+}
+
