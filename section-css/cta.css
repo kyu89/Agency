@@ -1,110 +1,160 @@
-#cta{
+/* =========================
+   CTA SECTION
+========================= */
+
+#cta {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100%;
-    margin: 0;
+    padding: 60px 20px; /* better than height:100% */
     box-sizing: border-box;
 }
 
-.cta-container{
+.cta-container {
     display: flex;
-    flex-direction: row;
-    justify-content: center;
     align-items: center;
-    gap: 20px;
-    padding: 0px 30px;
-    box-sizing: border-box;
+    justify-content: space-between;
+    gap: 40px;
+    max-width: 1200px;
     width: 100%;
 }
 
-.cta-content{
+/* FLEXIBLE layout instead of fixed % */
+.cta-content {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
     gap: 20px;
+    flex: 1;
 }
 
-#cta-img{
-    width: 60%;
-}
-
-.cta-content.left{
-    width: 60%;
-    justify-content: center;
+.cta-content.left {
     align-items: flex-start;
 }
 
-.cta-content.right{
-    width: 40%;
+.cta-content.right {
+    align-items: center;
 }
 
-.cta-content.left h2{
+/* TEXT */
+
+.cta-content.left h2 {
     font-family: "Poppins", sans-serif;
     font-size: 2.75rem;
-    font-weight: bolder;
+    font-weight: 700;
     color: #007e76;
     margin: 0;
-    width: 100%;
 }
 
-.cta-content.left p{
+.cta-content.left p {
     font-family: "Poppins", sans-serif;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     color: #333;
     margin: 0;
+    line-height: 1.6;
 }
 
-.cta-content.left p:last-of-type{
-    font-size: 1rem;
+.cta-content.left p:last-of-type {
+    font-size: 0.95rem;
     color: #666;
-    margin-top: 1rem;
 }
 
-.cta-content.left button{
-    padding: 15px 30px;
-    font-size: 1.15rem;
+/* BUTTON */
+
+.cta-content.left button {
+    padding: 14px 28px;
+    font-size: 1.05rem;
     border: none;
-    border-radius: 5px;
+    border-radius: 6px;
     background: #007e76;
     color: #e5e7eb;
     cursor: pointer;
-    font-family: "Poppins", sans-serif;
-    transition: 0.3s ease-in-out;
-    max-width: 30%;
+    transition: 0.3s ease;
+    width: fit-content; /* FIX */
 }
 
-.cta-content.left button:hover{
+.cta-content.left button:hover {
     background: #0f172a;
-    transition: 0.3s;
-    box-shadow: 0 8px 40px 0px #4a4a4a9e;
-    color:#007e76;
+    box-shadow: 0 8px 40px #4a4a4a9e;
+    color: #007e76;
     transform: scale(1.05);
 }
 
-@media (max-width: 575px){
-    .cta-container{
+/* IMAGE */
+
+#cta-img {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    object-fit: contain;
+}
+
+/* =========================
+   TABLET (≤ 992px)
+========================= */
+
+@media (max-width: 992px) {
+
+    .cta-container {
+        gap: 30px;
+    }
+
+    .cta-content.left h2 {
+        font-size: 2.2rem;
+    }
+
+    .cta-content.left p {
+        font-size: 1rem;
+    }
+}
+
+/* =========================
+   SMALL TABLET (≤ 768px)
+========================= */
+
+@media (max-width: 768px) {
+
+    .cta-container {
         flex-direction: column;
-        padding: 20px;
-    }
-    .cta-content.left{
-        width: 100%;
-        justify-content: center;
-        align-items: center;
-    }
-    .cta-content.left h2{
-        font-size: 2rem;
-        max-width: 100%;
         text-align: center;
     }
-    .cta-content.right{
-        display: none;
+
+    .cta-content.left {
+        align-items: center;
     }
-    .cta-content.left p{
-        font-size: .95rem;
+
+    .cta-content.right {
+        order: -1; /* image on top (optional, looks better) */
     }
-    .cta-content.left button{
-        max-width: 100%;
+
+    #cta-img {
+        max-width: 300px;
+    }
+}
+
+/* =========================
+   MOBILE (≤ 575px)
+========================= */
+
+@media (max-width: 575px) {
+
+    #cta {
+        padding: 40px 16px;
+    }
+
+    .cta-content.left h2 {
+        font-size: 1.8rem;
+    }
+
+    .cta-content.left p {
+        font-size: 0.95rem;
+    }
+
+    .cta-content.left button {
+        width: 100%;
+        max-width: 260px;
+    }
+
+    #cta-img {
+        max-width: 240px;
     }
 }

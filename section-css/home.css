@@ -4,6 +4,7 @@
 html{
     scroll-behavior: smooth;
     width: 100%;
+    overflow-x: hidden;
 }
 
 ::-webkit-scrollbar {
@@ -240,6 +241,13 @@ header::before{
         padding: 12px 20px;
         font-size: 1rem;
     }
+    .scroll-button {
+    width: 7%;
+    height: 6%;
+    font-size: 1.2rem;
+    bottom: 15px;
+    right: 15px;
+    }
 }
 
 @media (min-width: 992px) and (max-width: 1199px) {
@@ -252,5 +260,12 @@ header::before{
 
     .home-content p {
         max-width: 60%;
+    }
+     .scroll-button {
+    width: 7%;
+    height: 6%;
+    font-size: 1.2rem;
+    bottom: 15px;
+    right: 15px;
     }
 }

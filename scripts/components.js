@@ -16,10 +16,7 @@ if (scrollButton) {
 // Alternative: use IntersectionObserver if it's lower on page
 function setupTestimonialsCarousel() {
     const carousel = document.querySelector('#testimonialCarousel');
-    if (!carousel) {
-        console.warn('Carousel container not found');
-        return;
-    }
+    if (!carousel) return;
 
     const track = carousel.querySelector('.carousel-track');
     const cards = carousel.querySelectorAll('.carousel-card');
@@ -31,39 +28,43 @@ function setupTestimonialsCarousel() {
     function getCardWidthWithGap() {
         if (cards.length === 0) return 0;
         const cardWidth = cards[0].offsetWidth;
-        // Calculate the gap from CSS custom property or computed style
-        const trackStyle = window.getComputedStyle(track);
-        const gapValue = trackStyle.gap || '1.5rem';
-        // Convert rem to pixels (assuming 1rem = 16px)
-        const gap = gapValue.includes('rem') ? parseFloat(gapValue) * 16 : parseFloat(gapValue);
+
+        const gapValue = window.getComputedStyle(track).gap || '1.5rem';
+        const gap = gapValue.includes('rem') 
+            ? parseFloat(gapValue) * 16 
+            : parseFloat(gapValue);
+
         return cardWidth + gap;
     }
 
     function getCardsPerView() {
         const width = window.innerWidth;
         if (width >= 1200) return 2;
-        if (width >= 768) return 1;
         return 1;
     }
 
     function updateSlide() {
-        if (!track || cards.length === 0) return;
         const slideAmount = currentIndex * getCardWidthWithGap();
         track.style.transform = `translateX(-${slideAmount}px)`;
     }
 
     function updateButtonStates() {
-        if (!prevBtn || !nextBtn) return;
-        const maxIndex = cards.length - getCardsPerView();
-        prevBtn.disabled = currentIndex <= 0;
-        nextBtn.disabled = currentIndex >= maxIndex;
-        // Optional: visual feedback
-        prevBtn.style.opacity = currentIndex <= 0 ? '0.4' : '1';
-        nextBtn.style.opacity = currentIndex >= maxIndex ? '0.4' : '1';
+        const maxIndex = Math.max(0, cards.length - getCardsPerView());
+
+        if (prevBtn) {
+            prevBtn.disabled = currentIndex <= 0;
+            prevBtn.style.opacity = currentIndex <= 0 ? '0.4' : '1';
+        }
+
+        if (nextBtn) {
+            nextBtn.disabled = currentIndex >= maxIndex;
+            nextBtn.style.opacity = currentIndex >= maxIndex ? '0.4' : '1';
+        }
     }
 
     function goToNext() {
-        const maxIndex = cards.length - getCardsPerView();
+        const maxIndex = Math.max(0, cards.length - getCardsPerView());
+
         if (currentIndex < maxIndex) {
             currentIndex++;
             updateSlide();
@@ -79,63 +80,72 @@ function setupTestimonialsCarousel() {
         }
     }
 
-    // Event listeners
-    if (prevBtn) prevBtn.addEventListener('click', goToPrev);
-    if (nextBtn) nextBtn.addEventListener('click', goToNext);
+    // ✅ BUTTONS
+    prevBtn?.addEventListener('click', goToPrev);
+    nextBtn?.addEventListener('click', goToNext);
 
+    // ✅ SWIPE (FIXED)
     let startX = 0;
-let endX = 0;
+let startY = 0;
 let isSwiping = false;
 
 track.addEventListener("touchstart", (e) => {
     startX = e.touches[0].clientX;
+    startY = e.touches[0].clientY;
     isSwiping = true;
-});
+}, { passive: true });
 
 track.addEventListener("touchmove", (e) => {
     if (!isSwiping) return;
-    endX = e.touches[0].clientX;
-});
 
-track.addEventListener("touchend", () => {
+    const currentX = e.touches[0].clientX;
+    const currentY = e.touches[0].clientY;
+
+    const diffX = startX - currentX;
+    const diffY = startY - currentY;
+
+    // 🔥 Detect horizontal swipe only
+    if (Math.abs(diffX) > Math.abs(diffY)) {
+        e.preventDefault(); // ✅ REQUIRED for iPhone
+    }
+}, { passive: false });
+
+track.addEventListener("touchend", (e) => {
     if (!isSwiping) return;
 
-    const threshold = 30; // minimum swipe distance
+    const endX = e.changedTouches[0].clientX;
+    const diff = startX - endX;
 
-    if (startX - endX > threshold) {
-        // 👉 swipe left
-        goToNext();
-    } else if (endX - startX > threshold) {
-        // 👉 swipe right
-        goToPrev();
+    const threshold = 40;
+
+    if (Math.abs(diff) > threshold) {
+        if (diff > 0) {
+            goToNext(); // swipe left
+        } else {
+            goToPrev(); // swipe right
+        }
     }
 
     isSwiping = false;
-
-    if (track.children.length <= 1) return;
 });
-    // Handle resize → recalculate layout
+    // ✅ RESIZE FIX
     let resizeTimeout;
- window.addEventListener('resize', () => {
-    clearTimeout(resizeTimeout);
-    resizeTimeout = setTimeout(() => {
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+            const maxIndex = Math.max(0, cards.length - getCardsPerView());
 
-        const maxIndex = cards.length - getCardsPerView();
+            currentIndex = Math.max(0, Math.min(currentIndex, maxIndex));
 
-        // 🔥 FIX: keep index within valid range
-        currentIndex = Math.max(0, Math.min(currentIndex, maxIndex));
+            updateSlide();
+            updateButtonStates();
+        }, 150);
+    });
 
-        updateSlide();
-        updateButtonStates();
-
-    }, 150);
-});
-
-    // Initialize
+    // ✅ INIT
     updateSlide();
     updateButtonStates();
 }
-
 // ================================================================
 // TYPEWRITER EFFECT (unchanged as requested)
 // ================================================================
@@ -375,4 +385,8 @@ document.addEventListener("click", (e) => {
     const modal = document.getElementById("privacyModal");
     if (modal) modal.style.display = "flex";
   }
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+    setupTestimonialsCarousel();
 });

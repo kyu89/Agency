@@ -1,4 +1,8 @@
-#testimonials{
+/* =============================================
+   TESTIMONIALS SECTION — BASE STYLES
+   ============================================= */
+
+#testimonials {
     width: 100%;
     height: auto;
     position: relative;
@@ -8,36 +12,38 @@
     align-items: center;
 }
 
-.testimonials-header h2{
+.testimonials-header h2 {
     font-family: "Poppins", sans-serif;
-    font-size:3rem;
+    font-size: 3rem;
     color: #007e76;
     text-align: center;
     margin-bottom: 0;
 }
 
-.testimonials-content{
+.testimonials-content {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column; 
+    flex-direction: column;
     box-sizing: border-box;
 }
 
-#testimonials .img-container{
+#testimonials .img-container {
     width: 40%;
     align-items: center;
     justify-content: center;
     display: flex;
 }
 
-#chooseus{
+#chooseus {
     width: 100%;
     object-fit: contain;
     height: 450px;
 }
 
-.content1{
+/* ---- Why Choose Us ---- */
+
+.content1 {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -46,7 +52,7 @@
     gap: 20px;
 }
 
-.choose-row{
+.choose-row {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -57,65 +63,73 @@
     padding: 0 40px;
 }
 
-.choose-row2{
+.choose-row2 {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     width: 30%;
     row-gap: 40px;
-
 }
 
-.choose-card{
+.choose-card {
     width: 100%;
     height: auto;
-    padding: 20px;
     box-shadow: 0px 12px 20px #15141413;
     padding: 15px;
 }
 
-.choose-card strong{
+.choose-card strong {
     font-family: "Poppins", sans-serif;
     font-size: 1.2rem;
     color: #007e76;
 }
 
-.choose-card p{
+.choose-card p {
     font-family: "Poppins", sans-serif;
     font-size: 1rem;
     color: #383535;
 }
 
-.content2{
+/* ---- Feedback / Carousel Section ---- */
+
+.content2 {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     background-color: #19212b;
+    width: 100%;
     max-width: 100%;
+    box-sizing: border-box;
+    padding: 40px 20px;
 }
 
-.content2 h2{
+.content2 h2 {
     font-family: "Poppins", sans-serif;
     font-size: 3rem;
     color: #007e76;
     padding-bottom: 20px;
+    text-align: center;
     text-shadow: 0px 1px 10px #e5e7eb1b;
 }
 
-.feedback-row{
+.feedback-row {
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100%;
 }
 
-.feedback-card{
+.feedback-card {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
+
+/* ---- Carousel ---- */
+
 .testimonials-carousel {
     position: relative;
     width: 100%;
@@ -127,15 +141,17 @@
 .carousel-track {
     display: flex;
     transition: transform 0.5s ease-in-out;
-    gap: 1.5rem;           /* space between cards */
+    gap: 1.5rem;
     padding: 1rem 0;
     touch-action: pan-y;
     width: 100%;
     -webkit-overflow-scrolling: touch;
+    -webkit-user-select: none;
+    user-select: none;
 }
 
 .carousel-card {
-    flex: 0 0 calc(50% - 0.75rem);         /* Default: 2 cards per view */
+    flex: 0 0 calc(50% - 0.75rem);
     background: #05f3c308;
     -webkit-backdrop-filter: blur(30px);
     backdrop-filter: blur(30px);
@@ -146,19 +162,15 @@
     text-align: center;
     box-sizing: border-box;
     height: auto;
-    min-height: 320px;      /* optional: consistent height */
+    min-height: 320px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
     cursor: grab;
     touch-action: pan-y;
-      -webkit-overflow-scrolling: touch;
-      transition: transform 0.3s ease;
-}
-
-.carousel-card.active{
-      transform: scale(1.02);
+    -webkit-overflow-scrolling: touch;
+    transition: transform 0.3s ease;
 }
 
 .carousel-card .profile {
@@ -205,13 +217,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
     transition: all 0.2s;
     z-index: 10;
 }
 
-.carousel-button.prev  { left: 0.5rem; }
-.carousel-button.next  { right: 0.5rem; }
+.carousel-button.prev { left: 0.5rem; }
+.carousel-button.next { right: 0.5rem; }
 
 .carousel-button:hover {
     background: #007e76;
@@ -219,38 +231,132 @@
     transform: translateY(-50%) scale(1.08);
 }
 
-.border-bottom{
+.border-bottom {
     width: 100%;
     height: 6rem;
 }
 
-@media (max-width: 575px){
-    .content1{
+.carousel-card img,
+.carousel-card .stars img {
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-drag: none;
+    draggable: false;
+}
+
+
+/* =============================================
+   RESPONSIVE BREAKPOINTS
+   ============================================= */
+
+/* ---------- Mobile: up to 575px ---------- */
+@media (max-width: 575px) {
+
+    .testimonials-header h2 {
+        font-size: 2rem;
+        padding: 0 16px;
+    }
+
+    .content1 {
         flex-direction: column;
         justify-content: center;
         align-items: center;
         margin: 0;
-        padding-bottom: 20px;
+        padding: 16px;
+        gap: 16px;
     }
-    #chooseus{
+
+    #chooseus {
         display: none;
     }
-    .choose-row, .choose-row2{
-        width: 70%;
-        border: none;
+
+    #testimonials .img-container {
+        display: none;
     }
+
+    .choose-row,
+    .choose-row2 {
+           width: 100%;
+        max-width: 100%;
+        border: none;
+        padding: 0;
+        row-gap: 16px;
+        box-sizing: border-box;
+    }
+
+    .choose-card {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .choose-card strong {
+        font-size: 1.05rem;
+    }
+
+    .choose-card p {
+        font-size: 0.9rem;
+    }
+
+    .content2 {
+         width: 100vw;
+        max-width: 100vw;
+        padding: 24px 0 24px 0;
+        margin: 0;
+        overflow: hidden;
+    }
+
+    .content2 h2 {
+        font-size: 1.8rem;
+        text-align: center;
+        padding-bottom: 16px;
+    }
+
+    .feedback-row {
+            width: 100%;
+        padding: 0;
+        margin: 0;
+        overflow: hidden;
+    }
+
     .testimonials-carousel {
-        padding: 0 10px; /* reduce side spacing */
+          width: 100%;
+        max-width: 100%;
+        padding: 0 !important;
+        margin: 0;
+        overflow: hidden !important;
+        box-sizing: border-box;
+        overflow: hidden;
     }
 
     .carousel-track {
-        gap: 1rem;
+            display: flex;
+        gap: 0 !important;
+        padding: 0.75rem 0 !important;
+        margin: 0;
+        width: 100%;
+        transition: transform 0.5s ease-in-out;
+            touch-action: pan-y;
     }
 
     .carousel-card {
-        flex: 0 0 100%;
-        min-width: 100%;
-        padding: 1.5rem 1rem;
+         flex: 0 0 100% !important;
+        width: 100% !important;
+        min-width: 0 !important;         /* override any min-width */
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        padding: 1.5rem 1.5rem !important;
+        margin: 0 !important;
+        min-height: auto !important;     /* remove fixed height causing blank space below */
+        height: auto !important;
+        border-left: none !important;    /* FIX: left border can cause 2px overflow */
+        border-right: none !important;
+        border-radius: 5px !important;
+              box-shadow: inset 0 0 0 2px #007e76, 0 4px 20px rgba(0,0,0,0.08);
+                  touch-action: pan-y;
+    }
+
+     .carousel-track::after {
+        content: none;
     }
 
     .carousel-card .profile {
@@ -259,24 +365,186 @@
     }
 
     .carousel-card .feedback p {
-        font-size: 0.95rem;
+        font-size: 0.9rem;
         line-height: 1.5;
     }
 
-    .content2 h2 {
-        font-size: 2rem;
-        text-align: center;
+    .carousel-card .stars img {
+        width: 1.4rem;
     }
 
     .carousel-button {
-        display: none; /* swipe only */
+        display: none; /* swipe only on mobile */
+    }
+    .border-bottom {
+        height: 3rem;
+    }
+     #testimonials {
+        width: 100vw;
+        max-width: 100vw;
+        overflow-x: hidden;
+        padding: 0;
+        margin: 0;
+    }
+}
+
+
+/* ---------- Tablet: 576px – 991px ---------- */
+@media (min-width: 576px) and (max-width: 991px) {
+
+    .testimonials-header h2 {
+        font-size: 2.4rem;
+    }
+
+    .content1 {
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+        padding: 20px 24px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    #testimonials .img-container {
+        width: 60%;
+        max-width: 360px;
+    }
+
+    #chooseus {
+        width: 100%;
+        height: 340px;
+    }
+
+    .choose-row,
+    .choose-row2 {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+        max-width: 700px;
+        border: none;
+        padding: 0;
+        row-gap: 16px;
+        gap: 16px;
+    }
+
+    .choose-card {
+        width: calc(50% - 8px);
+        box-sizing: border-box;
+        max-height: none;
+    }
+
+    .content2 {
+        padding: 40px 24px;
+    }
+
+    .content2 h2 {
+        font-size: 2.2rem;
     }
 
     .feedback-row {
-        width: 65%;
+        width: 100%;
     }
 
-    .content2{
-        max-width: 70%;
+    .testimonials-carousel {
+        padding: 0 3rem;
+    }
+
+    .carousel-card {
+        flex: 0 0 calc(100% - 1.5rem);
+        max-width: 560px;
+        margin: 0 auto;
+    }
+    .carousel-button {
+        display: none; /* swipe only on mobile */
+    }
+}
+
+
+/* ---------- Small Desktop: 992px – 1199px ---------- */
+@media (min-width: 992px) and (max-width: 1199px) {
+
+    .testimonials-header h2 {
+        font-size: 2.6rem;
+    }
+
+    .content1 {
+        gap: 16px;
+        padding: 0 24px;
+    }
+
+    #testimonials .img-container {
+        width: 35%;
+    }
+
+    #chooseus {
+        height: 380px;
+    }
+
+    .choose-row,
+    .choose-row2 {
+        width: 32%;
+        row-gap: 28px;
+    }
+
+    .choose-row {
+        padding: 0 24px;
+    }
+
+    .choose-card strong {
+        font-size: 1.1rem;
+    }
+
+    .choose-card p {
+        font-size: 0.95rem;
+    }
+
+    .content2 {
+        padding: 40px 32px;
+    }
+
+    .content2 h2 {
+        font-size: 2.6rem;
+    }
+
+    .testimonials-carousel {
+        padding: 0 3rem;
+    }
+
+    .carousel-card {
+        flex: 0 0 calc(50% - 0.75rem);
+        min-height: 300px;
+    }
+
+    .carousel-card .profile {
+        width: 6rem;
+        height: 6rem;
+    }
+    
+}
+
+
+/* ---------- Large Desktop: 1200px+ ---------- */
+@media (min-width: 1200px) {
+
+    .content1 {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 60px;
+    }
+
+    .testimonials-carousel {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 3.5rem;
+    }
+
+    .carousel-card {
+        flex: 0 0 calc(50% - 0.75rem);
+        max-width: 600px;
+    }
+
+    .content2 {
+        padding: 60px 40px;
     }
 }
