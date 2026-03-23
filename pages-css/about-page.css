@@ -1,6 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Changa+One:ital@0;1&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
+html{
+    width: 100%;
+    box-sizing: border-box;
+    height: 100%;
+    overflow-x: hidden;
+}
+
 body{
     width: 100%;
     box-sizing: border-box;
@@ -380,6 +387,15 @@ body{
     text-align: center;
     color: #e5e7eb;
 }
+.list-content h4{
+    font-family: inherit;
+    font-size: 1.5rem;
+    margin: 0;
+}
+.list-content p{
+    font-family: inherit;
+    font-size: 1.2rem;
+}
 
 .fifth-section{
     display: flex;
@@ -531,6 +547,13 @@ body{
   z-index: 90;                  /* bring opened item slightly forward */
 }
 
+.column-container{
+    display: flex;
+    flex-direction: row;
+    width: inherit;
+    box-sizing: border-box;
+}
+
 .scroll-button {
     position: fixed;
     bottom: 5%;
@@ -551,4 +574,116 @@ body{
     font-size: 1.75rem;
     display: none;
     transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+@media (max-width: 575px){
+    .first-section{
+        padding: 20px;
+        height: 85vh;
+        width: 100%;
+        position: relative;
+        overflow: hidden;
+    }
+    .page-title{
+        min-height: 5vh;
+    }
+    .page-title.one h2, .page-title.two h2, .page-title.three h2, .page-title.four h2{
+        font-size: 2rem;
+        margin: 0;
+    }
+    #typing-heading{
+        font-size: 2.2rem;
+        word-break: break-word;
+        width: 100%;
+    }
+    .about-us-content p{
+        font-size: 1.25rem;
+        width: 85%;
+    }  
+    #graph, #graph2{
+        width: 100%;
+    }
+    #graph{
+        right: -40%;
+        top: 10%;
+    }
+    #graph2{
+        left: -48%;
+    }
+    .second-section, .third-section, .fourth-section, .fifth-section{
+        padding: 20px;
+    }
+    .column-container{
+        display: flex;
+        flex-direction: column;
+        box-sizing: border-box;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+    }
+    .left-side, .right-side{
+        width: 100%;
+    }
+    .right-side img{
+        width: 300px;
+        height: 300px;
+    }
+    .third-section{
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+    }
+    .mission, .vision{
+        width: 100%;
+        padding: 10px;
+    }
+    .mission h3, .vision h3{
+        font-size: 2rem;
+    }
+    .mission p, .vision p{
+        font-size: 1rem;
+    }
+    .how-we-work{
+        width: 100%;
+        padding: 20px;
+    }
+    .fourth-section .description{
+        font-size: 1rem;
+        text-align: center;
+    }
+    .list-container{
+        flex-direction: column;
+    }
+    .icon-plus-number img{
+        width: 100px;
+    }
+    .icon-plus-number h5{
+        width: 25px;
+        height: 25px;
+    }
+    .list-content h4{
+        font-size: 1.25rem;
+        margin: 0;
+    }
+    .list-content p{
+        font-size: 1rem;
+    }
+    .faq-left{
+        display: none;
+    }
+    .faq-right{
+        width: 100%;
+    }
+    .page-title.four p, .faq-answer p{
+        font-size: 1rem;
+    }
+    .scroll-button {
+    width: 45px;
+    height: 45px;
+    font-size: 1.2rem;
+    bottom: 15px;
+    right: 15px;
+    }
 }

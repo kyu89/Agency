@@ -3,6 +3,7 @@ function navigationColor(){
     const cName = document.getElementById('company-name');
     const navigation = document.querySelector('.nav-bar');
     const navLinks = navigation ? navigation.querySelectorAll('a') : [];
+    const spans = document.querySelectorAll('#hamburger span');
 
     if (!navigation) return;
 
@@ -20,6 +21,9 @@ function navigationColor(){
                 navLinks.forEach(link => {
                     link.style.color = '#e5e7eb';
                 });
+                spans.forEach(span => {
+                span.style.backgroundColor = '#e5e7eb'; // or any color
+                    });
             }
         } else {
             navigation.style.background = 'transparent';
@@ -28,6 +32,9 @@ function navigationColor(){
                 navLinks.forEach(link => {
                     link.style.color = '#007e76';
                 });
+                spans.forEach(span => {
+                span.style.backgroundColor = '#007e76'; // or any color
+                    });
             }
         }
     }
@@ -72,10 +79,14 @@ function setupHeaderNav(){
         const isAboutPage = window.location.pathname.includes('/pages-html/about-page.html');
         const isContact = window.location.pathname.includes('/pages-html/contact-us-page.html');
         const isBooking = window.location.pathname.includes('/pages-html/booking.html');
+        const spans = document.querySelectorAll('#hamburger span');
         if (isAboutPage || isServices || isContact || isBooking) {
             cName.style.color = '#007e76';
             navLinks.forEach(link => {
                 link.style.color = '#007e76';
+            spans.forEach(span => {
+            span.style.backgroundColor = '#007e76';
+                });
             });
             if (getStarted) {
                 const gsLink = getStarted.querySelector('a');
