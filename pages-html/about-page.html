@@ -6,14 +6,25 @@
     <meta name="keywords" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agency | About Us</title>
-    <script src="https://cdn.lordicon.com/lordicon.js"></script>
-    <link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="..assets/favicon-16x16.png">
-    <link rel="manifest" href="../assets/site.webmanifest">
-    <link rel="stylesheet" href="../section-css/header.css">
-    <link rel="stylesheet" href="../pages-css/about-page.css">
-    <link rel="stylesheet" href="../section-css/footer.css">
+
+    <!-- 🔥 Defer script (important) -->
+    <script src="https://cdn.lordicon.com/lordicon.js" defer></script>
+
+    <!-- 🔥 Optional preload (only header) -->
+    <link rel="preload" href="/section-css/header.css" as="style">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/section-css/header.css">
+    <link rel="stylesheet" href="/pages-css/about-page.css">
+    <link rel="stylesheet" href="/section-css/footer.css">
+
+    <!-- Icons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.webp">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.webp">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.webp">
+    <link rel="manifest" href="/assets/site.webmanifest">
+
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -26,8 +37,8 @@
                 <h2>About Us</h2>
             </div>
             <div class="about-us-content">
-                <img id="graph" src="../assets/graph.png" alt="graphical background">
-                <img id="graph2" src="../assets/graph2.png" alt="graphical background">
+                <img id="graph" src="/assets/graph.webp" loading="lazy" alt="graphical background">
+                <img id="graph2" src="/assets/graph2.webp" loading="lazy" alt="graphical background">
                 <h1 id="typing-heading">Simplifying Access to Skilled Remote Talent</h1>
                 <p>We built a platform that connects your service needs with qualified freelancers 
                     and agents. Book requests, we handle the matching.</p>
@@ -48,7 +59,7 @@
                         continuous support to ensure consistent results.</p>
                 </div>
                 <div class="right-side">
-                    <img src="../assets/who-we-are.png" alt="who we are image">
+                    <img src="/assets/who-we-are.webp" alt="who we are image" loading="lazy">
                 </div>
               </div> 
             </div>
@@ -56,12 +67,12 @@
         <div class="third-section">
             <div class="mission">
                 <h3>Our Mission</h3>
-                <img src="../assets/mission.gif" alt="mission icon">
+                <img src="/assets/mission.gif" alt="mission icon" loading="lazy">
                 <p>To empower businesses by providing dependable outsourcing solutions that improve efficiency, reduce operational costs, and support sustainable growth.</p>
             </div>
             <div class="vision">
                 <h3>Our Vision</h3>
-                <img src="../assets/vision.gif" alt="vision icon">
+                <img src="/assets/vision.gif" alt="vision icon" loading="lazy">
                 <p>To become a trusted global outsourcing partner known for quality, accountability, and long-term value — helping businesses build high-performing teams with confidence.</p>
             </div>
         </div>
@@ -77,7 +88,7 @@
                 <div class="list-container">
                     <div class="list">
                         <div class="icon-plus-number">
-                            <img src="../assets/discovery.png" alt="discovery icon">
+                            <img src="/assets/discovery.webp" alt="discovery icon" loading="lazy">
                             <h5>1</h5>
                         </div>
                         <div class="list-content">
@@ -87,7 +98,7 @@
                     </div>
                     <div class="list">
                         <div class="icon-plus-number">
-                            <img src="../assets/talent.png" alt="talent selection icon">
+                            <img src="/assets/talent.webp" alt="talent selection icon" loading="lazy">
                             <h5>2</h5>
                         </div>
                         <div class="list-content">
@@ -97,7 +108,7 @@
                     </div>
                     <div class="list">
                         <div class="icon-plus-number">
-                            <img src="../assets/kickoff.png" alt="kickoff coordination icon">
+                            <img src="/assets/kickoff.webp" alt="kickoff coordination icon" loading="lazy">
                             <h5>3</h5>
                         </div>
                         <div class="list-content">
@@ -107,7 +118,7 @@
                     </div>
                     <div class="list">
                         <div class="icon-plus-number">
-                            <img src="../assets/support.png" alt="continuous support icon">
+                            <img src="/assets/support.webp" alt="continuous support icon" loading="lazy">
                             <h5>4</h5>
                         </div>
                         <div class="list-content">
@@ -120,7 +131,7 @@
         </div>
         <div class="fifth-section" id="fifth-section">
             <div class="faq-left">
-                <img src="../assets/faqs.png" alt="FAQs">
+                <img src="/assets/faqs.webp" alt="FAQs" loading="lazy">
             </div>
             <div class="faq-right">
                 <div class="page-title four">
@@ -225,8 +236,8 @@
         <i class="fas fa-arrow-up"></i>
       </div>
 
-    <script src="../scripts/components.js"></script>
-    <script src="../scripts/header.js"></script>
-    <script src="../scripts/router.js"></script>
+    <script src="/scripts/components.js"></script>
+    <script src="/scripts/header.js"></script>
+    <script src="/scripts/router.js"></script>
 </body>
 </html>

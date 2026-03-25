@@ -6,16 +6,27 @@
     <meta name="description" content="">
     <meta name="keywords" content="">
     <title>Agency | Booking</title>
-    <link rel="stylesheet" href="../section-css/header.css">
-    <link rel="stylesheet" href="../section-css/footer.css">
-    <link rel="stylesheet" href="../pages-css/booking.css">
-    <link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon-16x16.png">
-    <link rel="manifest" href="../assets/site.webmanifest">
+
+    <!-- 🔥 Optional preload (only 1 critical CSS) -->
+    <link rel="preload" href="/section-css/header.css" as="style">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/section-css/header.css">
+    <link rel="stylesheet" href="/section-css/footer.css">
+    <link rel="stylesheet" href="/pages-css/booking.css">
+
+    <!-- Icons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.webp">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.webp">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.webp">
+    <link rel="manifest" href="/assets/site.webmanifest">
+
+    <!-- CDN CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js@1.12.0/src/toastify.min.css">
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-     <script src="https://cdn.jsdelivr.net/npm/toastify-js@1.12.0/src/toastify.min.js"></script> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- JS (FIXED: defer) -->
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js@1.12.0/src/toastify.min.js" defer></script>
 </head>
 <body>
     <div class="header-container">
@@ -105,9 +116,9 @@
     <footer>
       <section id="footer" class="section"></section>
     </footer>  
-    <script src="../scripts/header.js"></script>
-    <script src="../scripts/router.js"></script>
-    <script src="../scripts/components.js"></script>
-    <script type="module" src="../scripts/booking.js"></script>
+    <script src="/scripts/header.js"></script>
+    <script src="/scripts/router.js"></script>
+    <script src="/scripts/components.js"></script>
+    <script type="module" src="/scripts/booking.js"></script>
 </body>
 </html>
