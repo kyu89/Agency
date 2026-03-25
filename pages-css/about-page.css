@@ -686,4 +686,54 @@ body{
     bottom: 15px;
     right: 15px;
     }
+    .space{
+        display: none;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 991px) {
+     .first-section{
+        padding: 20px;
+        width: 100%;
+        position: relative;
+        overflow: hidden;
+    }
+    .second-section, .third-section{
+        padding: 20px;
+    }
+    .right-side{
+        width: 50%;
+    }
+    .right-side img{
+        width: 100%;
+        margin-top: 70px;
+    }
+    .page-title.two h2, .page-title.three h2{
+        margin: 0;
+    }
+    .mission, .vision{
+        padding: 10px;
+        width: 100%;
+        justify-content: stretch;
+    }
+    .third-section{
+        column-gap: 15px;
+    }
+    .space{
+        display: none;
+    }
+    .how-we-work{
+        padding: 20px;
+    }
+    .list-container{
+        padding: 20px;
+        flex-wrap: wrap;
+        row-gap: 15px;
+    }
+    .icon-plus-number img{
+        width: 20%;
+    }
+    .icon-plus-number h5{
+        left: 30%;
+    }
 }
