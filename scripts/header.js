@@ -97,12 +97,6 @@ function setupHeaderNav() {
         path.includes('contact') ||
         path.includes('booking');
 
-    /* HAMBURGER */
-    hamburger.addEventListener('click', () => {
-        hamburger.classList.toggle('active');
-        navigation.classList.toggle('active');
-    });
-
     /* ACTIVE LINK */
     (function setActiveFromPath() {
         try {
@@ -141,7 +135,16 @@ function setupHeaderNav() {
     }
 }
 
+    /* HAMBURGER */
+    document.addEventListener("click", function (e) {
+    const hamburger = e.target.closest("#hamburger");
+    const navigation = document.getElementById("navigation");
 
+    if (!hamburger || !navigation) return;
+
+    hamburger.classList.toggle("active");
+    navigation.classList.toggle("active");
+});
 /* =========================
    PAGE TRANSITION
 ========================= */
@@ -157,10 +160,10 @@ function setupPageTransition() {
                 !href.startsWith('tel:')
             ) {
                 e.preventDefault();
-                document.body.style.opacity = '0.7';
+                document.body.style.opacity = '0.8';
                 setTimeout(() => {
                     window.location.href = href;
-                }, 150);
+                }, 70);
             }
         });
     });

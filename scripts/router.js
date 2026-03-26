@@ -1,8 +1,9 @@
 const routes = {
-    "/": "../index.html",
-    "/about-us": "../pages-html/about-page.html",
-   "/services": "../pages-html/services.html",
-    "/contact-us": "../pages-html/contact-us.html"
+    "/": "/index.html",
+    "/about-us": "/pages-html/about-page.html",
+   "/services": "/pages-html/services-page.html",
+    "/contact-us": "/pages-html/contact-us-page.html",
+    "/book-now": "/pages-html/booking.html"
 };
 
 function loadPage(path){
@@ -29,8 +30,11 @@ document.querySelectorAll(".nav-link").forEach(link =>{
 window.addEventListener("DOMContentLoaded", () => {
     loadPage(location.pathname);
 });
+window.addEventListener("popstate", () => {
+    loadPage(location.pathname);
+});
 
-loadPage("/index.html");
+loadPage(location.pathname);
 
 fetch("/section-html/home.html")
     .then(response => response.text())
