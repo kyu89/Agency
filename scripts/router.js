@@ -16,15 +16,23 @@ function loadPage(path){
     });
 };
 
-document.querySelectorAll(".nav-link").forEach(link =>{
-    link.addEventListener("click", function(e){
+document.addEventListener("click", function(e) {
+    const link = e.target.closest(".nav-link");
 
-    e.preventDefault();
-    const path=this.getAttribute("href");
-    history.pushState({}, "", path);
-    loadPage(path);
+    if (!link) return;
 
-});    
+    const href = link.getAttribute("href");
+
+    if (
+        href &&
+        !href.startsWith("http") &&
+        !href.startsWith("#")
+    ) {
+        e.preventDefault();
+
+        history.pushState({}, "", href);
+        loadPage(href);
+    }
 });
 
 window.addEventListener("DOMContentLoaded", () => {
@@ -33,8 +41,6 @@ window.addEventListener("DOMContentLoaded", () => {
 window.addEventListener("popstate", () => {
     loadPage(location.pathname);
 });
-
-loadPage(location.pathname);
 
 fetch("/section-html/home.html")
     .then(response => response.text())
