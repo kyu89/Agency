@@ -37,6 +37,9 @@ body{
     overflow-x: hidden ;
 }
 
+#content{
+    display: none;
+}
 #home{
     height: 100%;
     position: relative;
