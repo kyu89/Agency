@@ -46,7 +46,7 @@ function navigationColor() {
         path.includes('about') ||
         path.includes('services') ||
         path.includes('contact') ||
-        path.includes('booking');
+        path.includes('book');
 
     function updateNav() {
         const scrolled = window.scrollY > 80;
