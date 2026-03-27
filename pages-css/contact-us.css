@@ -34,6 +34,9 @@ body{
     background: #00b4a6;
 }
 
+#content{
+    display: none;
+}
 .header-container{
     width: 100%;
     height: 100%;

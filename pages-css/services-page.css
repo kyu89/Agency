@@ -36,6 +36,10 @@ body{
     background: #00b4a6;
 }
 
+#content{
+    display: none;
+}
+
 .header-container{
     display: flex;
     max-width: 100%;
