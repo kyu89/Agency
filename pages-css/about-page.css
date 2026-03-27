@@ -36,9 +36,6 @@ body{
     background: #00b4a6;
 }
 
-#content{
-    display: none;
-}
 
 .about-us-container{
     display: flex;
