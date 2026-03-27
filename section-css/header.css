@@ -220,13 +220,11 @@
         font-size: 0.9rem;
     }
 }
-
 @media (min-width: 992px) and (max-width: 1199px) {
 
     .nav-bar {
         padding: 10px 40px;
     }
-
     .navigation {
         gap: 20px;
     }

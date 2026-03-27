@@ -212,7 +212,7 @@ body{
     cursor: pointer;
     font-family: "Poppins", sans-serif;
     transition: 0.3s ease-in-out;
-    max-width: 30%;
+    max-width: 100%;
     margin-top: 20px;
 }
 
@@ -230,7 +230,7 @@ body{
     justify-content: flex-start;
     align-items: center;
     gap: 20px;
-    width: 60%;
+    width: 100%;
 }
 
 .steps {
@@ -249,6 +249,7 @@ body{
   justify-content: center;
   align-items: center;
   transition: 0.3s ease-in-out;
+  font-size: 1.25rem;
 }
 
 .step.active {
@@ -304,3 +305,74 @@ body{
   background-color: #0f172a;
 }
 
+@media (max-width: 575px){
+    .booking-container{
+        padding: 20px;
+    }
+    .page-title h1{
+        font-size: 2rem;
+    }
+    .page-title p{
+        font-size: .85rem;
+        width: 100%;
+        text-align: center;
+    }
+    .form-container{
+        padding: 0px;
+    }
+    .form-container form{
+        padding: 0;
+    }
+    .step{
+        font-size: .85rem;
+    }
+    .form-step h2{
+        font-size: 2rem;
+    }
+    .form-step.active input{
+        width: 100%;
+    }
+    .form-step button{
+         padding: 10px;
+        font-size: .9rem;
+        max-width: 250px;
+        margin: 0;
+    }
+    .select-wrapper{
+        width: 100%;
+    }
+    .toastify {
+        left: auto !important;
+        right: 12px !important;
+        width: calc(100vw - 32px) !important;
+        max-width: 200px !important;
+        box-sizing: border-box !important;
+        margin: 0 !important;
+        top: 12px !important;
+        font-size: 13px !important;
+         text-align: end;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 991px) {
+        .toastify {
+        right: 12px !important;
+        left: auto !important;
+        width: 180px !important;
+        max-width: calc(100vw - 24px) !important;
+        font-size: 13.5px !important;
+        top: 12px !important;
+         text-align: end;
+    }
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+    .toastify {
+        right: 14px !important;
+        left: auto !important;
+        width: 180px !important;
+        max-width: calc(100vw - 28px) !important;
+        font-size: 14px !important;
+        top: 12px !important;
+        text-align: end;
+    }
+}

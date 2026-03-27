@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const message    = document.getElementById("message").value.trim();
 
         if (!first_name || !last_name || !email || !subject || !message) {
-            showToast("⚠️ Please fill in all fields.", "linear-gradient(135deg, #f59e0b, #f97316)");
+            showToast("Please fill in all fields.", "linear-gradient(135deg, #f59e0b, #f97316)");
             return;
         }
 
@@ -64,7 +64,7 @@ function showToast(text, backgroundColor) {
             borderRadius: "12px",
             padding: "14px 18px",
             fontSize: "14px",
-            FontFamily: "Poppins",
+            fontFamily: "Poppins",
             fontWeight: "500",
             boxShadow: "0 10px 25px rgba(0, 0, 0, 0.27)",
             backdropFilter: "blur(6px)",

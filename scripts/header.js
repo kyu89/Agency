@@ -163,7 +163,7 @@ function setupPageTransition() {
                 document.body.style.opacity = '0.8';
                 setTimeout(() => {
                     window.location.href = href;
-                }, 70);
+                }, 80);
             }
         });
     });

@@ -6,26 +6,16 @@
     <meta name="description" content="">
     <meta name="keywords" content="">
     <title>Assistora | Booking</title>
-
-    <!-- 🔥 Optional preload (only 1 critical CSS) -->
     <link rel="preload" href="/section-css/header.css" as="style">
-
-    <!-- CSS -->
     <link rel="stylesheet" href="/section-css/header.css">
     <link rel="stylesheet" href="/section-css/footer.css">
     <link rel="stylesheet" href="/pages-css/booking.css">
-
-    <!-- Icons -->
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.webp">
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.webp">
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.webp">
     <link rel="manifest" href="/assets/site.webmanifest">
-
-    <!-- CDN CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js@1.12.0/src/toastify.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <!-- JS (FIXED: defer) -->
     <script src="https://cdn.jsdelivr.net/npm/toastify-js@1.12.0/src/toastify.min.js" defer></script>
 </head>
 <body>
@@ -40,15 +30,11 @@
         <div class="form-container">
             <form id="bookingForm" novalidate>
                 <input type="text" id="website" style="display:none">
-
-                <!-- STEP INDICATOR -->
                 <div class="steps">
                   <span class="step active">1</span>
                   <span class="step">2</span>
                   <span class="step">3</span>
                 </div>
-            
-                <!-- STEP 1 -->
                 <div class="form-step active">
                   <h2>Client Information</h2>
                 <div class="input-group">
@@ -65,8 +51,6 @@
                 </div>
                   <button id="next1">Next →</button>
                 </div>
-            
-                <!-- STEP 2 -->
                 <div class="form-step">
                   <h2>Project Details</h2>
                 <div class="select-wrapper">
@@ -77,8 +61,7 @@
                     <option>Web Development</option>
                     <option >Others</option>
                   </select>
-                 </div>
-                  
+                 </div>          
                 <div class="input-group">
                   <textarea id="details" placeholder="Describe your project" required></textarea>
                   <label for="details">Describe your project</label>
@@ -88,11 +71,8 @@
                   <button type="button" id="next2">Next →</button>
                 </div>
                 </div>
-            
-                <!-- STEP 3 -->
                 <div class="form-step">
                   <h2>Budget & Deadline</h2>
-                
                 <div class="select-wrapper">
                   <select id="budget" required>
                     <option value="">Budget Range</option>
@@ -101,7 +81,6 @@
                     <option value="20000-999999">₱20,000+</option>
                   </select>
                 </div>
-
                 <div class="input-group">
                   <input type="date" id="deadline" required>
                   <label for="deadline">Deadline</label>
@@ -109,7 +88,6 @@
                   <button type="button" id="back2">← Back</button>
                   <button type="submit">Submit</button>
                 </div>
-            
             </form>
         </div>
     </div>

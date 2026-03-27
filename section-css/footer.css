@@ -205,9 +205,6 @@
 .row-two a:hover {
     color: #e5e7eb;
 }
-/* ============================================================
-   PRIVACY MODAL — unchanged
-   ============================================================ */
 
 .privacy-modal {
     position: fixed;
@@ -306,11 +303,7 @@
     }
 }
 
-/* =========================
-   SMALL TABLET (768 ↓ 576)
-========================= */
-
-@media (max-width: 768px) {
+@media (min-width: 576px) and (max-width: 991px) {
 
     .column-2,
     .column-3 {

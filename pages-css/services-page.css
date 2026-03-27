@@ -1,6 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Changa+One:ital@0;1&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @import url(/section-css/cta.css);
+
+html{
+      width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    box-sizing: border-box;
+}
 body{
     width: 100%;
     box-sizing: border-box;
@@ -8,6 +15,7 @@ body{
     padding: 0;
      font-family: "Poppins", sans-serif;
     background-color: #e5e7eb;
+    overflow-x: hidden;
 }
 
 ::-webkit-scrollbar {
@@ -69,7 +77,7 @@ body{
 .page-title p{
     color: #383535;
     font-family: inherit;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     width: 60%;
     text-align: center;
     margin-bottom: 30px;
@@ -85,7 +93,7 @@ body{
     cursor: pointer;
     font-family: "Poppins", sans-serif;
     transition: 0.3s ease-in-out;
-    max-width: 30%;
+    max-width: 100%;
 }
 
 .page-title button:hover{
@@ -109,10 +117,18 @@ body{
 
 .side{
     width: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
 
 .side-img{
     width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
 }
 
 .services img{
@@ -127,11 +143,13 @@ body{
     font-family: inherit;
     color: #007e76;
     font-size: 3rem;
+    width: 100%;
 }
 
 .services p, .services span{
     font-family: inherit;
     font-size: 1.2rem;
+    width: 100%;
 }
 
 .one, .three, .five{
@@ -139,6 +157,8 @@ body{
     color: #e5e7eb;
     display: flex;
     flex-direction: row-reverse;
+    justify-content: center;
+    align-items: center;
 }
 
 .two, .four, .six{
@@ -146,6 +166,8 @@ body{
     display: flex;
     flex-direction: row;
     background-color: #e5e7eb;
+    justify-content: center;
+    align-items: center;
 }
 
 .how-it-works{
@@ -249,4 +271,109 @@ body{
     font-size: 1.75rem;
     display: none;
     transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+@media (max-width: 575px){
+    .services-container, .how-it-works{
+        padding: 20px;
+    }
+    .page-title{
+      width: 100%;
+      padding: 0;
+    }
+    .page-title h1{
+        font-size: 2rem;
+        width: 100%;
+        text-align: center;
+    }
+    .page-title p{
+        width: 100%;
+        font-size: .85rem;
+    }
+    .page-title button{
+        padding: 10px;
+        font-size: .9rem;
+        max-width: 250px;
+    }
+    .services{
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        gap: 10px;
+    }
+    .side-img{
+        width: 100%;
+    }
+    .side-img img{
+        height: 200px;
+        width: 200px;
+        object-fit: cover;
+        object-position: center;
+    }
+    .side{
+        width: 100%;
+        align-items: center;
+    }
+    .side h2{
+        font-size: 1.75rem;
+        width: 100%;
+        text-align: center;
+    }
+    .side p, .side span{
+        font-size: .85rem;
+        width: 100%;
+        text-align: justify;
+    }
+    .how-it-works h2{
+        font-size: 2rem;
+    }
+    .row-container{
+        flex-direction: column;
+    }
+    .step{
+        width: 100%;
+    }
+    .step h4, .step span{
+        font-size: 1rem;
+    }
+    .step p{
+        font-size: .85rem;
+    }
+    .scroll-button {
+    width: 45px;
+    height: 45px;
+    font-size: 1.2rem;
+    bottom: 15px;
+    right: 15px;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 991px) {
+    .services-container{
+        padding: 20px;
+    }
+    .page-title p{
+        width: 80%;
+    }
+     .scroll-button {
+    width: 7%;
+    height: 6%;
+    font-size: 1.2rem;
+    bottom: 15px;
+    right: 15px;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+    .services-container{
+        padding: 20px;
+    }
+      .scroll-button {
+    width: 7%;
+    height: 6%;
+    font-size: 1.2rem;
+    bottom: 15px;
+    right: 15px;
+    }
 }

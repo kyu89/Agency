@@ -1,8 +1,6 @@
-// Firebase imports
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
 import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
-// 🔥 Your Firebase Config
 const firebaseConfig = {
   apiKey: "AIzaSyBCuAtP-ak_HFMP29d3iNTl9QzmhNyTf3k",
   authDomain: "agency-project-774a0.firebaseapp.com",
@@ -12,14 +10,11 @@ const firebaseConfig = {
   appId: "1:840588106289:web:7fb86917f39934d3219310"
 };
 
-// Init Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-// Form
 const form = document.getElementById("bookingForm");
 
-// ====================== TOAST ======================
 function showToast(text, background) {
   Toastify({
    text,
@@ -33,7 +28,7 @@ function showToast(text, background) {
             borderRadius: "12px",
             padding: "14px 18px",
             fontSize: "14px",
-            FontFamily: "Poppins",
+            fontFamily: "Poppins",
             fontWeight: "500",
             boxShadow: "0 10px 25px rgba(0, 0, 0, 0.27)",
             backdropFilter: "blur(6px)",
@@ -43,17 +38,14 @@ function showToast(text, background) {
   }).showToast();
 }
 
-// ====================== SUBMIT ======================
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
 
   const btn = form.querySelector('button[type="submit"]');
   const originalText = btn.innerHTML;
 
-  // Honeypot check
   if (document.getElementById("website").value !== "") return;
 
-  // Get values
   const fullName = document.getElementById("name").value.trim();
   const email = document.getElementById("email").value.trim();
   const company = document.getElementById("company").value.trim();
@@ -62,21 +54,17 @@ form.addEventListener("submit", async (e) => {
   const budgetValue = document.getElementById("budget").value;
   const deadlineValue = document.getElementById("deadline").value;
 
-  // Validation
   if (!fullName || !email || !serviceType || !description || !budgetValue || !deadlineValue)  {
-    showToast("⚠️ Please fill in all required fields.", "linear-gradient(135deg, #f59e0b, #f97316)");
+    showToast("Please fill in all required fields.", "linear-gradient(135deg, #f59e0b, #f97316)");
     return;
   }
 
-  // Budget split
   const [min, max] = budgetValue.split("-");
   const budgetMin = parseInt(min);
   const budgetMax = parseInt(max);
 
-  // Deadline convert
   const deadline = deadlineValue ? new Date(deadlineValue) : null;
 
-  // Disable button
   btn.innerHTML = "Submitting...";
   btn.disabled = true;
 
@@ -103,18 +91,17 @@ try {
 
   form.reset();
 
-  // 🔥 FORCE step reset AFTER DOM updates
   setTimeout(() => {
     currentStep = 0;
     showStep(currentStep);
   }, 0);
 
-  showToast("✅ Request submitted successfully!", "linear-gradient(135deg, #22c55e, #16a34a)");
+  showToast("Request submitted successfully!", "linear-gradient(135deg, #22c55e, #117737)");
 
 } catch (error) {
   console.error(error);
 
-  showToast("❌ Failed to submit. Try again.", "linear-gradient(135deg, #ef4444, #dc2626)");
+  showToast("Failed to submit. Try again.", "linear-gradient(135deg, #881515, #dc2626)");
 }
 
   btn.innerHTML = originalText;
@@ -133,17 +120,16 @@ function showStep(index) {
   });
 }
 
-// NEXT / BACK BUTTONS
 document.getElementById("next1").onclick = (e) => {
   e.preventDefault();
-  e.stopPropagation(); // 🔥 important
+  e.stopPropagation();
 
   const name = document.getElementById("name").value.trim();
   const email = document.getElementById("email").value.trim();
    const companyName = document.getElementById("company").value.trim();
 
   if (!name || !email || !companyName) {
-    showToast("⚠️ Fill required fields", "linear-gradient(135deg, #f59e0b, #f97316)");
+    showToast("Fill required fields", "linear-gradient(135deg, #f59e0b, #f97316)");
     return;
   }
 
@@ -153,13 +139,13 @@ document.getElementById("next1").onclick = (e) => {
 
 document.getElementById("next2").onclick = (e) => {
   e.preventDefault();
-  e.stopPropagation(); // 🔥 important
+  e.stopPropagation(); 
 
   const service = document.getElementById("service").value.trim();
   const details = document.getElementById("details").value.trim();
 
   if (!service || !details) {
-    showToast("⚠️ Fill required fields", "linear-gradient(135deg, #f59e0b, #f97316)");
+    showToast("Fill required fields", "linear-gradient(135deg, #f59e0b, #f97316)");
     return;
   }
 
