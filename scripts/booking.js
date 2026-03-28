@@ -88,6 +88,11 @@ form.addEventListener("submit", async (e) => {
 
 try {
   await addDoc(collection(db, "bookings"), data);
+  
+  gtag('event', 'booking_submitted', {
+        event_category: 'Booking',
+        event_label: 'User Booking Form'
+    });
 
   form.reset();
 

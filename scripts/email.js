@@ -36,6 +36,10 @@ document.addEventListener("DOMContentLoaded", () => {
             const result = await response.json();
 
             if (response.ok && result.success) {
+                gtag('event', 'contact_submitted', {
+                    event_category: 'Contact',
+                     event_label: 'Contact Form'
+              });
                 showToast("Message sent successfully!", "linear-gradient(135deg, #22c55e, #117737)");
                 form.reset();
             } else {

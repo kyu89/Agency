@@ -1,20 +1,15 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // FIX: .nav-bar is injected by components.js dynamically, so it may
-    // not exist at DOMContentLoaded. Use a MutationObserver to wait for
-    // it to appear before wiring up any nav logic.
     const navAlreadyExists = document.querySelector('.nav-bar');
 
     if (navAlreadyExists) {
-        // Component was injected synchronously — safe to init immediately
         setupHeaderNav();
         navigationColor();
         setupPageTransition();
     } else {
-        // Wait for components.js to inject the nav into #header
         const observer = new MutationObserver(() => {
             const nav = document.querySelector('.nav-bar');
             if (nav) {
-                observer.disconnect();  // stop watching once found
+                observer.disconnect(); 
                 setupHeaderNav();
                 navigationColor();
                 setupPageTransition();
@@ -28,10 +23,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
-
-/* =========================
-   NAVIGATION COLOR
-========================= */
 function navigationColor() {
     const navigation = document.querySelector('.nav-bar');
     if (!navigation) return;
@@ -75,10 +66,6 @@ function navigationColor() {
     window.addEventListener('scroll', updateNav);
 }
 
-
-/* =========================
-   HEADER NAV
-========================= */
 function setupHeaderNav() {
     const hamburger = document.getElementById('hamburger');
     const navigation = document.getElementById('navigation');
@@ -95,18 +82,16 @@ function setupHeaderNav() {
         path.includes('about') ||
         path.includes('services') ||
         path.includes('contact') ||
-        path.includes('booking');
+        path.includes('book');
 
-    /* ACTIVE LINK */
     (function setActiveFromPath() {
         try {
             let pageKey = '';
             if (path.includes('about'))        pageKey = 'about';
             else if (path.includes('services')) pageKey = 'services';
             else if (path.includes('contact'))  pageKey = 'contact us';
-            else if (path.includes('booking'))  pageKey = 'booking';
+            else if (path.includes('book'))  pageKey = 'book';
             else                                pageKey = 'home';
-
             navLinks.forEach(l => {
                 const text = (l.textContent || '').trim().toLowerCase();
                 l.classList.toggle('active', text === pageKey);
@@ -114,14 +99,12 @@ function setupHeaderNav() {
         } catch (e) {}
     })();
 
-    /* INITIAL COLORS */
     if (isSpecialPage) {
         cName.style.color = '#007e76';
         navLinks.forEach(link => link.style.color = '#007e76');
         spans.forEach(span => span.style.backgroundColor = '#007e76');
     }
 
-    /* GET STARTED HOVER FIX */
     if (getStarted) {
         const gsLink = getStarted.querySelector('a');
         if (gsLink) {
@@ -134,8 +117,6 @@ function setupHeaderNav() {
         }
     }
 }
-
-    /* HAMBURGER */
     document.addEventListener("click", function (e) {
     const hamburger = e.target.closest("#hamburger");
     const navigation = document.getElementById("navigation");
@@ -145,9 +126,7 @@ function setupHeaderNav() {
     hamburger.classList.toggle("active");
     navigation.classList.toggle("active");
 });
-/* =========================
-   PAGE TRANSITION
-========================= */
+
 function setupPageTransition() {
     document.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', function (e) {
