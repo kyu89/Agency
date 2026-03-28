@@ -1,19 +1,17 @@
-
 // Cache for loaded sections to avoid redundant requests
 const sectionCache = {};
 
 // Sections to load with their IDs
 const sectionsToLoad = [
-    { id: 'header', path: '/section-html/header.html', callback: setupHeaderNav },
+    { id: 'header', path: '/section-html/header.html', callback: 'setupHeaderNav' },
     { id: 'home', path: '/section-html/home.html' },
     { id: 'about', path: '/section-html/about.html' },
     { id: 'services', path: '/section-html/services.html' },
-    { id: 'testimonials', path: '/section-html/testimonials.html', callback: setupTestimonialsCarousel },
+    { id: 'testimonials', path: '/section-html/testimonials.html', callback: 'setupTestimonialsCarousel' },
     { id: 'cta', path: '/section-html/cta.html' },
     { id: 'footer', path: '/section-html/footer.html' }
 ];
 
-// Fetch a single section with caching
 async function fetchSection(section) {
     try {
         // Return cached data if available
@@ -52,8 +50,8 @@ async function loadAllSections() {
                 if (element) {
                     element.innerHTML = data;
                     // Run callback if provided (e.g., for dynamic setup)
-                    if (section.callback && typeof section.callback === 'function') {
-                        section.callback();
+                    if (section.callback && typeof window[section.callback] === 'function') {
+                        window[section.callback]();
                     }
                 }
             }
