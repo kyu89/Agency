@@ -65,6 +65,15 @@ form.addEventListener("submit", async (e) => {
 
   const deadline = deadlineValue ? new Date(deadlineValue) : null;
 
+   if (document.getElementById("website").value !== "") return;
+
+  // ✅ CAPTCHA
+  const captcha = grecaptcha.getResponse();
+  if (!captcha) {
+    showToast("Please verify you are not a robot.", "#dc2626");
+    return;
+  }
+
   btn.innerHTML = "Submitting...";
   btn.disabled = true;
 
@@ -87,7 +96,7 @@ form.addEventListener("submit", async (e) => {
   };
 
 try {
-  await addDoc(collection(db, "bookings"), data);
+  await addDoc(collection(db, "bookings"), data, captcha);
   
   gtag('event', 'booking_submitted', {
         event_category: 'Booking',
@@ -95,6 +104,7 @@ try {
     });
 
   form.reset();
+  grecaptcha.reset();
 
   setTimeout(() => {
     currentStep = 0;
@@ -172,3 +182,4 @@ document.addEventListener("DOMContentLoaded", () => {
   currentStep = 0;
   showStep(currentStep);
 });
+

@@ -18,9 +18,17 @@ document.addEventListener("DOMContentLoaded", () => {
         const subject    = document.getElementById("subject").value.trim();
         const message    = document.getElementById("message").value.trim();
 
+        if (document.querySelector('[name="company"]')?.value !== "") return;
+
         if (!first_name || !last_name || !email || !subject || !message) {
             showToast("Please fill in all fields.", "linear-gradient(135deg, #f59e0b, #f97316)");
             return;
+        }
+        const captcha = grecaptcha.getResponse();
+
+        if (!captcha) {
+          showToast("Please verify you are not a robot.");
+          return;
         }
 
         submitBtn.innerHTML = "Sending...";
@@ -30,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const response = await fetch("/.netlify/functions/sendEmail", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ first_name, last_name, email, subject, message }),
+                body: JSON.stringify({ first_name, last_name, email, subject, message, captcha }),
             });
 
             const result = await response.json();
@@ -42,6 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
               });
                 showToast("Message sent successfully!", "linear-gradient(135deg, #22c55e, #117737)");
                 form.reset();
+                grecaptcha.reset();
             } else {
                 showToast(`${result.error || "Failed to send message. Please try again."}`, "linear-gradient(135deg, #881515, #dc2626)");
             }
@@ -81,3 +90,4 @@ function showToast(text, backgroundColor) {
         className: "toastify-premium"
     }).showToast();
 }
+
