@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="google-site-verification" content="xlTPzs3lMkDTd1Yaj7jXr5l9duvF9xIBMPgRqw4Qc0Y" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/admin/admin-css/admin.css">
+         <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.webp">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.webp">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.webp">
+    <link rel="manifest" href="/assets/site.webmanifest">
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Bungee&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js@1.12.0/src/toastify.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js@1.12.0/src/toastify.min.js" defer></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BLVQGYQ0QK"></script>
+</head>
+<body>
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <h2>Assistora</h2>
+            <ul>
+                <li data-page="dashboard" class="active">Dashboard</li>
+                <li data-page="bookings">Bookings</li>
+                <li data-page="archived">Archived</li>
+                <li data-page="settings">Settings</li>
+                <li><button id="logout" style="background: none; border: none; color: inherit; cursor: pointer; width: 100%; text-align: left; padding: 0; font: inherit;">Logout</button></li>
+            </ul>
+        </aside>
+        <!-- MAIN CONTENT -->
+  <main class="content">
+
+    <!-- DASHBOARD -->
+    <div id="dashboardPage" class="page active">
+      <h1>Dashboard</h1>
+
+      <div class="cards">
+        <div class="card stat">
+          <h3>Total</h3>
+          <p id="totalBookings">0</p>
+        </div>
+
+        <div class="card stat">
+          <h3>Pending</h3>
+          <p id="pendingBookings">0</p>
+        </div>
+
+        <div class="card stat">
+          <h3>Approved</h3>
+          <p id="approvedBookings">0</p>
+        </div>
+
+        <div class="card stat">
+          <h3>Rejected</h3>
+          <p id="rejectedBookings">0</p>
+        </div>
+      </div>
+ <!-- ANALYTICS -->
+    <div id="analytics" class="analytics-section">
+      <h1>Analytics</h1>
+
+      <div class="analytics-grid">
+        <div class="analytics-card service-stats">
+          <div class="card-header">
+            <h3>Most Requested Services</h3>
+          </div>
+          <div id="serviceStats" class="stats-list"></div>
+        </div>
+
+        <div class="analytics-card booking-trends">
+          <div class="card-header">
+            <h3>Service Trend Over Time</h3>
+          </div>
+          <div id="bookingTrends" class="trends-list"></div>
+        </div>
+
+        <div class="analytics-card conversion-rate">
+          <div class="card-header">
+            <h3>Conversion Rate (This Month)</h3>
+          </div>
+          <div id="conversionRate" class="conversion-container"></div>
+        </div>
+      </div>
+    </div>
+
+    </div>
+
+    <!-- BOOKINGS -->
+    <div id="bookingsPage" class="page">
+      <h1>Bookings</h1>
+
+      <div class="bookings-header">
+        <input type="text" id="search" placeholder="Search by name/email">
+        <div class="filter-controls">
+          <select id="filterStatus" class="filter-select">
+            <option value="">All Status</option>
+            <option value="pending">Pending</option>
+            <option value="approved">Approved</option>
+            <option value="rejected">Rejected</option>
+            <option value="completed">Completed</option>
+          </select>
+          <select id="filterPriority" class="filter-select">
+            <option value="">All Priority</option>
+            <option value="low">Low</option>
+            <option value="normal">Normal</option>
+            <option value="high">High</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="table-container">
+        <table class="bookings-table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Service</th>
+              <th>Date</th>
+              <th>Status</th>
+              <th>Priority</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="bookingsTableBody">
+            <tr>
+              <td colspan="7" style="text-align: center; padding: 40px; color: #999;">Loading bookings...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ARCHIVED BOOKINGS -->
+    <div id="archivedPage" class="page">
+      <h1>Archived Bookings</h1>
+
+      <div class="bookings-header">
+        <input type="text" id="searchArchived" placeholder="Search by name/email">
+      </div>
+
+      <div class="table-container">
+        <table class="bookings-table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Service</th>
+              <th>Date</th>
+              <th>Status</th>
+              <th>Priority</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="archivedTableBody">
+            <tr>
+              <td colspan="7" style="text-align: center; padding: 40px; color: #999;">Loading archived bookings...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- SETTINGS -->
+    <div id="settingsPage" class="page">
+      <h1>Settings</h1>
+      <p>Settings page content goes here.</p>
+    </div>
+
+  </main>
+    </div>
+
+    <!-- VIEW BOOKING MODAL -->
+    <div id="viewBookingModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>Booking Details</h2>
+          <button class="modal-close" onclick="closeViewModal()">&times;</button>
+        </div>
+        <div class="modal-body" id="viewBookingContent">
+          <!-- Content will be populated by JavaScript -->
+        </div>
+        <div class="modal-footer">
+          <button class="btn-secondary" onclick="closeViewModal()">Close</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- EDIT BOOKING MODAL -->
+    <div id="editBookingModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>Edit Booking</h2>
+          <button class="modal-close" onclick="closeEditModal()">&times;</button>
+        </div>
+        <div class="modal-body">
+          <form id="editBookingForm">
+            <div class="form-row">
+              <div class="form-group">
+                <label>Status</label>
+                <select id="editStatus" required>
+                  <option value="pending">Pending</option>
+                  <option value="approved">Approved</option>
+                  <option value="rejected">Rejected</option>
+                  <option value="completed">Completed</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label>Priority</label>
+                <select id="editPriority" required>
+                  <option value="low">Low</option>
+                  <option value="normal">Normal</option>
+                  <option value="high">High</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Assigned To</label>
+              <input type="text" id="editAssignedTo" placeholder="Enter admin name">
+            </div>
+
+            <div class="form-group">
+              <label>Notes</label>
+              <textarea id="editNotes" placeholder="Add internal notes..." rows="4"></textarea>
+            </div>
+
+            <div class="form-group">
+                <button type="button" id="editArchived">Archive</button>
+                <span>Note: Archiving will move the booking to the archived section</span>
+            </div>
+
+            <input type="hidden" id="editBookingId">
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button class="btn-secondary" onclick="closeEditModal()">Cancel</button>
+          <button class="btn-primary" onclick="saveBookingChanges()">Save Changes</button>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="/admin/admin-scripts/dashboardAuth.js"></script>
+    <script type="module" src="/admin/admin-scripts/dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,204 @@
+html, body{
+    height: 100vh;
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    font-family: "Poppins", sans-serif;
+    background-color: #eeeff0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.login-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.logo img{
+    width: 100px;
+    height: 100px;
+    margin: 0;
+}
+.logo h1{
+    color: #007e76;
+    font-family: "Bungee", sans-serif;
+    font-size: 3rem;
+    margin: 0;
+}
+
+#loginForm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 25%;
+    height: auto;
+    background-color: #e5e7eb;
+    border-radius: 10px;
+    padding: 15px 20px;
+    box-shadow: 1px 4px 10px rgba(0, 0, 0, 0.173);
+    border: none;
+    position: relative;
+}
+
+form h2{
+    font-family: inherit;
+    color: #007e76;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.input-group {
+    position: relative;
+    width: 100%;
+}
+
+form input{
+    width: 100%;
+    padding: 12px 10px;
+    margin: 20px 0 10px 0;
+    border-radius: 5px;
+    border: 2px solid #b8babe49;
+    box-sizing: border-box;
+    font-family: inherit;
+    font-size: 1rem;
+    background-color: #e5e7eb;
+    position: relative;
+    transition: all 0.3s ease;
+    outline: none;
+    box-shadow: 1px 1px 10px #4243431f;
+    color: #007e76;
+}
+
+form input::placeholder {
+    color: transparent;
+}
+
+form input:focus {
+    border-color: #007e76;
+    outline: none;
+    background-color: #e5e7eb;
+}
+
+form label{
+    position: absolute;
+    left: 10px;
+    top: 32px;
+    color: #007e76;
+    font-family: inherit;
+    font-size: 1.05rem;
+    background:transparent;
+    transition: all 0.3s ease;
+    padding: 0 8px;
+    pointer-events: none;
+}
+
+form input:focus + label,
+form input:not(:placeholder-shown) + label {
+    top: 10px;
+    font-size: 0.85rem;
+    color: #007e76;
+    font-weight: 600;
+    background-color: #e5e7eb;
+}
+
+#graph{
+    position: absolute;
+    top: 6%;
+    left: 60%;
+    width: 80%;
+}
+#graph2{
+    position: absolute;
+    bottom: 20%;
+    right: 70%;
+    width: 60%;
+}
+
+#googleLogin{
+    width: 100%;
+    outline: none;
+    border: none;
+    color: #007e76;
+    font-family: inherit;
+    font-size: 1rem;
+    margin: 20px 0;
+    padding: 10px;
+    background-color: #e5e7eb;
+    box-shadow: 1px 1px 10px #4243431f;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    border: 1px solid #b8babe49;
+}
+
+#googleLogin:hover, #googleLogin:focus{
+    background-color: #007e76;
+    border-color: #007e76;
+    color: #e5e7eb;
+    box-shadow: 1px 1px 10px #4243433f;
+}
+
+#googleLogin:hover i, #googleLogin:focus i {
+    color: #e5e7eb;
+}
+
+.separator p{
+    color: #007e76;
+    font-family: inherit;
+    font-size: 1rem;
+    margin: 0;
+}
+
+.separator{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+hr{
+    flex: 1;
+    border: none;
+    height: 2px;
+    background-color: #b8babe49;
+    margin: 0 10px;
+}
+
+button[type = 'submit']{
+    padding: 12px 20px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    background: #007e76;
+    color: #e5e7eb;
+    cursor: pointer;
+    font-family: "Poppins", sans-serif;
+    transition: 0.3s ease-in-out;
+    white-space: nowrap;       
+    max-width: 100%;
+    width: 300px;
+    margin-top: 20px;
+}
+
+button[type = 'submit']:hover{
+    background: #0f172a;
+    box-shadow: 0 8px 40px 0px #4a4a4a9e;
+    color: #e5e7eb;
+}

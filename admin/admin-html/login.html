@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="google-site-verification" content="xlTPzs3lMkDTd1Yaj7jXr5l9duvF9xIBMPgRqw4Qc0Y" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin | Login</title>
+    <link rel="stylesheet" href="/admin/admin-css/login.css">
+     <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.webp">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.webp">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.webp">
+    <link rel="manifest" href="/assets/site.webmanifest">
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Bungee&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js@1.12.0/src/toastify.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js@1.12.0/src/toastify.min.js" defer></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BLVQGYQ0QK"></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</head>
+<body>
+    <div class="login-container">
+        <img src="/assets/graph.webp" alt="" id="graph">
+        <img src="/assets/graph2.webp" alt="" id="graph2">
+        <div class="logo">
+            <img src="/assets/agency_logo.webp" alt="Assistora Logo" loading="lazy" width="100px" height="100px">
+            <h1>Assistora</h1>  
+        </div>
+        <form action="/admin/login" method="POST" id="loginForm">
+            <h2>Admin Login</h2>
+            <div class="input-group">
+                <input type="text" id="username" name="username" placeholder="Username" required>
+                <label for="username">Username</label>
+            </div>
+            <div class="input-group">
+                <input type="password" id="password" name="password" placeholder="Password" required>
+                <label for="password">Password</label>
+            </div>
+            <div class="separator">
+                <hr><p>or</p><hr>
+            </div>
+            <button type="button" id="googleLogin"><i class="fa-brands fa-google"></i>Sign-in with Google</button>
+            <div class="g-recaptcha" data-sitekey="6LdHI50sAAAAAN45tMvWCg-xr4PmhrZMEbFz4M1x"></div>
+            <button type="submit">Login</button>
+        </form>
+    </div>
+    <script type="module" src="/admin/admin-scripts/login.js"></script>
+</body>
+</html>
