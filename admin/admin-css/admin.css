@@ -16,7 +16,7 @@ body {
 
 /* SIDEBAR */
 .sidebar {
-  width: 18%;
+  width: 16%;
   background: #0f172a;
   color: #e5e7eb;
   padding: 20px;
@@ -680,4 +680,289 @@ body {
   color: #383535;
   font-weight: 600;
   word-break: break-word;
+}
+
+/* SETTINGS PAGE */
+.settings-section {
+  margin-bottom: 40px;
+}
+
+.settings-section h2 {
+  font-size: 1.3rem;
+  color: #0f172a;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #007e76;
+}
+
+.settings-card {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e2e8f0;
+}
+
+.setting-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.setting-item:last-child {
+  border-bottom: none;
+}
+
+.setting-label {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.setting-icon {
+  font-size: 1.5rem;
+  color: #007e76;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #e0f7f5;
+  border-radius: 8px;
+}
+
+.setting-name {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #383535;
+  margin: 0 0 5px 0;
+}
+
+.setting-value {
+  font-size: 1.1rem;
+  color: #007e76;
+  margin: 0;
+  font-weight: 600;
+}
+
+.setting-description {
+  font-size: 0.9rem;
+  color: #999;
+  margin: 5px 0 0 0;
+}
+
+/* FORM STYLES FOR SETTINGS */
+.settings-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group-settings {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group-settings label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #383535;
+  margin-bottom: 8px;
+}
+
+.form-group-settings input {
+  padding: 12px 15px;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  font-family: "Poppins", sans-serif;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+
+.form-group-settings input:focus {
+  outline: none;
+  border-color: #007e76;
+  box-shadow: 0 0 0 3px rgba(0, 126, 118, 0.1);
+}
+
+.btn-primary-settings {
+  padding: 12px 30px;
+  background: #007e76;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  align-self: flex-start;
+}
+
+.btn-primary-settings:hover {
+  background: #006b63;
+  box-shadow: 0 4px 12px rgba(0, 126, 118, 0.3);
+}
+
+.btn-primary-settings:disabled {
+  background: #999;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* BOOKING CONTROL */
+.booking-control-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background: linear-gradient(135deg, #e0f7f5 0%, #f0fffe 100%);
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.booking-control-info {
+  flex: 1;
+}
+
+/* TOGGLE SWITCH */
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+  cursor: pointer;
+}
+
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #007e76;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+.booking-status-display {
+  padding: 15px;
+  background: #f8fafc;
+  border-left: 4px solid #007e76;
+  border-radius: 4px;
+  margin-top: 15px;
+}
+
+.status-text {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #383535;
+}
+
+#bookingStatusValue {
+  font-weight: 700;
+  color: #007e76;
+}
+
+/* CONFIRMATION MODAL */
+.confirmation-modal {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  align-items: center;
+  justify-content: center;
+}
+
+.confirmation-modal.active {
+  display: flex;
+}
+
+.confirmation-content {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+}
+
+.confirmation-content h3 {
+  margin-top: 0;
+  color: #0f172a;
+  font-size: 1.3rem;
+}
+
+.confirmation-content p {
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.confirmation-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.confirmation-buttons button {
+  padding: 10px 25px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+}
+
+.btn-confirm {
+  background: #dc2626;
+  color: white;
+}
+
+.btn-confirm:hover {
+  background: #b91c1c;
+  box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+}
+
+.btn-cancel {
+  background: #e2e8f0;
+  color: #475569;
+}
+
+.btn-cancel:hover {
+  background: #cbd5e1;
 }

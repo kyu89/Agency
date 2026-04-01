@@ -1,10 +1,18 @@
-//import { auth } from "./dashboardAuth.js";
+import { auth } from "./dashboardAuth.js";
 import { 
   getFirestore, 
   collection,
   onSnapshot
 } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { 
+  initializeApp 
+} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import {
+  getAuth,
+  updatePassword,
+  reauthenticateWithCredential,
+  EmailAuthProvider
+} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBCuAtP-ak_HFMP29d3iNTl9QzmhNyTf3k",
@@ -680,19 +688,303 @@ window.addEventListener("click", (event) => {
    LOGOUT
 ========================= */
 
-//import { signOut } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+import { signOut } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
 
-// function setupLogout() {
-//   const btn = document.getElementById("logout");
+function setupLogout() {
+  const btn = document.getElementById("logout");
 
-//   if (!btn) return;
+  if (!btn) return;
 
-//   btn.addEventListener("click", () => {
-//     signOut(auth).then(() => {
-//       window.location.href = "/admin/login.html";
-//     });
-//   });
-// }
+  btn.addEventListener("click", () => {
+    signOut(auth).then(() => {
+      window.location.href = "/admin/login.html";
+    });
+  });
+}
+
+/* =========================
+   SETTINGS
+========================= */
+
+const auth = getAuth(app);
+
+function showToast(text, background) {
+  Toastify({
+    text,
+    duration: 4500,
+    gravity: "top",
+    position: "right",
+    backgroundColor: background,
+    stopOnFocus: true,
+    close: true,
+    style: {
+      borderRadius: "12px",
+      padding: "14px 18px",
+      fontSize: "14px",
+      fontFamily: "Poppins",
+      fontWeight: "500",
+      boxShadow: "0 10px 25px rgba(0, 0, 0, 0.27)",
+      backdropFilter: "blur(6px)",
+      border: "1px solid rgba(255, 255, 255, 0.06)"
+    },
+    className: "toastify-premium"
+  }).showToast();
+}
+
+function setupSettings() {
+  // Load user information
+  loadUserInfo();
+  
+  // Setup change password form
+  const changePasswordForm = document.getElementById("changePasswordForm");
+  if (changePasswordForm) {
+    // Check if user can change password
+    const isPasswordUser = isPasswordAuthUser();
+    
+    if (!isPasswordUser) {
+      // User is logged in via Google OAuth - disable password change
+      disablePasswordChange();
+    } else {
+      // User is password-authenticated - enable password change
+      changePasswordForm.addEventListener("submit", handleChangePassword);
+    }
+  }
+
+  // Setup booking toggle
+  const bookingToggle = document.getElementById("bookingToggle");
+  if (bookingToggle) {
+    // Load saved booking state
+    const bookingEnabled = localStorage.getItem("bookingEnabled") !== "false";
+    bookingToggle.checked = bookingEnabled;
+    updateBookingStatusDisplay(bookingEnabled);
+    
+    // Store previous state for reverting on cancel
+    window.previousBookingState = bookingEnabled;
+    
+    // Add change listener
+    bookingToggle.addEventListener("change", handleBookingToggle);
+  }
+}
+
+function isPasswordAuthUser() {
+  const user = auth.currentUser;
+  
+  if (!user) return false;
+  
+  // Check if user has password authentication provider
+  const providers = user.providerData.map(provider => provider.providerId);
+  
+  // If user has password provider, they can change password
+  // If only has google.com provider, they cannot change password
+  return providers.includes("password");
+}
+
+function disablePasswordChange() {
+  const changePasswordForm = document.getElementById("changePasswordForm");
+  if (!changePasswordForm) return;
+  
+  // Disable the form
+  const inputs = changePasswordForm.querySelectorAll("input");
+  inputs.forEach(input => input.disabled = true);
+  
+  const button = changePasswordForm.querySelector("button");
+  if (button) {
+    button.disabled = true;
+    button.style.opacity = "0.5";
+    button.style.cursor = "not-allowed";
+  }
+  
+  // Add message
+  const messageDiv = document.createElement("div");
+  messageDiv.style.cssText = `
+    background: #e0f7f5;
+    border-left: 4px solid #007e76;
+    padding: 15px;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    color: #007e76;
+    font-weight: 600;
+  `;
+  messageDiv.innerHTML = `
+    <i class="fas fa-info-circle" style="margin-right: 8px;"></i>
+    You're signed in with Google. Password changes are managed through your Google account.
+  `;
+  
+  changePasswordForm.parentElement.insertBefore(messageDiv, changePasswordForm);
+}
+
+function loadUserInfo() {
+  const user = auth.currentUser;
+  
+  if (user) {
+    // Display email
+    const emailDisplay = document.getElementById("adminEmailDisplay");
+    if (emailDisplay) {
+      emailDisplay.textContent = user.email || "No email";
+    }
+
+    // Display current user
+    const userDisplay = document.getElementById("currentUserDisplay");
+    if (userDisplay) {
+      const displayName = user.displayName || user.email?.split("@")[0] || "Admin User";
+      userDisplay.textContent = displayName;
+    }
+  } else {
+    // User not logged in, redirect to login
+    window.location.href = "/admin/login.html";
+  }
+}
+
+async function handleChangePassword(e) {
+  e.preventDefault();
+  
+  // Double-check: Prevent OAuth users from changing password
+  if (!isPasswordAuthUser()) {
+    showToast("Password changes are not available for Google sign-in accounts", "linear-gradient(135deg, #f59e0b, #f97316)");
+    return;
+  }
+  
+  const currentPassword = document.getElementById("currentPassword").value;
+  const newPassword = document.getElementById("newPassword").value;
+  const confirmPassword = document.getElementById("confirmPassword").value;
+
+  // Validation
+  if (newPassword.length < 6) {
+    showToast("New password must be at least 6 characters long", "linear-gradient(135deg, #f59e0b, #f97316)");
+    return;
+  }
+
+  if (newPassword !== confirmPassword) {
+    showToast("New passwords do not match", "linear-gradient(135deg, #f59e0b, #f97316)");
+    return;
+  }
+
+  if (currentPassword === newPassword) {
+    showToast("New password must be different from current password", "linear-gradient(135deg, #f59e0b, #f97316)");
+    return;
+  }
+
+  try {
+    const user = auth.currentUser;
+    
+    if (!user?.email) {
+      showToast("User not authenticated", "linear-gradient(135deg, #ef4444, #dc2626)");
+      return;
+    }
+
+    // Re-authenticate user with current password
+    const credential = EmailAuthProvider.credential(user.email, currentPassword);
+    await reauthenticateWithCredential(user, credential);
+
+    // Update password
+    await updatePassword(user, newPassword);
+
+    // Clear form
+    document.getElementById("changePasswordForm").reset();
+
+    // Show success message
+    showToast("Password updated successfully!", "linear-gradient(135deg, #34d399, #10b981)");
+  } catch (error) {
+    console.error("Error changing password:", error);
+    
+    if (error.code === "auth/wrong-password") {
+      showToast("Current password is incorrect", "linear-gradient(135deg, #ef4444, #dc2626)");
+    } else if (error.code === "auth/weak-password") {
+      showToast("New password is too weak. Please use a stronger password", "linear-gradient(135deg, #f59e0b, #f97316)");
+    } else {
+      showToast("Error changing password: " + error.message, "linear-gradient(135deg, #ef4444, #dc2626)");
+    }
+  }
+}
+
+function handleBookingToggle(e) {
+  const bookingToggle = document.getElementById("bookingToggle");
+  const isEnabled = e.target.checked;
+  
+  // Store the new state and previous state for potential revert
+  window.newBookingState = isEnabled;
+  window.previousBookingState = !isEnabled;
+  
+  // Show confirmation dialog
+  showConfirmationModal(
+    isEnabled ? "Enable Bookings?" : "Disable Bookings?",
+    isEnabled 
+      ? "Are you sure you want to enable bookings? Users will be able to submit booking requests." 
+      : "Are you sure you want to disable bookings? No new booking requests will be accepted, and a message will appear on the booking page.",
+    () => confirmBookingToggle(isEnabled)
+  );
+}
+
+function confirmBookingToggle(isEnabled) {
+  // Save to localStorage
+  localStorage.setItem("bookingEnabled", isEnabled ? "true" : "false");
+  
+  // Update previous state to new state (for future toggles)
+  window.previousBookingState = isEnabled;
+  
+  // Update display
+  updateBookingStatusDisplay(isEnabled);
+  
+  // Show confirmation message
+  const message = isEnabled ? "Bookings have been enabled" : "Bookings have been disabled";
+  showToast(message, "linear-gradient(135deg, #34d399, #10b981)");
+  
+  closeConfirmationModal();
+}
+
+function updateBookingStatusDisplay(isEnabled) {
+  const statusValue = document.getElementById("bookingStatusValue");
+  if (statusValue) {
+    statusValue.textContent = isEnabled ? "enabled" : "disabled";
+  }
+}
+
+function showConfirmationModal(title, message, onConfirm) {
+  // Create modal if it doesn't exist
+  let modal = document.getElementById("confirmationModal");
+  if (!modal) {
+    modal = document.createElement("div");
+    modal.id = "confirmationModal";
+    modal.className = "confirmation-modal";
+    modal.innerHTML = `
+      <div class="confirmation-content">
+        <h3></h3>
+        <p></p>
+        <div class="confirmation-buttons">
+          <button class="btn-cancel" onclick="window.closeConfirmationModal()">Cancel</button>
+          <button class="btn-confirm" onclick="window.confirmBookingToggleFinal()">Confirm</button>
+        </div>
+      </div>
+    `;
+    document.body.appendChild(modal);
+  }
+
+  // Update content
+  modal.querySelector("h3").textContent = title;
+  modal.querySelector("p").textContent = message;
+
+  // Store the callback
+  window.confirmBookingToggleFinal = onConfirm;
+
+  // Show modal
+  modal.classList.add("active");
+}
+
+function closeConfirmationModal() {
+  const modal = document.getElementById("confirmationModal");
+  if (modal) {
+    modal.classList.remove("active");
+  }
+  
+  // Revert the toggle to its previous state if cancelled
+  const bookingToggle = document.getElementById("bookingToggle");
+  if (bookingToggle && window.previousBookingState !== undefined) {
+    bookingToggle.checked = window.previousBookingState;
+    updateBookingStatusDisplay(window.previousBookingState);
+  }
+}
+
+window.closeConfirmationModal = closeConfirmationModal;
 
 /* =========================
    INIT UI
@@ -700,10 +992,11 @@ window.addEventListener("click", (event) => {
 
 document.addEventListener("DOMContentLoaded", () => {
   setupSidebar();
-  //setupLogout();
+  setupLogout();
   loadDashboardStats();
   loadAnalytics();
   loadBookings();
+  setupSettings(); // Initialize settings
 });
 
 // Expose functions to global scope for onclick handlers

@@ -33,7 +33,17 @@
             <h1>Get the Right Talent for Your Task</h1>
             <p>Tell us what you need, and we’ll match you with a skilled professional within 24–48 hours.</p>
         </div>
-        <div class="form-container">
+        
+        <!-- BOOKING CLOSED MESSAGE -->
+        <div id="bookingClosedBanner" class="booking-closed-banner" style="display: none;">
+            <div class="closed-content">
+                <i class="fas fa-lock"></i>
+                <h2>Booking is Closed For Now</h2>
+                <p>We apologize, but booking is temporarily disabled. Please check back later to submit your request.</p>
+            </div>
+        </div>
+
+        <div class="form-container" id="formContainer">
             <form id="bookingForm" novalidate>
                 <input type="text" id="website" style="display:none">
                 <div class="steps">

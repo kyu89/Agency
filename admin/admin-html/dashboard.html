@@ -4,7 +4,7 @@
     <meta name="google-site-verification" content="xlTPzs3lMkDTd1Yaj7jXr5l9duvF9xIBMPgRqw4Qc0Y" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>Admin | Dashboard</title>
     <link rel="stylesheet" href="/admin/admin-css/admin.css">
          <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.webp">
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.webp">
@@ -168,7 +168,74 @@
     <!-- SETTINGS -->
     <div id="settingsPage" class="page">
       <h1>Settings</h1>
-      <p>Settings page content goes here.</p>
+      
+      <!-- ACCOUNT SETTINGS SECTION -->
+      <div class="settings-section">
+        <h2>Account Settings</h2>
+        <div class="settings-card">
+          <div class="setting-item">
+            <div class="setting-label">
+              <span class="setting-icon"><i class="fas fa-user"></i></span>
+              <div>
+                <p class="setting-name">Current User</p>
+                <p class="setting-value" id="currentUserDisplay">Loading...</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="setting-item">
+            <div class="setting-label">
+              <span class="setting-icon"><i class="fas fa-envelope"></i></span>
+              <div>
+                <p class="setting-name">Admin Email</p>
+                <p class="setting-value" id="adminEmailDisplay">Loading...</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CHANGE PASSWORD SECTION -->
+      <div class="settings-section">
+        <h2>Change Password</h2>
+        <div class="settings-card">
+          <form id="changePasswordForm" class="settings-form">
+            <div class="form-group-settings">
+              <label for="currentPassword">Current Password</label>
+              <input type="password" id="currentPassword" placeholder="Enter current password" required>
+            </div>
+            <div class="form-group-settings">
+              <label for="newPassword">New Password</label>
+              <input type="password" id="newPassword" placeholder="Enter new password (min. 6 characters)" required>
+            </div>
+            <div class="form-group-settings">
+              <label for="confirmPassword">Confirm New Password</label>
+              <input type="password" id="confirmPassword" placeholder="Confirm new password" required>
+            </div>
+            <button type="submit" class="btn-primary-settings">Update Password</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- BOOKING CONTROL SECTION -->
+      <div class="settings-section">
+        <h2>Booking Management</h2>
+        <div class="settings-card">
+          <div class="booking-control-item">
+            <div class="booking-control-info">
+              <p class="setting-name">Booking Status</p>
+              <p class="setting-description">Enable or disable new booking submissions</p>
+            </div>
+            <label class="toggle-switch">
+              <input type="checkbox" id="bookingToggle">
+              <span class="slider"></span>
+            </label>
+          </div>
+          <div class="booking-status-display">
+            <p id="bookingStatusText" class="status-text">Bookings are currently <span id="bookingStatusValue">enabled</span></p>
+          </div>
+        </div>
+      </div>
     </div>
 
   </main>
@@ -245,7 +312,7 @@
       </div>
     </div>
 
-    <script type="module" src="/admin/admin-scripts/dashboardAuth.js"></script>
+    <!-- <script type="module" src="/admin/admin-scripts/dashboardAuth.js"></script> -->
     <script type="module" src="/admin/admin-scripts/dashboard.js"></script>
 </body>
 </html>

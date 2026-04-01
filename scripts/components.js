@@ -331,7 +331,7 @@ function loadPrivacyModal() {
         </div>
 
         <div class="privacy-body">
-          <p><strong>Agency</strong> values your privacy. We collect basic information such as your name, email, and project details to match you with the right professionals.</p>
+          <p><strong>Assitora</strong> values your privacy. We collect basic information such as your name, email, and project details to match you with the right professionals.</p>
 
           <h4>How We Use Data</h4>
           <ul>

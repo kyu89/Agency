@@ -188,7 +188,27 @@ document.getElementById("back2").onclick = () => {
 };
 
 document.addEventListener("DOMContentLoaded", () => {
+  // Check if bookings are enabled
+  checkBookingStatus();
+  
   currentStep = 0;
   showStep(currentStep);
 });
+
+function checkBookingStatus() {
+  const bookingEnabled = localStorage.getItem("bookingEnabled") !== "false";
+  const closedBanner = document.getElementById("bookingClosedBanner");
+  const formContainer = document.getElementById("formContainer");
+
+  if (!bookingEnabled) {
+    // Show closed banner
+    closedBanner.style.display = "block";
+    formContainer.style.display = "none";
+  } else {
+    // Show form
+    closedBanner.style.display = "none";
+    formContainer.style.display = "block";
+  }
+}
+
 
