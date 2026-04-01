@@ -303,6 +303,21 @@ body{
   background-color: #0f172a;
 }
 
+.budget-group {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+  align-items: flex-start;
+}
+
+.budget-group .input-group {
+  flex: 1;
+}
+
+.budget-group .input-group input {
+  width: 100%;
+}
+
 @media (max-width: 575px){
     .booking-container{
         padding: 20px;
@@ -337,6 +352,13 @@ body{
         margin: 0;
     }
     .select-wrapper{
+        width: 100%;
+    }
+    .budget-group {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .budget-group .input-group input {
         width: 100%;
     }
     .toastify {

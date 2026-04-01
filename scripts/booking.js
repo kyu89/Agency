@@ -51,17 +51,27 @@ form.addEventListener("submit", async (e) => {
   const company = document.getElementById("company").value.trim();
   const serviceType = document.getElementById("service").value;
   const description = document.getElementById("details").value.trim();
-  const budgetValue = document.getElementById("budget").value;
+  const budgetMinValue = document.getElementById("budgetMin").value;
+  const budgetMaxValue = document.getElementById("budgetMax").value;
   const deadlineValue = document.getElementById("deadline").value;
 
-  if (!fullName || !email || !serviceType || !description || !budgetValue || !deadlineValue)  {
+  if (!fullName || !email || !serviceType || !description || !budgetMinValue || !budgetMaxValue || !deadlineValue)  {
     showToast("Please fill in all required fields.", "linear-gradient(135deg, #f59e0b, #f97316)");
     return;
   }
 
-  const [min, max] = budgetValue.split("-");
-  const budgetMin = parseInt(min);
-  const budgetMax = parseInt(max);
+  const budgetMin = parseInt(budgetMinValue);
+  const budgetMax = parseInt(budgetMaxValue);
+
+  if (isNaN(budgetMin) || isNaN(budgetMax)) {
+    showToast("Please enter valid budget amounts.", "linear-gradient(135deg, #f59e0b, #f97316)");
+    return;
+  }
+
+  if (budgetMin > budgetMax) {
+    showToast("Minimum budget cannot be greater than maximum budget.", "linear-gradient(135deg, #f59e0b, #f97316)");
+    return;
+  }
 
   const deadline = deadlineValue ? new Date(deadlineValue) : null;
 
@@ -86,7 +96,6 @@ form.addEventListener("submit", async (e) => {
     description,
     budgetMin,
     budgetMax,
-    budgetLabel: budgetValue,
     deadline,
     status: "pending",
     archived: false,
