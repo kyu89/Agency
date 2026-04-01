@@ -304,12 +304,13 @@ function renderBookingsTable(bookings) {
   const tableBody = document.getElementById("bookingsTableBody");
   
   if (bookings.length === 0) {
-    tableBody.innerHTML = '<tr><td colspan="7" class="no-data">No bookings found</td></tr>';
+    tableBody.innerHTML = '<tr><td colspan="8" class="no-data">No bookings found</td></tr>';
     return;
   }
 
   tableBody.innerHTML = bookings.map(booking => {
     const date = booking.createdAt ? new Date(booking.createdAt.seconds * 1000).toLocaleDateString() : "N/A";
+    const deadline = booking.deadline ? new Date(booking.deadline.seconds * 1000).toLocaleDateString() : "N/A";
     const status = booking.status || "pending";
     const priority = booking.priority || "normal";
     const name = `${booking.fullName || "N/A"}`;
@@ -319,6 +320,7 @@ function renderBookingsTable(bookings) {
         <td>${booking.email || "N/A"}</td>
         <td>${booking.serviceType || "N/A"}</td>
         <td>${date}</td>
+        <td>${deadline}</td>
         <td><span class="status-badge status-${status}">${status.charAt(0).toUpperCase() + status.slice(1)}</span></td>
         <td><span class="priority-badge priority-${priority}">${priority.charAt(0).toUpperCase() + priority.slice(1)}</span></td>
         <td>
@@ -336,12 +338,13 @@ function renderArchivedTable(bookings) {
   const tableBody = document.getElementById("archivedTableBody");
   
   if (bookings.length === 0) {
-    tableBody.innerHTML = '<tr><td colspan="7" class="no-data">No archived bookings</td></tr>';
+    tableBody.innerHTML = '<tr><td colspan="8" class="no-data">No archived bookings</td></tr>';
     return;
   }
 
   tableBody.innerHTML = bookings.map(booking => {
     const date = booking.createdAt ? new Date(booking.createdAt.seconds * 1000).toLocaleDateString() : "N/A";
+    const deadline = booking.deadline ? new Date(booking.deadline.seconds * 1000).toLocaleDateString() : "N/A";
     const status = booking.status || "pending";
     const priority = booking.priority || "normal";
     const name = `${booking.fullName || "N/A"}`;
@@ -351,6 +354,7 @@ function renderArchivedTable(bookings) {
         <td>${booking.email || "N/A"}</td>
         <td>${booking.serviceType || "N/A"}</td>
         <td>${date}</td>
+        <td>${deadline}</td>
         <td><span class="status-badge status-${status}">${status.charAt(0).toUpperCase() + status.slice(1)}</span></td>
         <td><span class="priority-badge priority-${priority}">${priority.charAt(0).toUpperCase() + priority.slice(1)}</span></td>
         <td>
@@ -428,13 +432,13 @@ function viewBooking(bookingId) {
         <value>${data.archived ? "Yes" : "No"}</value>
       </div>
     </div>
-    <div style="background: #f8fafc; padding: 15px; border-radius: 8px; border-left: 4px solid #007e76; margin-top: 20px;">
+    <div style="background: #f8fafc; padding: 15px; border-left: 4px solid #007e76; margin-top: 20px;">
       <label style="display: block; font-size: 0.85rem; color: #999; font-weight: 600; margin-bottom: 8px; text-transform: uppercase;">Description</label>
-      <value style="display: block; color: #1e293b;">${data.description || "N/A"}</value>
+      <value style="display: block; color: #383535;">${data.description || "N/A"}</value>
     </div>
-    <div style="background: #f8fafc; padding: 15px; border-radius: 8px; border-left: 4px solid #007e76; margin-top: 20px;">
+    <div style="background: #f8fafc; padding: 15px; border-left: 4px solid #007e76; margin-top: 20px;">
       <label style="display: block; font-size: 0.85rem; color: #999; font-weight: 600; margin-bottom: 8px; text-transform: uppercase;">Notes</label>
-      <value style="display: block; color: #1e293b;">${data.notes || "No notes"}</value>
+      <value style="display: block; color: #383535;">${data.notes || "No notes"}</value>
     </div>
   `;
 
