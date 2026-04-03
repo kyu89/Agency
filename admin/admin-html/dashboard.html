@@ -108,6 +108,10 @@
             <option value="normal">Normal</option>
             <option value="high">High</option>
           </select>
+          <select id="sortBy" class="filter-select">
+            <option value="createdAt">Sort by Date Created</option>
+            <option value="deadline">Sort by Deadline</option>
+          </select>
         </div>
       </div>
 
@@ -140,6 +144,12 @@
 
       <div class="bookings-header">
         <input type="text" id="searchArchived" placeholder="Search by name/email">
+        <div class="filter-controls">
+          <select id="sortArchived" class="filter-select">
+            <option value="createdAt">Sort by Date Created</option>
+            <option value="deadline">Sort by Deadline</option>
+          </select>
+        </div>
       </div>
 
       <div class="table-container">
@@ -285,6 +295,11 @@
                   <option value="high">High</option>
                 </select>
               </div>
+            </div>
+
+            <div class="form-group">
+              <label>Final Price</label>
+              <input type="number" id="editFinalPrice" placeholder="Enter final price">
             </div>
 
             <div class="form-group">

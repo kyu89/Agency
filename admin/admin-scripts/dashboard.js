@@ -1,8 +1,9 @@
-import { auth } from "./dashboardAuth.js";
 import { 
   getFirestore, 
   collection,
-  onSnapshot
+  onSnapshot,
+  doc,
+  setDoc
 } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 import { 
   initializeApp 
@@ -241,6 +242,7 @@ function loadBookings() {
   const searchInput = document.getElementById("search");
   const filterStatus = document.getElementById("filterStatus");
   const filterPriority = document.getElementById("filterPriority");
+  const sortBy = document.getElementById("sortBy");
 
   onSnapshot(collection(db, "bookings"), (snapshot) => {
     window.allBookings = [];
@@ -262,14 +264,15 @@ function loadBookings() {
     renderArchivedTable(archivedBookings);
   });
 
-  // Helper function to apply all filters
+  // Helper function to apply all filters and sorting
   const applyAllFilters = () => {
     const searchTerm = searchInput.value.toLowerCase();
     const statusFilter = filterStatus?.value || "";
     const priorityFilter = filterPriority?.value || "";
+    const sortValue = sortBy?.value || "createdAt";
     
     const activeBookings = window.allBookings.filter(booking => !booking.archived);
-    const filtered = activeBookings.filter(booking => {
+    let filtered = activeBookings.filter(booking => {
       const name = (booking.fullName || "").toLowerCase();
       const email = booking.email || "";
       const matchesSearch = name.includes(searchTerm) || email.toLowerCase().includes(searchTerm);
@@ -278,6 +281,24 @@ function loadBookings() {
       
       return matchesSearch && matchesStatus && matchesPriority;
     });
+
+    // Apply sorting
+    filtered = filtered.sort((a, b) => {
+      let aValue, bValue;
+      
+      if (sortValue === "deadline") {
+        // Sort by deadline (earliest first), null deadlines go to the end
+        aValue = a.deadline ? new Date(a.deadline.seconds * 1000) : new Date(9999999999999);
+        bValue = b.deadline ? new Date(b.deadline.seconds * 1000) : new Date(9999999999999);
+      } else {
+        // Sort by created date (newest first)
+        aValue = a.createdAt ? new Date(a.createdAt.seconds * 1000) : new Date(0);
+        bValue = b.createdAt ? new Date(b.createdAt.seconds * 1000) : new Date(0);
+      }
+      
+      return aValue - bValue;
+    });
+
     renderBookingsTable(filtered);
   };
 
@@ -291,20 +312,50 @@ function loadBookings() {
   if (filterPriority) {
     filterPriority.addEventListener("change", applyAllFilters);
   }
+  if (sortBy) {
+    sortBy.addEventListener("change", applyAllFilters);
+  }
 
   // Search functionality for archived bookings
   const searchArchivedInput = document.getElementById("searchArchived");
-  if (searchArchivedInput) {
-    searchArchivedInput.addEventListener("input", (e) => {
-      const searchTerm = e.target.value.toLowerCase();
-      const archivedBookings = window.allBookings.filter(booking => booking.archived);
-      const filtered = archivedBookings.filter(booking => {
-        const name = (booking.fullName || "").toLowerCase();
-        const email = booking.email || "";
-        return name.includes(searchTerm) || email.toLowerCase().includes(searchTerm);
-      });
-      renderArchivedTable(filtered);
+  const sortArchived = document.getElementById("sortArchived");
+  
+  const applyArchivedFilters = () => {
+    const searchTerm = searchArchivedInput.value.toLowerCase();
+    const sortValue = sortArchived?.value || "createdAt";
+    
+    const archivedBookings = window.allBookings.filter(booking => booking.archived);
+    let filtered = archivedBookings.filter(booking => {
+      const name = (booking.fullName || "").toLowerCase();
+      const email = booking.email || "";
+      return name.includes(searchTerm) || email.toLowerCase().includes(searchTerm);
     });
+
+    // Apply sorting
+    filtered = filtered.sort((a, b) => {
+      let aValue, bValue;
+      
+      if (sortValue === "deadline") {
+        // Sort by deadline (earliest first), null deadlines go to the end
+        aValue = a.deadline ? new Date(a.deadline.seconds * 1000) : new Date(9999999999999);
+        bValue = b.deadline ? new Date(b.deadline.seconds * 1000) : new Date(9999999999999);
+      } else {
+        // Sort by created date (newest first)
+        aValue = a.createdAt ? new Date(a.createdAt.seconds * 1000) : new Date(0);
+        bValue = b.createdAt ? new Date(b.createdAt.seconds * 1000) : new Date(0);
+      }
+      
+      return aValue - bValue;
+    });
+
+    renderArchivedTable(filtered);
+  };
+  
+  if (searchArchivedInput) {
+    searchArchivedInput.addEventListener("input", applyArchivedFilters);
+  }
+  if (sortArchived) {
+    sortArchived.addEventListener("change", applyArchivedFilters);
   }
 }
 
@@ -424,8 +475,8 @@ function viewBooking(bookingId) {
         <value>$${(data.budgetMax || 0).toLocaleString()}</value>
       </div>
       <div class="detail-item">
-        <label>Created At</label>
-        <value>${createdAt}</value>
+        <label>Final Price</label>
+        <value>${data.finalPrice ? `$${data.finalPrice.toLocaleString()}` : "Not set"}</value>
       </div>
       <div class="detail-item">
         <label>Deadline</label>
@@ -468,6 +519,7 @@ function editBooking(bookingId) {
   document.getElementById("editBookingId").value = bookingId;
   document.getElementById("editStatus").value = data.status || "pending";
   document.getElementById("editPriority").value = data.priority || "normal";
+  document.getElementById("editFinalPrice").value = data.finalPrice || "";
   document.getElementById("editAssignedTo").value = data.assignedTo || "";
   document.getElementById("editNotes").value = data.notes || "";
 
@@ -566,10 +618,11 @@ async function saveBookingChanges() {
   const bookingId = document.getElementById("editBookingId").value;
   const status = document.getElementById("editStatus").value;
   const priority = document.getElementById("editPriority").value;
+  const finalPrice = document.getElementById("editFinalPrice").value;
   const assignedTo = document.getElementById("editAssignedTo").value;
   const notes = document.getElementById("editNotes").value;
 
-  console.log("Saving booking changes:", { bookingId, status, priority, assignedTo, notes });
+  console.log("Saving booking changes:", { bookingId, status, priority, finalPrice, assignedTo, notes });
 
   try {
     const { updateDoc, doc } = await import("https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js");
@@ -578,6 +631,7 @@ async function saveBookingChanges() {
     await updateDoc(bookingRef, {
       status,
       priority,
+      finalPrice: finalPrice ? parseFloat(finalPrice) : null,
       assignedTo,
       notes
     });
@@ -697,7 +751,7 @@ function setupLogout() {
 
   btn.addEventListener("click", () => {
     signOut(auth).then(() => {
-      window.location.href = "/admin/login.html";
+      // window.location.href = "/admin/login.html";
     });
   });
 }
@@ -753,13 +807,19 @@ function setupSettings() {
   // Setup booking toggle
   const bookingToggle = document.getElementById("bookingToggle");
   if (bookingToggle) {
-    // Load saved booking state
-    const bookingEnabled = localStorage.getItem("bookingEnabled") !== "false";
-    bookingToggle.checked = bookingEnabled;
-    updateBookingStatusDisplay(bookingEnabled);
-    
-    // Store previous state for reverting on cancel
-    window.previousBookingState = bookingEnabled;
+    // Load saved booking state from Firestore with real-time listener
+    const settingsRef = doc(db, "settings", "bookings");
+    onSnapshot(settingsRef, (snapshot) => {
+      const bookingEnabled = snapshot.exists() ? snapshot.data().enabled !== false : true;
+      bookingToggle.checked = bookingEnabled;
+      updateBookingStatusDisplay(bookingEnabled);
+      window.previousBookingState = bookingEnabled;
+    }, (error) => {
+      console.log("Settings not found, using default (enabled)", error);
+      bookingToggle.checked = true;
+      updateBookingStatusDisplay(true);
+      window.previousBookingState = true;
+    });
     
     // Add change listener
     bookingToggle.addEventListener("change", handleBookingToggle);
@@ -831,7 +891,7 @@ function loadUserInfo() {
     }
   } else {
     // User not logged in, redirect to login
-    window.location.href = "/admin/login.html";
+    // window.location.href = "/admin/login.html";
   }
 }
 
@@ -915,19 +975,29 @@ function handleBookingToggle(e) {
   );
 }
 
-function confirmBookingToggle(isEnabled) {
-  // Save to localStorage
-  localStorage.setItem("bookingEnabled", isEnabled ? "true" : "false");
-  
-  // Update previous state to new state (for future toggles)
-  window.previousBookingState = isEnabled;
-  
-  // Update display
-  updateBookingStatusDisplay(isEnabled);
-  
-  // Show confirmation message
-  const message = isEnabled ? "Bookings have been enabled" : "Bookings have been disabled";
-  showToast(message, "linear-gradient(135deg, #34d399, #10b981)");
+async function confirmBookingToggle(isEnabled) {
+  try {
+    // Save to Firestore (real-time sync)
+    const settingsRef = doc(db, "settings", "bookings");
+    await setDoc(settingsRef, {
+      enabled: isEnabled,
+      updatedAt: new Date(),
+      updatedBy: auth.currentUser?.email || "admin"
+    }, { merge: true });
+    
+    // Update previous state to new state (for future toggles)
+    window.previousBookingState = isEnabled;
+    
+    // Update display
+    updateBookingStatusDisplay(isEnabled);
+    
+    // Show confirmation message
+    const message = isEnabled ? "Bookings have been enabled" : "Bookings have been disabled";
+    showToast(message, "linear-gradient(135deg, #34d399, #10b981)");
+  } catch (error) {
+    console.error("Error updating booking status:", error);
+    showToast("Failed to update booking status: " + error.message, "linear-gradient(135deg, #ef4444, #dc2626)");
+  }
   
   closeConfirmationModal();
 }

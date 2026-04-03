@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+import { getFirestore, collection, addDoc, serverTimestamp, doc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBCuAtP-ak_HFMP29d3iNTl9QzmhNyTf3k",
@@ -107,6 +107,28 @@ form.addEventListener("submit", async (e) => {
 try {
   await addDoc(collection(db, "bookings"), data, captcha);
   
+  // Send email notification
+  try {
+    await fetch("/.netlify/functions/sendBookingEmail", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        fullName,
+        email,
+        company,
+        serviceType,
+        description,
+        budgetMin,
+        budgetMax,
+        deadline: deadline?.toISOString() || null,
+        captcha
+      })
+    });
+  } catch (emailError) {
+    console.error("Email notification failed:", emailError);
+    // Don't show error to user - booking was still successful
+  }
+  
   gtag('event', 'booking_submitted', {
         event_category: 'Booking',
         event_label: 'User Booking Form'
@@ -188,7 +210,7 @@ document.getElementById("back2").onclick = () => {
 };
 
 document.addEventListener("DOMContentLoaded", () => {
-  // Check if bookings are enabled
+  // Check if bookings are enabled with real-time listener
   checkBookingStatus();
   
   currentStep = 0;
@@ -196,19 +218,29 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function checkBookingStatus() {
-  const bookingEnabled = localStorage.getItem("bookingEnabled") !== "false";
   const closedBanner = document.getElementById("bookingClosedBanner");
   const formContainer = document.getElementById("formContainer");
 
-  if (!bookingEnabled) {
-    // Show closed banner
-    closedBanner.style.display = "block";
-    formContainer.style.display = "none";
-  } else {
-    // Show form
+  // Listen for real-time changes from Firestore
+  const settingsRef = doc(db, "settings", "bookings");
+  onSnapshot(settingsRef, (snapshot) => {
+    const bookingEnabled = snapshot.exists() ? snapshot.data().enabled !== false : true;
+    
+    if (!bookingEnabled) {
+      // Show closed banner
+      closedBanner.style.display = "block";
+      formContainer.style.display = "none";
+    } else {
+      // Show form
+      closedBanner.style.display = "none";
+      formContainer.style.display = "block";
+    }
+  }, (error) => {
+    console.log("Settings not found, using default (enabled)", error);
+    // Default to enabled if settings don't exist
     closedBanner.style.display = "none";
     formContainer.style.display = "block";
-  }
+  });
 }
 
 
