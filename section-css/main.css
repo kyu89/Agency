@@ -251,7 +251,7 @@ header::before{
 
 @media (min-width: 992px) and (max-width: 1199px) {
 
-    .home-content h1 {
+    .home-content h1, .home-content h1 > span {
         font-size: 3.5rem;
         line-height: 4rem;
         word-break: break-word;
