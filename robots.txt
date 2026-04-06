@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://assistora.netlify.app/sitemap.xml
+Sitemap: https://digitaldonglers.com/sitemap.xml

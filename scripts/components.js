@@ -331,7 +331,7 @@ function loadPrivacyModal() {
         </div>
 
         <div class="privacy-body">
-          <p><strong>Assitora</strong> values your privacy. We collect basic information such as your name, email, and project details to match you with the right professionals.</p>
+          <p><strong>Digital Donglers</strong> values your privacy. We collect basic information such as your name, email, and project details to match you with the right professionals.</p>
 
           <h4>How We Use Data</h4>
           <ul>
@@ -363,11 +363,6 @@ function loadPrivacyModal() {
   const acceptBtn = document.getElementById("acceptPrivacy");
 
   if (!modal) return;
-
-  // Show on first visit
-  if (!localStorage.getItem("privacyAccepted")) {
-    modal.style.display = "flex";
-  }
 
   closeBtn.onclick = () => {
     modal.style.display = "none";

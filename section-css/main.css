@@ -93,7 +93,7 @@ header::before{
     width: 100%;
 }
 
-.home-content h2{
+.home-content h1{
     color: #e5e7eb;
     font-size: 4.5rem;
     text-shadow: 10px 10px 20px #131313;
@@ -116,7 +116,7 @@ header::before{
     line-height: 2rem;
 }   
 
-.home-content h2>span{
+.home-content h1>span{
     color: #007e76;
     font-size: 4.5rem;
     text-shadow: 10px 10px 20px #131313;
@@ -181,7 +181,7 @@ header::before{
         padding: 20px;
     }
 
-    .home-content h2 {
+    .home-content h1 {
         font-size: 2rem;
         max-width: 100%;
         letter-spacing: 0.5px;
@@ -190,7 +190,7 @@ header::before{
         word-break: break-word;
     }
 
-    .home-content h2 > span {
+    .home-content h1 > span {
         font-size: 2rem;
     }
 
@@ -217,14 +217,14 @@ header::before{
 
 @media (min-width: 576px) and (max-width: 991px) {
 
-    .home-content h2 {
+    .home-content h1 {
         font-size: 3rem;
         line-height: 3.5rem;
         max-width: 85%;
         word-break: break-word;
     }
 
-    .home-content h2 > span {
+    .home-content h1 > span {
         font-size: 3rem;
     }
 
@@ -251,7 +251,7 @@ header::before{
 
 @media (min-width: 992px) and (max-width: 1199px) {
 
-    .home-content h2 {
+    .home-content h1 {
         font-size: 3.5rem;
         line-height: 4rem;
         word-break: break-word;

@@ -21,7 +21,7 @@
 
 .logo{
     color: #e5e7eb;
-    font-size: 1.25rem;
+    font-size: 2.5rem;
     text-transform: uppercase;
     letter-spacing: 3px;
     font-family: "Bungee", sans-serif;
@@ -34,11 +34,6 @@
 
 .logo img{
     max-width: 40%;
-}
-
-.logo h1:hover{
-    color: #007e76;
-    transition: 0.3s;
 }
 
 .navigation{
@@ -196,6 +191,10 @@
         padding: 10px 30px;
     }
 
+    #company-name{
+        font-size: 2rem;
+    }
+
     .logo {
         max-width: 30%;
     }
@@ -229,4 +228,11 @@
     .navigation a {
         font-size: 0.95rem;
     }
+    #company-name{
+        font-size: 2.25rem;
+    }
+    .logo {
+        max-width: 30%;
+    }
+
 }
