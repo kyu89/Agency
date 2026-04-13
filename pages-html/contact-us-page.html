@@ -25,7 +25,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Bungee&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js@1.12.0/src/toastify.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/toastify-js@1.12.0/src/toastify.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js@1.12.0/src/toastify.min.js"></script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BLVQGYQ0QK"></script>
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
@@ -45,32 +45,44 @@
         </div>
         <div class="right-side">
     <form action="" id="contact-form" novalidate>
-        <h2>Get In Touch</h2>
-        <div class="name-row">
-            <div class="input-group">
-                <input type="text" id="first_name" placeholder="First Name" required>
-                <label for="first_name">First Name</label>
-            </div>
-            <div class="input-group">
-                <input type="text" id="last_name" placeholder="Last Name" required>
-                <label for="last_name">Last Name</label>
-            </div>
+    <h2>Get In Touch</h2>
+
+    <div class="name-row">
+        <div class="input-group">
+            <input type="text" id="first_name" name="first_name" placeholder="First Name" required>
+            <label for="first_name">First Name</label>
         </div>
         <div class="input-group">
-            <input type="email" id="email" placeholder="Email" required>
-            <label for="email">Email</label>
+            <input type="text" id="last_name" name="last_name" placeholder="Last Name" required>
+            <label for="last_name">Last Name</label>
         </div>
-        <div class="input-group">
-            <input type="text" id="subject" placeholder="Subject" required>
-            <label for="subject">Subject</label>
-        </div>
-        <div class="input-group">
-            <textarea id="message" placeholder="Your Message" required></textarea>
-            <label for="message">Your Message</label>
-        </div>
-        <div class="g-recaptcha" data-sitekey="6LdDI50sAAAAAETYXg4uOaYHPKTv34rJZzAIbUfc"></div>
-        <button type="submit">Send Message</button>
-    </form>
+    </div>
+
+    <div class="input-group">
+        <input type="email" id="email" name="email" placeholder="Email" required>
+        <label for="email">Email</label>
+    </div>
+
+    <div class="input-group">
+        <input type="text" id="subject" name="subject" placeholder="Subject" required>
+        <label for="subject">Subject</label>
+    </div>
+
+    <div class="input-group">
+        <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+        <label for="message">Your Message</label>
+    </div>
+
+    <!-- Honeypot Spam Protection -->
+    <div style="position:absolute; left:-9999px;">
+        <input type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
+    </div>
+
+    <!-- Google reCAPTCHA -->
+    <div class="g-recaptcha" data-sitekey="6LdDI50sAAAAAETYXg4uOaYHPKTv34rJZzAIbUfc"></div>
+
+    <button type="submit">Send Message</button>
+</form>
 </div>
         </div>
     </div>

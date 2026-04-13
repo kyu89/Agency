@@ -65,7 +65,7 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
 
   try {
     await signInWithEmailAndPassword(auth, email, password, captcha);
-    window.location.href = "/admin/dashboard.html";
+    window.location.href = "/dashboard";
   } catch (error) {
     showToast("Invalid email or password.", "linear-gradient(135deg, #ef4444, #dc2626)");
      grecaptcha.reset();
@@ -92,7 +92,7 @@ document.getElementById("googleLogin").addEventListener("click", async () => {
       return;
     }
 
-    window.location.href = "/admin/dashboard.html";
+    window.location.href = "/dashboard";
     showToast("Logged in with Google!", "linear-gradient(135deg, #34d399, #10b981)");
   } catch (error) {
     showToast("Google login failed.", "linear-gradient(135deg, #ef4444, #dc2626)");
