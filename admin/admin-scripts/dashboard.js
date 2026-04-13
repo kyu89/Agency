@@ -751,7 +751,7 @@ function setupLogout() {
 
   btn.addEventListener("click", () => {
     signOut(auth).then(() => {
-      // window.location.href = "/admin/login.html";
+      window.location.href = "/admin";
     });
   });
 }
