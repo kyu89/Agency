@@ -45,7 +45,7 @@ setPersistence(auth, browserLocalPersistence);
 /* 🔐 PROTECTION - Check if user is logged in and authorized */
 onAuthStateChanged(auth, (user) => {
   if (!user) {
-    window.location.href = "/admin/login.html";
+    window.location.href = "/admin";
     showToast("Please log in to access the dashboard.", "linear-gradient(135deg, #f59e0b, #f97316)");
     return;
   }
@@ -53,7 +53,8 @@ onAuthStateChanged(auth, (user) => {
   /* ✅ ALLOW ONLY AUTHORIZED USERS */
   const allowedEmails = [
     "sulitjohnkevin@gmail.com",
-    "sulitkevin85@gmail.com"
+    "sulitkevin85@gmail.com",
+    "admin@digitaldonglers.com"
   ];
 
   if (!allowedEmails.includes(user.email)) {

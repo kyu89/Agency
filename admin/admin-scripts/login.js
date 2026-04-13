@@ -77,7 +77,7 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
 ========================= */
 const provider = new GoogleAuthProvider();
 // Add authorized Google email(s) here
-const AUTHORIZED_EMAILS = ["sulitjohnkevin@gmail.com", "sulitkevin85@gmail.com", "nomadadmin@email.com"];
+const AUTHORIZED_EMAILS = ["sulitjohnkevin@gmail.com", "sulitkevin85@gmail.com", "admin@digitaldonglers.com"];
 
 document.getElementById("googleLogin").addEventListener("click", async () => {
   try {
