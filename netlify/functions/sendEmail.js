@@ -10,35 +10,7 @@ exports.handler = async function (event) {
         };
     }
 
-    let body;
-    try {
-        body = JSON.parse(event.body);
-        // 🚨 VERIFY CAPTCHA (ADD HERE)
-const verify = await fetch(
-    "https://www.google.com/recaptcha/api/siteverify",
-    {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-        },
-        body: `secret=${process.env.RECAPTCHA_SECRET}&response=${captcha}`,
-    }
-);
-
-const captchaData = await verify.json();
-
-if (!captchaData.success) {
-    return {
-        statusCode: 400,
-        body: JSON.stringify({ error: "Captcha failed" }),
-    };
-}
-    } catch {
-        return {
-            statusCode: 400,
-            body: JSON.stringify({ error: "Invalid JSON body" }),
-        };
-    }
+    
 
     const { first_name, last_name, email, subject, message, captcha } = body;
 
