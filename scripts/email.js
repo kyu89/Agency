@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
         submitBtn.disabled = true;
 
         try {
-            const response = await fetch("/.netlify/functions/sendEmail", {
+            const response = await fetch("https://digitaldonglers.com/.netlify/functions/sendEmail", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
