@@ -135,7 +135,7 @@ exports.handler = async function (event) {
                 <a href="mailto:${email}" style="display: inline-block; background: linear-gradient(135deg, #007e76, #00b4a6); color: #ffffff; text-decoration: none; padding: 14px 28px; border-radius: 8px; font-size: 0.95rem; font-weight: 600; letter-spacing: 0.5px;">
                     Reply to ${fullName}
                 </a>
-                <a href="${process.env.ADMIN_DASHBOARD_URL || 'https://yoursite.com/admin/dashboard.html'}" style="display: inline-block; background: #e2e8f0; color: #0f172a; text-decoration: none; padding: 14px 28px; border-radius: 8px; font-size: 0.95rem; font-weight: 600; letter-spacing: 0.5px;">
+                <a href="${process.env.ADMIN_DASHBOARD_URL || 'https://digitaldonglers.com/admin'}" style="display: inline-block; background: #e2e8f0; color: #0f172a; text-decoration: none; padding: 14px 28px; border-radius: 8px; font-size: 0.95rem; font-weight: 600; letter-spacing: 0.5px;">
                     View in Dashboard
                 </a>
             </div>
