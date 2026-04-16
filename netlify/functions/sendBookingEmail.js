@@ -115,7 +115,7 @@ exports.handler = async function (event) {
                     </tr>
                     <tr style="border-top: 1px solid #e2e8f0;">
                         <td style="padding: 8px 0; color: #64748b; font-size: 0.875rem;">Budget</td>
-                        <td style="padding: 8px 0; color: #0f172a; font-size: 0.875rem; font-weight: 600;">$${budgetMin} - $${budgetMax}</td>
+                        <td style="padding: 8px 0; color: #0f172a; font-size: 0.875rem; font-weight: 600;">PHP ${budgetMin} - PHP ${budgetMax}</td>
                     </tr>
                     <tr style="border-top: 1px solid #e2e8f0;">
                         <td style="padding: 8px 0; color: #64748b; font-size: 0.875rem;">Deadline</td>
