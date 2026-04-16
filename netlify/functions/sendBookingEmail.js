@@ -1,4 +1,3 @@
-const fetch = require("node-fetch");
 const nodemailer = require("nodemailer");
 
 exports.handler = async function (event) {
@@ -38,7 +37,7 @@ exports.handler = async function (event) {
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded",
             },
-            body: `secret=${process.env.RECAPTCHA_SECRET}&response=${captcha}`,
+            body: `secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${captcha}`,
         }
     );
 
