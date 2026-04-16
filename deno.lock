@@ -12,7 +12,7 @@
     "packageJson": {
       "dependencies": [
         "npm:node-fetch@^3.3.2",
-        "npm:nodemailer@^8.0.3"
+        "npm:nodemailer@^8.0.5"
       ]
     }
   }
