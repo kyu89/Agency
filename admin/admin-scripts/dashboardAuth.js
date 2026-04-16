@@ -54,7 +54,8 @@ onAuthStateChanged(auth, (user) => {
   const allowedEmails = [
     "sulitjohnkevin@gmail.com",
     "sulitkevin85@gmail.com",
-    "admin@digitaldonglers.com"
+    "admin@digitaldonglers.com",
+    "punyeramina@gmail.com"
   ];
 
   if (!allowedEmails.includes(user.email)) {
