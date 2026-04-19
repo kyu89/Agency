@@ -312,7 +312,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 document.addEventListener("click", (e) => {
-  if (e.target && e.target.id === "goToBooking") {
+  if (e.target && e.target.id === "goToBooking" || e.target.id === "goToBookingFooter") {
     window.location.href = "../pages-html/booking.html";
   }
   else if(e.target && e.target.id === "goToServices"){
