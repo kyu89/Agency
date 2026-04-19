@@ -1,8 +1,15 @@
-https://digitaldonglers.netlify.app/* https://digitaldonglers.com/:splat 301
+# Force all traffic to your custom domain (SEO canonical)
+https://digitaldonglers.netlify.app/*  https://digitaldonglers.com/:splat  301!
 
-/about-us /pages-html/about-page.html 200
-/services /pages-html/services-page.html 200
-/contact-us /pages-html/contact-us-page.html 200
-/book-now /pages-html/booking.html 200
-/admin /admin/admin-html/login.html 200
-/dashboard /admin/admin-html/dashboard.html 200
+# Clean URL structure
+/about-us        /pages-html/about-page.html      200
+/services        /pages-html/services-page.html   200
+/contact-us      /pages-html/contact-us-page.html 200
+/book-now        /pages-html/booking.html         200
+
+# Protect admin pages (IMPORTANT for SEO + security)
+# Prevent indexing + direct access abuse patterns
+/admin           /admin/admin-html/login.html     200
+/dashboard       /admin/admin-html/dashboard.html 200
+/admin/*         /404.html                        404
+/dashboard/*     /404.html                        404
