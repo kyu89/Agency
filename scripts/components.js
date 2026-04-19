@@ -318,6 +318,12 @@ document.addEventListener("click", (e) => {
   else if(e.target && e.target.id === "goToServices"){
     window.location.href = "../pages-html/services-page.html"
   }
+  else if(e.target && e.target.id === "goToAbout"){
+    window.location.href = "../pages-html/about-page.html"
+  }
+  else if(e.target && e.target.id === "goToContact"){
+    window.location.href = "../pages-html/contact-us-page.html"
+  }
 });
 
 function loadPrivacyModal() {
