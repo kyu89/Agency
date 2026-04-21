@@ -38,15 +38,20 @@
     <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-BLVQGYQ0QK'); </script>
 </head>
 <body>
-    <section id="header" class="section"></section>
-    <section id="home" class="section"></section>
-    <section id="about" class="section"></section>
-    <section id="services" class="section"></section>
-    <section id="testimonials" class="section"></section>
-    <section id="contact" class="section"></section>
-    <section id="cta" class="section"></section>
-    <section id="footer" class="section"></section>
-
+    <header>
+        <section id="header" class="section"></section>
+    </header>
+    <main>
+        <section id="home" class="section"></section>
+        <section id="about" class="section"></section>
+        <section id="services" class="section"></section>
+        <section id="testimonials" class="section"></section>
+        <section id="contact" class="section"></section>
+        <section id="cta" class="section"></section>
+    </main>
+    <footer>
+         <section id="footer" class="section"></section>
+    </footer>
     <div class="scroll-button">
         <i class="fas fa-arrow-up"></i>
     </div>
@@ -54,5 +59,10 @@
     <script src="/scripts/components.js" defer></script>
     <script src="/scripts/header.js" defer></script>
     <script src="/scripts/analytics.js"></script>
+    <script>
+    console.log('script running');
+    console.log('hamburger:', document.getElementById('hamburger'));
+    console.log('navigation:', document.getElementById('navigation'));
+</script>
 </body>
 </html>

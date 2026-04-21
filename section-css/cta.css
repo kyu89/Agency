@@ -1,3 +1,11 @@
+:root{
+    --primary-color: #F47D02;
+    --secondary-color: #ffde59;
+    --text-color-light: #e5e7eb;
+    --text-color-dark: #383535;
+    --dark-bg: #0f172a;
+    --text-shadow: 10px 10px 20px #13131343;
+}
 #cta {
     display: flex;
     justify-content: center;
@@ -37,14 +45,14 @@
     font-family: "Poppins", sans-serif;
     font-size: 2.75rem;
     font-weight: 700;
-    color: #007e76;
+    color: var(--primary-color);
     margin: 0;
 }
 
 .cta-content.left p {
     font-family: "Poppins", sans-serif;
     font-size: 1.1rem;
-    color: #333;
+    color: var(--text-color-dark);
     margin: 0;
     line-height: 1.6;
 }
@@ -61,35 +69,35 @@
     font-size: 1.15rem;
     border: none;
     border-radius: 6px;
-    background: #007e76;
-    color: #e5e7eb;
+    background: var(--primary-color);
+    color: var(--text-color-light);
     cursor: pointer;
     transition: 0.3s ease;
     width: fit-content; /* FIX */
 }
 
 #goToBooking:hover {
-    background: #0f172a;
+    background: var(--secondary-color);
     box-shadow: 0 8px 40px #4a4a4a9e;
-    color: #007e76;
-    transform: scale(1.05);
+    color: var(--text-color-dark);
+    transform: scale(1.02);
 }
 
 #goToContact {
     padding: 14px 28px;
     font-size: 1.15rem;
-    border: 2px solid #007e76;
+    border: 2px solid var(--primary-color);
     border-radius: 6px;
-    background: #e5e7eb;
-    color: #007e76;
+    background: var(--text-color-light);
+    color: var(--primary-color);
     cursor: pointer;
     transition: 0.3s ease;
     width: fit-content; /* FIX */
 }
 #goToContact:hover{
-    background: #0f172a;
-    color: #007e76;
-    transform: scale(1.05);
+    background: var(--secondary-color);
+    color: var(--text-color-dark);
+    transform: scale(1.02);
      box-shadow: 0 8px 40px #4a4a4a9e;
      border: none;
 }
