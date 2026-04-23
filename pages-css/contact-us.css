@@ -1,4 +1,11 @@
-
+:root{
+    --primary-color: #F47D02;
+    --secondary-color: #ffde59;
+    --text-color-light: #e5e7eb;
+    --text-color-dark: #383535;
+    --dark-bg: #0f172a;
+    --text-shadow: 10px 10px 20px #13131343;
+}
 html{
     width: 100%;
     box-sizing: border-box;
@@ -10,7 +17,7 @@ body{
     padding: 0;
     margin: 0;
     font-family: "Poppins", sans-serif;
-    background-color: #e5e7eb;
+    background-color: var(--text-color-light);
     overflow-x: hidden;
 }
 
@@ -19,17 +26,17 @@ body{
 }
 
 ::-webkit-scrollbar-track {
-    background: #0f172a;
+    background: var(--dark-bg);
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #007e76;
+    background: var(--primary-color);
     border-radius: 20px;
-    border: 2px solid #e5e7eb;
+    border: 2px solid var(--text-color-light);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #00b4a6;
+    background: var(--secondary-color);
 }
 
 .header-container{
@@ -58,13 +65,20 @@ body{
     width: 100%;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+}
+.page-title p{
+    font-family: inherit;
+    font-size: 1.25rem;
+    color: var(--text-color-dark);
 }
 
 .page-title h1{
     font-family: inherit;
     font-size: 3rem;
-    color: #007e76;
+    color: var(--primary-color);
     margin: 0;
+    text-shadow: var(--text-shadow);
 }
 
 .left-side{
@@ -83,13 +97,14 @@ body{
 .left-side h2{
     font-family: inherit;
     font-size: 1.85rem;
-    color: #0f172a;
+    color: var(--primary-color);
+    text-shadow: var(--text-shadow);
 }
 
 .left-side p{
     font-family: inherit;
     font-size: 1.15rem;
-    color: #383535;;
+    color: var(--text-color-dark);;
     margin: 0;
 }
 
@@ -122,21 +137,23 @@ body{
 form h2{
     font-family: inherit;
     font-size: 2rem;
-    color: #e5e7eb;
+    color: var(--text-color-light);
+    text-shadow: var(--text-shadow);
 }
 
 .right-side form{
     display: flex;
     flex-direction: column;;
-    background-color: #0f172a;
+    background-color: var(--primary-color);
     width: 80%;
-    height: 68vh;
+    height: auto;
     border-radius: 20px;
     padding: 40px;
     gap: 20px;
     justify-content: center;
     align-items: center;
-    box-shadow: 0px 8px 20px #007e762b;
+    box-shadow: 10px 10px 20px #13131343,
+                20px 20px 0px var(--secondary-color);
 }
 
 .name-row{
@@ -154,10 +171,10 @@ form h2{
     width: 100%;
     padding: 14px 16px;
     font-size: 1.05rem;
-    border: 2px solid #64748b;
+    border: 2px solid var(--secondary-color);
     border-radius: 8px;
-    background: #0f172a;
-    color: #e5e7eb;
+    background: var(--text-color-light);
+    color: var(--text-color-dark);
     transition: all 0.3s ease;
     box-sizing: border-box;
 }
@@ -166,10 +183,10 @@ form h2{
     width: 100%;
     padding: 14px 16px;
     font-size: 1.05rem;
-    border: 2px solid #64748b;
+    border: 2px solid var(--secondary-color);
     border-radius: 8px;
-    background: #0f172a;
-    color: #e5e7eb;
+    background: var(--text-color-light);
+    color: var(--text-color-dark);
     transition: all 0.3s ease;
     box-sizing: border-box;
     resize: none;
@@ -183,22 +200,23 @@ form h2{
 }
 
 .input-group textarea::-webkit-scrollbar-track {
-    background: #0f172a;
+    background: var(--dark-bg);
     border-radius: 10px;
 }
 
 .input-group textarea::-webkit-scrollbar-thumb {
-    background: #007e76;
+    background: var(--primary-color);
     border-radius: 10px;
 }
 
 .input-group textarea::-webkit-scrollbar-thumb:hover {
-    background: #00b4a6;
+    background: var(--secondary-color);
 }
 
 .input-group input::placeholder,
 .input-group textarea::placeholder {
     transition: opacity 0.3s ease;
+    color: var(--text-color-light);
 }
 
 .input-group input:focus::placeholder,
@@ -213,17 +231,18 @@ form h2{
     left: 16px;
     top: 14px;
     font-size: 1.05rem;
-    color: #94a3b8;
-    background: #0f172a;
+    color: var(--primary-color);
+    background: var(--text-color-light);
     padding: 0 8px;
     transition: all 0.3s ease;
     pointer-events: none;
+    border-radius: 150px;
 }
 
 /* Animation */
 .input-group input:focus,
 .input-group textarea:focus {
-    border-color: #007e76;
+    border-color: var(--secondary-color);
     box-shadow: 0 0 0 3px rgba(0, 126, 118, 0.2);
     outline: none;
 }
@@ -232,9 +251,9 @@ form h2{
 .input-group textarea:focus + label,
 .input-group input:not(:placeholder-shown) + label,
 .input-group textarea:not(:placeholder-shown) + label {
-    top: -12px;
+    top: -10px;
     font-size: 0.85rem;
-    color: #007e76;
+    color: var(--primary-color);
     font-weight: 600;
 }
 
@@ -248,8 +267,8 @@ button[type="submit"] {
     font-size: 1.15rem;
     border: none;
     border-radius: 5px;
-    background: #007e76;
-    color: #e5e7eb;
+    background: var(--text-color-light);
+    color: var(--primary-color);
     cursor: pointer;
     font-family: "Poppins", sans-serif;
     transition: 0.3s ease-in-out;
@@ -258,12 +277,11 @@ button[type="submit"] {
 }
 
 button[type="submit"]:hover {
-    background: #0f172a;
+    background: var(--secondary-color);
     transition: 0.3s;
     box-shadow: 0 8px 40px 0px #4a4a4a9e;
-    color:#007e76;
-    transform: scale(1.05);
-    border: 2px solid #007e76;
+    color:var(--text-color-dark);
+    transform: scale(1.02);
 }
 
 .toastify-premium {
@@ -318,6 +336,8 @@ button[type="submit"]:hover {
     }
     .right-side form{
         height: 100%;
+        box-shadow: 1px 1px 20px #13131343,
+                5px 5px 0px var(--secondary-color);
     }
     button[type='submit']{
        padding: 10px;
@@ -325,7 +345,7 @@ button[type="submit"]:hover {
         max-width: 250px;
         margin: 0;
     }
-    .input-group input{
+    .input-group input, .input-group textarea{
         font-size: .85rem;
     }
     .name-row{
@@ -350,6 +370,8 @@ button[type="submit"]:hover {
     }
     .right-side form{
         height: 100%;
+         box-shadow: 1px 1px 20px #13131343,
+                10px 10px 0px var(--secondary-color);
     }
     .toastify {
         right: 12px !important;

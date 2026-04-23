@@ -1,4 +1,11 @@
-
+:root{
+    --primary-color: #F47D02;
+    --secondary-color: #ffde59;
+    --text-color-light: #e5e7eb;
+    --text-color-dark: #383535;
+    --dark-bg: #0f172a;
+    --text-shadow: 10px 10px 20px #13131343;
+}
 html{
       width: 100%;
     height: 100%;
@@ -11,7 +18,7 @@ body{
     margin: 0;
     padding: 0;
      font-family: "Poppins", sans-serif;
-    background-color: #e5e7eb;
+    background-color: var(--text-color-light);
     overflow-x: hidden;
 }
 
@@ -24,13 +31,13 @@ body{
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #007e76;
+    background: var(--primary-color);
     border-radius: 20px;
-    border: 2px solid #e5e7eb;
+    border: 2px solid var(--text-color-light);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #00b4a6;
+    background: var(--secondary-color);
 }
 
 .header-container{
@@ -67,7 +74,7 @@ body{
 
 .page-title h1{
     font-family: inherit;
-    color: #007e76;
+    color: var(--primary-color);
     font-size: 3rem;
     margin-top: 20px;
     width: 100%;
@@ -75,7 +82,7 @@ body{
 }
 
 .page-title p{
-    color: #383535;
+    color: var(--text-color-dark);
     font-family: inherit;
     font-size: 1.2rem;
     width: 60%;
@@ -88,8 +95,8 @@ body{
     font-size: 1.15rem;
     border: none;
     border-radius: 5px;
-    background: #007e76;
-    color: #e5e7eb;
+    background: var(--primary-color);
+    color: var(--text-color-light);
     cursor: pointer;
     font-family: "Poppins", sans-serif;
     transition: 0.3s ease-in-out;
@@ -97,11 +104,11 @@ body{
 }
 
 .page-title button:hover{
-    background: #0f172a;
+    background: var(--secondary-color);
     transition: 0.3s;
     box-shadow: 0 8px 40px 0px #4a4a4a9e;
-    color:#007e76;
-    transform: scale(1.05);
+    color:var(--text-color-dark);
+    transform: scale(1.02);
 }
 
 .services{
@@ -134,16 +141,18 @@ body{
 .services img{
     width: 100%;
     height: 35rem;
-    object-fit: contain;
+    object-fit: cover;
     border-radius: 5px;
-    box-shadow: 1px 10px 20px #38353510;
+    box-shadow: 1px 1px 20px #13131343,
+                15px 15px 0px var(--secondary-color);
 }
 
 .services h2{
     font-family: "Poppins", sans-serif;
-    color: #007e76;
+    color: var(--primary-color);
     font-size: 3rem;
     width: 100%;
+    text-shadow: var(--text-shadow);
 }
 
 .services p, .services span{
@@ -151,10 +160,13 @@ body{
     font-size: 1.2rem;
     width: 100%;
 }
+.one h2, .three h2, .five h2{
+    color: var(--text-color-light);
+}
 
 .one, .three, .five{
-    background-color: #0f172a;
-    color: #e5e7eb;
+    background-color: var(--primary-color);
+    color: var(--text-color-light);
     display: flex;
     flex-direction: row-reverse;
     justify-content: center;
@@ -162,17 +174,17 @@ body{
 }
 
 .two, .four, .six{
-    color: #383535;
+    color: var(--text-color-dark);
     display: flex;
     flex-direction: row;
-    background-color: #e5e7eb;
+    background-color: var(--text-color-light);
     justify-content: center;
     align-items: center;
 }
 
 .how-it-works{
     width: 100%;
-    background-color:#0f172a;
+    background-color:var(--primary-color);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -184,9 +196,10 @@ body{
 .how-it-works h2{
     font-family: inherit;
     font-size: 3rem;
-    color: #007e76;
+    color: var(--text-color-light);
     width: 100%;
     text-align: center;
+    text-shadow: var(--text-shadow);
 }
 
 .steps-container{
@@ -220,7 +233,7 @@ body{
 .step h4{
     font-family: inherit;
     font-size: 1.35rem;
-    color: #e5e7eb;
+    color: var(--text-color-light);
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -229,7 +242,7 @@ body{
 }
 
 .step span{
-    background-color: #007e76;
+    background-color: var(--secondary-color);
     border-radius: 50%;
     width: 40px;
     height: 40px;
@@ -238,16 +251,16 @@ body{
     justify-content: center;
     font-family: inherit;
     font-size: 1.2rem;
-    color: #e5e7eb;
-    border: 2px dashed #e5e7eb;
+    color: var(--text-color-dark);
+    border: 2px dashed var(--dark-bg);
 }
 
 .step p{
-    color: #e5e7eb;
+    color: var(--text-color-light);
     font-family: inherit;
     font-size: 1.25rem;
     margin-left: 60px;
-    border-left: 3px solid #007e76;
+    border-left: 3px solid var(--secondary-color);
     padding-left: 20px;
 }
 
@@ -255,8 +268,8 @@ body{
     position: fixed;
     bottom: 5%;
     right: 3%;
-    background-color: #007e76;
-    color: #e5e7eb;
+    background-color: var(--primary-color);
+    color: var(--text-color-light);
     border-radius: 50%;
     border: 2px dashed #131313;
     width: 4%;
@@ -271,6 +284,9 @@ body{
     font-size: 1.75rem;
     display: none;
     transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+.scroll-button:hover{
+    opacity: 1;
 }
 
 @media (max-width: 575px){

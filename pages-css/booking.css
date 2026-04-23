@@ -1,11 +1,18 @@
-
+:root{
+    --primary-color: #F47D02;
+    --secondary-color: #ffde59;
+    --text-color-light: #e5e7eb;
+    --text-color-dark: #383535;
+    --dark-bg: #0f172a;
+    --text-shadow: 10px 10px 20px #13131343;
+}
 body{
     width: 100%;
     box-sizing: border-box;
     margin: 0;
     padding: 0;
      font-family: "Poppins", sans-serif;
-    background-color: #e5e7eb;
+    background-color: var(--text-color-light);
 }
 
 ::-webkit-scrollbar {
@@ -13,17 +20,17 @@ body{
 }
 
 ::-webkit-scrollbar-track {
-    background: #0f172a;
+    background: var(--dark-bg);
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #007e76;
+    background: var(--primary-color);
     border-radius: 20px;
-    border: 2px solid #e5e7eb;
+    border: 2px solid var(--text-color-light);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #00b4a6;
+    background: var(--secondary-color);
 }
 
 .header-container{
@@ -60,16 +67,20 @@ body{
 .page-title h1{
     font-family: inherit;
     font-size: 3rem;
-    color: #007e76;
+    color: var(--primary-color);
     width: 100%;
     text-align: center;
+    text-shadow: var(--text-shadow);
 }
 
-.page-title p{
+.page-title p, .page-title a{
     font-family: inherit;
-    color: #383535;
+    color: var(--text-color-dark);
     margin: 0;
     font-size: 1.25rem;
+    text-align: center;
+    width: 90%;
+    text-decoration: none;
 }
 
 .form-container{
@@ -111,10 +122,10 @@ body{
     outline: none;
     padding: 14px 16px;
     font-size: 1.05rem;
-    border: 2px solid #64748b;
+    border: 2px solid var(--primary-color);
     border-radius: 8px;
-    background: #e5e7eb;
-    color: #007e76;
+    background: var(--text-color-light);
+    color: var(--text-color-dark);
     transition: all 0.3s ease;
     box-sizing: border-box;
 }
@@ -123,10 +134,10 @@ body{
     width: 100%;
     padding: 14px 16px;
     font-size: 1.05rem;
-    border: 2px solid #64748b;
+    border: 2px solid var(--primary-color);
     border-radius: 8px;
-    background: #e5e7eb;
-    color: #007e76;
+    background: var(--text-color-light);
+    color: var(--text-color-dark);
     transition: all 0.3s ease;
     box-sizing: border-box;
     resize: none;
@@ -145,23 +156,23 @@ body{
 }
 
 .input-group textarea::-webkit-scrollbar-track {
-    background: #0f172a;
+    background: var(--dark-bg);
     border-radius: 10px;
 }
 
 .input-group textarea::-webkit-scrollbar-thumb {
-    background: #007e76;
+    background: var(--primary-color);
     border-radius: 10px;
 }
 
 .input-group textarea::-webkit-scrollbar-thumb:hover {
-    background: #00b4a6;
+    background: var(--secondary-color);
 }
 
 .input-group input::placeholder,
 .input-group textarea::placeholder {
     transition: opacity 0.3s ease;
-    color: #e5e7eb;
+    color: var(--text-color-light);
 }
 
 .input-group input:focus::placeholder,
@@ -176,8 +187,8 @@ body{
     left: 10px;
     top: 12px;
     font-size: 1.05rem;
-    color: #007e76;
-    background: #e5e7eb;
+    color: var(--primary-color);
+    background: var(--text-color-light);
     padding: 0 8px;
     transition: all 0.3s ease;
     pointer-events: none;
@@ -185,7 +196,7 @@ body{
 
 .input-group input:focus,
 .input-group textarea:focus {
-    border-color: #007e76;
+    border-color: var(--primary-color);
     box-shadow: 0 0 0 3px rgba(0, 126, 118, 0.2);
     outline: none;
 }
@@ -196,7 +207,7 @@ body{
 .input-group textarea:not(:placeholder-shown) + label {
     top: -12px;
     font-size: 0.85rem;
-    color: #007e76;
+    color: var(--primary-color);
     font-weight: 600;
 }
 
@@ -205,8 +216,8 @@ body{
     font-size: 1.15rem;
     border: none;
     border-radius: 5px;
-    background: #007e76;
-    color: #e5e7eb;
+    background: var(--primary-color);
+    color: var(--text-color-light);
     cursor: pointer;
     font-family: "Poppins", sans-serif;
     transition: 0.3s ease-in-out;
@@ -215,12 +226,11 @@ body{
 }
 
 .form-step button:hover {
-    background: #0f172a;
+    background: var(--secondary-color);
     transition: 0.3s;
     box-shadow: 0 8px 40px 0px #4a4a4a9e;
-    color:#007e76;
-    transform: scale(1.0.5);
-    border: 2px solid #007e76;
+    color:var(--text-color-dark);
+    transform: scale(1.02);
 }
 
 .button-group{
@@ -240,7 +250,7 @@ body{
 .step {
   width: 40px;
   height: 40px;
-  background: #00b4a569;
+  background: var(--secondary-color);
   border-radius: 50%;
   text-align: center;
   display: flex;
@@ -248,12 +258,13 @@ body{
   align-items: center;
   transition: 0.3s ease-in-out;
   font-size: 1.25rem;
+  color: var(--text-color-dark);
 }
 
 .step.active {
-  background: #007e76;
-  color: white;
-  border: 2px dashed #0f172a;
+  background: var(--primary-color);
+  color:var(--text-color-light);
+  border: 2px dashed var(--dark-bg);
 }
 
 .toastify-premium {
@@ -273,9 +284,10 @@ body{
 
 .form-step h2{
     font-family: inherit;
-    color: #007e76;
+    color: var(--primary-color);
     font-size: 3rem;
     margin: 0;
+    text-shadow: var(--text-shadow);
 }
 
 .select-wrapper {
@@ -287,20 +299,21 @@ body{
   width: 100%;
   padding: 12px 40px 12px 14px;
   border-radius: 10px;
-  border: 1px solid #0f172a;
-  background: #007e76;
+  border: 1px solid var(--dark-bg);
+  background: var(--primary-color);
   cursor: pointer;
   transition: 0.2s ease;
-  color: #e5e7eb;
+  color: var(--text-color-light);
   font-family: inherit;
   font-size: 1rem;
 }
 
 /* Hover / focus */
 .select-wrapper select:focus {
-  border-color: #00b4a6;
+  border-color: var(--secondary-color);
   outline: none;
-  background-color: #0f172a;
+  background-color: var(--dark-bg);
+  color: var(--primary-color);
 }
 
 .budget-group {
