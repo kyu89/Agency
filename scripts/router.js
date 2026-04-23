@@ -3,11 +3,6 @@ const sectionCache = {};
 
 // Sections to load with their IDs
 const sectionsToLoad = [
-    { id: 'header', path: '/section-html/header.html', callback: 'setupHeaderNav' },
-    { id: 'about', path: '/section-html/about.html' },
-    { id: 'services', path: '/section-html/services.html' },
-    { id: 'testimonials', path: '/section-html/testimonials.html', callback: 'setupTestimonialsCarousel' },
-    { id: 'cta', path: '/section-html/cta.html' },
     { id: 'footer', path: '/section-html/footer.html' }
 ];
 

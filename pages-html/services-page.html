@@ -34,9 +34,37 @@
     <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-BLVQGYQ0QK'); </script>
 </head>
 <body>
-    <div class="header-container">
-        <section id="header" class="section"></section>
-    </div>    
+    <header class="header-container">
+        <section id="header" class="section">
+            <nav class="nav-bar">
+    <div class="logo">
+        <img src="/assets/agency_logo.webp" alt="Digital Donglers Logo" loading="eager">
+        <p id="company-name">Digital<br><span>Donglers</span></p>
+    </div>
+    <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <div class="navigation" id="navigation">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/about-us" class="nav-link">About</a>
+        <div class="nav-item dropdown">
+            <a href="/services" class="nav-link">Services <span class="arrow">▾</span></a>
+            <div class="dropdown-menu">
+                <a href="/services#engineer-dongler">Engineer Dongler</a>
+                <a href="/services#architect-dongler">Architect Dongler</a>
+                <a href="/services#admin-dongler">Admin Dongler</a>
+                <a href="/services#web-dongler">Web Dongler</a>
+            </div>
+        </div>
+        <a href="/contact-us" class="nav-link">Contact Us</a>
+        <div class="nav-link get-started-mobile" id="get-started-mobile"><a href="/book-now">Book Now →</a></div>
+    </div>
+    <div class="nav-link get-started" id="get-started"><a href="/book-now">Book Now →</a></div>
+</nav>
+        </section>
+    </header>    
 
     <div class="services-container">
 
@@ -142,7 +170,22 @@
             </div>
         </div>
 
-        <section id="cta" class="section"></section>
+        <section id="cta" class="section">
+            <div class="cta-container">
+    <div class="cta-content left">
+        <h2>Ready to Hire a High-Performance Remote Team?</h2>
+        <p>Stop wasting time on slow hiring and high operational costs. Hire skilled virtual assistants and freelancers through our platform and outsource tasks efficiently without the burden of recruitment.</p>
+        <p>Tell us your requirements, and we’ll match you with the right remote assistants to support your business goals.</p>
+        <div class="button-row">
+            <button type="button" id="goToBooking">Schedule Now</button>
+            <button type="button" id="goToContact">Send us an Email</button>
+        </div>
+    </div>
+    <div class="cta-content right">
+        <img id="cta-img" src="/assets/cta.webp" alt="3D model character" loading="lazy">
+    </div>
+</div>
+        </section>
     </div>
 
     <div class="scroll-button">
