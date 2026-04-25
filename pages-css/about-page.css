@@ -562,8 +562,8 @@ body{
 
 .scroll-button {
     position: fixed;
-    bottom: 5%;
-    right: 3%;
+    bottom: 13%;
+    right: 1.5%;
     background-color: var(--primary-color);
     color: var(--text-color-light);
     border-radius: 50%;
@@ -703,7 +703,7 @@ body{
     width: 45px;
     height: 45px;
     font-size: 1.2rem;
-    bottom: 15px;
+    bottom: 60px;
     right: 15px;
     }
     .space{
@@ -772,7 +772,7 @@ body{
     width: 7%;
     height: 6%;
     font-size: 1.2rem;
-    bottom: 15px;
+    bottom: 60px;
     right: 15px;
     }
     .fifth-section{
@@ -826,7 +826,7 @@ body{
     width: 7%;
     height: 6%;
     font-size: 1.2rem;
-    bottom: 15px;
+    bottom: 60px;
     right: 15px;
     }
 }
