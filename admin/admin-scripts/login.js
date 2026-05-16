@@ -110,7 +110,10 @@ document.getElementById("googleLogin").addEventListener("click", async () => {
     window.location.href = "/dashboard";
     showToast("Logged in with Google!", "linear-gradient(135deg, #34d399, #10b981)");
   } catch (error) {
-    showToast(error.message.includes("authorized") ? "This Google account is not authorized." : "Google login failed.", "linear-gradient(135deg, #ef4444, #dc2626)");
+    const message = error.message.includes("authorized")
+      ? "This Google account is not authorized."
+      : `Google login failed: ${error.message}`;
+    showToast(message, "linear-gradient(135deg, #ef4444, #dc2626)");
     await signOut(auth);
   }
 });

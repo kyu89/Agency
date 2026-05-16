@@ -5,6 +5,12 @@ const FIREBASE_CLIENT_EMAIL = process.env.FIREBASE_CLIENT_EMAIL;
 const FIREBASE_PRIVATE_KEY = process.env.FIREBASE_PRIVATE_KEY;
 const FIREBASE_SERVICE_ACCOUNT = process.env.FIREBASE_SERVICE_ACCOUNT;
 const AUTHORIZED_ADMIN_EMAILS = process.env.AUTHORIZED_ADMIN_EMAILS || "";
+const DEFAULT_AUTHORIZED_EMAILS = [
+  "sulitjohnkevin@gmail.com",
+  "sulitkevin85@gmail.com",
+  "admin@digitaldonglers.com",
+  "punyeramina@gmail.com"
+];
 
 function initFirebaseAdmin() {
   if (admin.apps.length > 0) {
@@ -86,6 +92,12 @@ exports.handler = async function (event) {
       .filter(Boolean);
 
     if (allowedEmails.includes(email.toLowerCase())) {
+      return buildResponse(200, { authorized: true, email });
+    }
+
+    // Fallback: allow known admin emails if no explicit environment allowlist exists
+    const defaultAllowedEmails = DEFAULT_AUTHORIZED_EMAILS.map((entry) => entry.toLowerCase());
+    if (defaultAllowedEmails.includes(email.toLowerCase())) {
       return buildResponse(200, { authorized: true, email });
     }
 
