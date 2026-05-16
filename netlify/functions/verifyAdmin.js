@@ -6,10 +6,9 @@ const FIREBASE_PRIVATE_KEY = process.env.FIREBASE_PRIVATE_KEY;
 const FIREBASE_SERVICE_ACCOUNT = process.env.FIREBASE_SERVICE_ACCOUNT;
 const AUTHORIZED_ADMIN_EMAILS = process.env.AUTHORIZED_ADMIN_EMAILS || "";
 const DEFAULT_AUTHORIZED_EMAILS = [
-  "sulitjohnkevin@gmail.com",
   "sulitkevin85@gmail.com",
   "admin@digitaldonglers.com",
-  "punyeramina@gmail.com"
+  "punyermina@gmail.com"
 ];
 
 function initFirebaseAdmin() {
