@@ -13,6 +13,8 @@ const firebaseConfig = {
   projectId: "agency-project-774a0"
 };
 
+const ADMIN_VERIFY_ENDPOINT = "/.netlify/functions/verifyAdmin";
+
 function showToast(text, background) {
   Toastify({
     text,
@@ -39,28 +41,51 @@ function showToast(text, background) {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
+// Hide dashboard contents while verifying admin authorization.
+if (typeof document !== "undefined" && document.body) {
+  document.body.classList.add("admin-auth-loading");
+}
+
 // Enable persistence for session
 setPersistence(auth, browserLocalPersistence);
 
+async function verifyAdminUser(idToken) {
+  const response = await fetch(ADMIN_VERIFY_ENDPOINT, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${idToken}`
+    }
+  });
+
+  const payload = await response.json();
+  if (!response.ok || !payload.authorized) {
+    throw new Error(payload.error || "User is not authorized");
+  }
+
+  return payload;
+}
+
 /* 🔐 PROTECTION - Check if user is logged in and authorized */
-onAuthStateChanged(auth, (user) => {
+onAuthStateChanged(auth, async (user) => {
   if (!user) {
     window.location.href = "/admin";
-    showToast("Please log in to access the dashboard.", "linear-gradient(135deg, #f59e0b, #f97316)");
     return;
   }
 
-  /* ✅ ALLOW ONLY AUTHORIZED USERS */
-  const allowedEmails = [
-    "sulitjohnkevin@gmail.com",
-    "sulitkevin85@gmail.com",
-    "admin@digitaldonglers.com",
-    "punyeramina@gmail.com"
-  ];
+  try {
+    const idToken = await user.getIdToken(true);
+    await verifyAdminUser(idToken);
 
-  if (!allowedEmails.includes(user.email)) {
+    if (typeof document !== "undefined" && document.body) {
+      document.body.classList.remove("admin-auth-loading");
+      document.body.classList.add("admin-authenticated");
+    }
+  } catch (error) {
+    console.error("Admin verification failed:", error);
     showToast("Not authorized", "linear-gradient(135deg, #ef4444, #dc2626)");
-    window.location.href = "/";
+    await signOut(auth);
+    window.location.href = "/admin";
   }
 });
 

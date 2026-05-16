@@ -10,6 +10,8 @@ import {
 } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
 import {
   getAuth,
+  onAuthStateChanged,
+  signOut,
   updatePassword,
   reauthenticateWithCredential,
   EmailAuthProvider
@@ -20,6 +22,8 @@ const firebaseConfig = {
   authDomain: "agency-project-774a0.firebaseapp.com",
   projectId: "agency-project-774a0"
 };
+
+const ADMIN_VERIFY_ENDPOINT = "/.netlify/functions/verifyAdmin";
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
@@ -742,8 +746,6 @@ window.addEventListener("click", (event) => {
    LOGOUT
 ========================= */
 
-import { signOut } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
-
 function setupLogout() {
   const btn = document.getElementById("logout");
 
@@ -761,6 +763,29 @@ function setupLogout() {
 ========================= */
 
 const auth = getAuth(app);
+
+async function verifyAdminUser() {
+  const user = auth.currentUser;
+  if (!user) {
+    throw new Error("No authenticated user found");
+  }
+
+  const idToken = await user.getIdToken(true);
+  const response = await fetch(ADMIN_VERIFY_ENDPOINT, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${idToken}`
+    }
+  });
+
+  const payload = await response.json();
+  if (!response.ok || !payload.authorized) {
+    throw new Error(payload.error || "User is not authorized");
+  }
+
+  return payload;
+}
 
 function showToast(text, background) {
   Toastify({
@@ -1061,12 +1086,26 @@ window.closeConfirmationModal = closeConfirmationModal;
 ========================= */
 
 document.addEventListener("DOMContentLoaded", () => {
-  setupSidebar();
-  setupLogout();
-  loadDashboardStats();
-  loadAnalytics();
-  loadBookings();
-  setupSettings(); // Initialize settings
+  onAuthStateChanged(auth, async (user) => {
+    if (!user) {
+      window.location.href = "/admin";
+      return;
+    }
+
+    try {
+      await verifyAdminUser();
+      setupSidebar();
+      setupLogout();
+      loadDashboardStats();
+      loadAnalytics();
+      loadBookings();
+      setupSettings();
+    } catch (error) {
+      console.error("Admin verification failed:", error);
+      await signOut(auth);
+      window.location.href = "/admin";
+    }
+  });
 });
 
 // Expose functions to global scope for onclick handlers

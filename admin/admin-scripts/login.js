@@ -4,6 +4,7 @@ import {
   signInWithEmailAndPassword,
   GoogleAuthProvider,
   signInWithPopup,
+  signOut,
   setPersistence,
   browserLocalPersistence
 } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
@@ -14,31 +15,54 @@ const firebaseConfig = {
   projectId: "agency-project-774a0"
 };
 
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const ADMIN_VERIFY_ENDPOINT = "/.netlify/functions/verifyAdmin";
+
 function showToast(text, background) {
   Toastify({
-   text,
-        duration: 4500,
-        gravity: "top",
-        position: "right",
-        backgroundColor: background,
-        stopOnFocus: true,
-        close: true,
-        style: {
-            borderRadius: "12px",
-            padding: "14px 18px",
-            fontSize: "14px",
-            fontFamily: "Poppins",
-            fontWeight: "500",
-            boxShadow: "0 10px 25px rgba(0, 0, 0, 0.27)",
-            backdropFilter: "blur(6px)",
-            border: "1px solid rgba(255, 255, 255, 0.06)"
-        },
-        className: "toastify-premium"
+    text,
+    duration: 4500,
+    gravity: "top",
+    position: "right",
+    backgroundColor: background,
+    stopOnFocus: true,
+    close: true,
+    style: {
+      borderRadius: "12px",
+      padding: "14px 18px",
+      fontSize: "14px",
+      fontFamily: "Poppins",
+      fontWeight: "500",
+      boxShadow: "0 10px 25px rgba(0, 0, 0, 0.27)",
+      backdropFilter: "blur(6px)",
+      border: "1px solid rgba(255, 255, 255, 0.06)"
+    },
+    className: "toastify-premium"
   }).showToast();
 }
 
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
+async function verifyAdminUser() {
+  const idToken = await auth.currentUser?.getIdToken(true);
+  if (!idToken) {
+    throw new Error("No authenticated user token");
+  }
+
+  const response = await fetch(ADMIN_VERIFY_ENDPOINT, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${idToken}`
+    }
+  });
+
+  const payload = await response.json();
+  if (!response.ok || !payload.authorized) {
+    throw new Error(payload.error || "User is not authorized");
+  }
+
+  return payload;
+}
 
 // Enable persistence for session
 setPersistence(auth, browserLocalPersistence);
@@ -64,11 +88,13 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
   }
 
   try {
-    await signInWithEmailAndPassword(auth, email, password, captcha);
+    await signInWithEmailAndPassword(auth, email, password);
+    await verifyAdminUser();
     window.location.href = "/dashboard";
   } catch (error) {
-    showToast("Invalid email or password.", "linear-gradient(135deg, #ef4444, #dc2626)");
-     grecaptcha.reset();
+    showToast(error.message.includes("authorized") ? "This account is not authorized." : "Invalid email or password.", "linear-gradient(135deg, #ef4444, #dc2626)");
+    await signOut(auth);
+    grecaptcha.reset();
   }
 });
 
@@ -76,25 +102,15 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
    GOOGLE LOGIN
 ========================= */
 const provider = new GoogleAuthProvider();
-// Add authorized Google email(s) here
-const AUTHORIZED_EMAILS = ["sulitjohnkevin@gmail.com", "sulitkevin85@gmail.com", "admin@digitaldonglers.com", "punyeramina@gmail.com"];
 
 document.getElementById("googleLogin").addEventListener("click", async () => {
   try {
-    const result = await signInWithPopup(auth, provider);
-    const userEmail = result.user.email;
-
-    // Check if the email is authorized
-    if (!AUTHORIZED_EMAILS.includes(userEmail)) {
-      // Sign out the user if not authorized
-      await auth.signOut();
-      showToast("This Google account is not authorized.", "linear-gradient(135deg, #ef4444, #dc2626)");
-      return;
-    }
-
+    await signInWithPopup(auth, provider);
+    await verifyAdminUser();
     window.location.href = "/dashboard";
     showToast("Logged in with Google!", "linear-gradient(135deg, #34d399, #10b981)");
   } catch (error) {
-    showToast("Google login failed.", "linear-gradient(135deg, #ef4444, #dc2626)");
+    showToast(error.message.includes("authorized") ? "This Google account is not authorized." : "Google login failed.", "linear-gradient(135deg, #ef4444, #dc2626)");
+    await signOut(auth);
   }
 });
