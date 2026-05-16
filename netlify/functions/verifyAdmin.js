@@ -113,6 +113,6 @@ exports.handler = async function (event) {
     return buildResponse(403, { error: "User is not authorized", email });
   } catch (error) {
     console.error("verifyAdmin error:", error);
-    return buildResponse(500, { error: "Admin verification failed" });
+    return buildResponse(500, { error: "Admin verification failed", detail: error.message });
   }
 };

@@ -58,7 +58,8 @@ async function verifyAdminUser() {
 
   const payload = await response.json();
   if (!response.ok || !payload.authorized) {
-    throw new Error(payload.error || "User is not authorized");
+    const message = payload.detail ? `${payload.error}: ${payload.detail}` : payload.error || "User is not authorized";
+    throw new Error(message);
   }
 
   return payload;
